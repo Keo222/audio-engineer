@@ -1,0 +1,26 @@
+{
+  "name": "joel-music",
+  "version": "1.0.0",
+  "description": "Audio Engineering Website for Joel Gardella",
+  "main": "index.js",
+  "scripts": {
+    "dev-start": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "author": "Kyle Olsen",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "pg": "^8.7.3"
+  },
+  "engines": {
+    "node": "16.13.2",
+    "npm": "8.4.0"
+  }
+}
