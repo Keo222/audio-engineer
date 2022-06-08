@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Imported Styled Components
+// Styled Components
 import { PageHeading } from "../../styled/typography";
 import {
   StyledForm,

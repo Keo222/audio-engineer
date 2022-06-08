@@ -1,11 +1,13 @@
+import { Genre } from "../types/genres.types";
+
 // CREATE
 
 // READ
-export const getGenres = async () => {
+export async function getGenres(): Promise<Genre[]> {
   const response = await fetch("/api/genres/");
   const allGenres = await response.json();
   return allGenres;
-};
+}
 
 // UPDATE
 

@@ -18,6 +18,7 @@ import Admin from "./pages/Admin/AdminHome";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminTracks from "./pages/Admin/AdminTracks";
 import AdminNewTrack from "./pages/Admin/AdminNewTrack";
+import FormikTSAdminNewTrack from "./pages/Admin/FormikTSAdminNewTrack";
 import AdminUpdateTrack from "./pages/Admin/AdminUpdateTrack";
 import AdminText from "./pages/Admin/AdminText";
 import AdminGenres from "./pages/Admin/AdminGenres";
@@ -42,6 +43,10 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/tracks" element={<AdminTracks />} />
           <Route path="/admin/tracks/new" element={<AdminNewTrack />} />
+          <Route
+            path="/admin/tracks/new-formik"
+            element={<FormikTSAdminNewTrack />}
+          />
           <Route
             path="/admin/tracks/update/:id"
             element={<AdminUpdateTrack />}

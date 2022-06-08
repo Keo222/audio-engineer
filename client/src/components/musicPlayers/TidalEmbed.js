@@ -1,6 +1,7 @@
 import React from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
+import { tidalRegex } from "../../regex/trackEmbedRegex";
 
 const TidalFrame = styled.iframe`
   top: 0;
@@ -16,8 +17,8 @@ const TidalEmbed = ({ title, source }) => {
   const big = size.width >= 550;
   const grid = big ? "" : "?layout=gridify";
 
-  const regex = /\/[\d]+$/gm;
-  const found = source.match(regex);
+  // const regex = /\/[\d]+$/gm;
+  const found = source.match(tidalRegex);
   const fullSrc = `https://embed.tidal.com/tracks${found[0]}`;
   return (
     <TidalFrame
