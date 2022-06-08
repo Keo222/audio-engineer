@@ -1,6 +1,7 @@
 import React from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
+import { appleRegex } from "../../regex/trackEmbedRegex";
 
 const AppleFrame = styled.iframe`
   width: 100%;
@@ -13,8 +14,8 @@ const AppleEmbed = ({ title, source }) => {
   const size = useWindowSize();
   const big = size.width >= 450;
 
-  const regex = /\/[\d\w-%&]+\/[\d]+[?i=]{3}[\d]+/gm;
-  const found = source.match(regex);
+  // const regex = /\/[\d\w-%&]+\/[\d]+[?i=]{3}[\d]+/gm;
+  const found = source.match(appleRegex);
   const fullSrc = `https://embed.music.apple.com/us/album${found[0]}`;
   return (
     <AppleFrame

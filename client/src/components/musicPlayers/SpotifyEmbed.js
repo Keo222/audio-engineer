@@ -1,6 +1,7 @@
 import React from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
+import { spotifyRegex } from "../../regex/trackEmbedRegex";
 
 const SpotifyFrame = styled.iframe`
   width: 100%;
@@ -13,8 +14,8 @@ const SpotifyEmbed = ({ title, source }) => {
   const size = useWindowSize();
   const big = size.width >= 450;
 
-  const regex = /\/[\d\w]+[?]/gm;
-  const found = source.match(regex);
+  // const regex = /\/[\d\w]+[?]/gm;
+  const found = source.match(spotifyRegex);
 
   const fullSrc = `https://open.spotify.com/embed/track${found[0]}utm_source=generator`;
 

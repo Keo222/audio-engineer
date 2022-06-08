@@ -15,7 +15,6 @@ import appleColor from "../icons/apple-color.svg";
 
 // Imported Styled Components
 import { PageHeading } from "../styled/typography";
-import { boolean } from "yup";
 
 // Styled Components Types
 type Selectable = { selected: boolean };
@@ -186,11 +185,9 @@ const Listen = () => {
     console.table(allTracks);
     setTracks(allTracks);
 
-    const allGenres = allTracks.map((t: Track) =>
-      genreSet.add(t.track_genre)
-    );
-    const genreSet = new Set(allGenres as string[] | []);
-    const genreList = Array.from(genreSet);
+    const genreSet = new Set();
+    allTracks.map((t: Track) => genreSet.add(t.track_genre));
+    const genreList = Array.from(genreSet) as string[];
     setGenres(genreList);
   }
 
