@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
 import { appleRegex } from "../../regex/trackEmbedRegex";
@@ -10,18 +10,27 @@ const AppleFrame = styled.iframe`
   border: 0;
 `;
 
-const AppleEmbed = ({ title, source }) => {
+type Props = {
+  title: string;
+  source: string;
+};
+
+const AppleEmbed = ({ title, source }: Props) => {
+  const [fullSrc, setFullSrc] = useState("");
   const size = useWindowSize();
   const big = size.width >= 450;
 
-  // const regex = /\/[\d\w-%&]+\/[\d]+[?i=]{3}[\d]+/gm;
-  const found = source.match(appleRegex);
-  const fullSrc = `https://embed.music.apple.com/us/album${found[0]}`;
+  useEffect(() => {
+    const found = source.match(appleRegex);
+    if (found !== null) {
+      setFullSrc(`https://embed.music.apple.com/us/album${found[0]}`);
+    }
+  }, []);
+
   return (
     <AppleFrame
       title={title}
       allow="autoplay *; encrypted-media *; fullscreen *"
-      frameborder="0"
       height={big ? "150" : "120"}
       sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
       src={fullSrc}
