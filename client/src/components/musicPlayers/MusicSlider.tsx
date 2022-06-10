@@ -12,6 +12,9 @@ import AppleEmbed from "./AppleEmbed";
 import SpotifyEmbed from "./SpotifyEmbed";
 import TidalEmbed from "./TidalEmbed";
 
+// Types
+import { Player, Track } from "../../types/types";
+
 import {
   animated,
   useTransition,
@@ -128,7 +131,7 @@ const InfoPoint = styled.p`
   margin: 2.2rem 0;
 `;
 
-const TrackInfoToggle = styled.div`
+const TrackInfoToggle = styled.div<{ open: boolean }>`
   width: 100%;
   font-size: 1.2rem;
   line-height: 2rem;
@@ -146,19 +149,24 @@ const ToggleArrowSVG = styled.img`
   user-select: none;
 `;
 
-const MusicSlider = ({ player, genre, tracks }) => {
+type Props = {
+  player: Player;
+  genre: string;
+  tracks: Track[];
+};
+
+const MusicSlider = ({ player, genre, tracks }: Props) => {
   const [current, setCurrent] = useState(0);
   const length = tracks.length;
 
   // Choose which media player is embedded
-  const playerSwitch = (track) => {
+  const playerSwitch = (track: Track) => {
     switch (player) {
       case "Spotify":
         return (
           <SpotifyEmbed
             title={track.track_name}
             source={track.track_spotify}
-            artist={track.track_artist}
           />
         );
       case "Apple":
@@ -166,7 +174,6 @@ const MusicSlider = ({ player, genre, tracks }) => {
           <AppleEmbed
             title={track.track_name}
             source={track.track_apple}
-            artist={track.track_artist}
           />
         );
       case "Tidal":
@@ -174,15 +181,13 @@ const MusicSlider = ({ player, genre, tracks }) => {
           <TidalEmbed
             title={track.track_name}
             source={track.track_tidal}
-            artist={track.track_artist}
           />
         );
       default:
         return (
           <SpotifyEmbed
             title={track.track_name}
-            src={track.track_spotify}
-            artist={track.track_artist}
+            source={track.track_spotify}
           />
         );
     }
@@ -210,9 +215,9 @@ const MusicSlider = ({ player, genre, tracks }) => {
 
   // ANIMATE INFO DIV
   const [showInfo, setShowInfo] = useState(false);
-  const defaultHeight = "0px";
+  const defaultHeight = 0;
   const [contentHeight, setContentHeight] = useState(defaultHeight);
-  const [heightRef, { height }] = useMeasure();
+  const [heightRef, { height }] = useMeasure<HTMLDivElement>();
 
   // Info Div height toggle animation
   const expand = useSpring({
@@ -225,10 +230,10 @@ const MusicSlider = ({ player, genre, tracks }) => {
     setContentHeight(height);
 
     //Adds resize event listener
-    window.addEventListener("resize", setContentHeight(height));
+    window.addEventListener("resize", setContentHeight(height)!);
 
     // Clean-up
-    return window.removeEventListener("resize", setContentHeight(height));
+    return window.removeEventListener("resize", setContentHeight(height)!);
   }, [height]);
 
   // Move track functions

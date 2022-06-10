@@ -5,6 +5,9 @@ import { animated } from "react-spring";
 // Components
 import MusicSlider from "../components/musicPlayers/MusicSlider";
 
+// Types
+import { Player, Work, Track } from "../types/types";
+
 // Icons
 import spotifyWhite from "../icons/spotify-white.png";
 import spotifyColor from "../icons/spotify-green.png";
@@ -148,18 +151,6 @@ const GenreSelect = styled.select`
     outline: 3px solid ${(props) => props.theme.color.highlight1};
   }
 `;
-
-// Types
-
-type Player = "Spotify" | "Tidal" | "Apple";
-type Work = "Production" | "Mixing" | "Mastering" | "All";
-type Track = {
-  track_genre: string;
-  track_work: string;
-  track_name: string;
-  track_artist: string;
-  track_featured: boolean;
-};
 
 const Listen = () => {
   const [player, setPlayer] = useState<Player>("Spotify");
