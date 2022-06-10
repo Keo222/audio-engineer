@@ -6,19 +6,16 @@ import upArrow from "../../icons/up_arrow.svg";
 import downArrow from "../../icons/down_arrow.svg";
 
 // Imports for animations
-import {
-  animated,
-  useTransition,
-  useSpringRef,
-  useSpring,
-  config,
-} from "react-spring";
+import { animated, useSpring, config } from "react-spring";
 import { useMeasure } from "react-use";
 
 // Import track embeds
 import SpotifyEmbed from "./SpotifyEmbed";
 import TidalEmbed from "./TidalEmbed";
 import AppleEmbed from "./AppleEmbed";
+
+// Types
+import { Player, Track } from "../../types/types";
 
 // Styled Componenets
 const TrackContainer = styled.div`
@@ -59,7 +56,7 @@ const InfoPoint = styled.p`
   margin: 2.2rem 0;
 `;
 
-const TrackInfoToggle = styled.div`
+const TrackInfoToggle = styled.div<{ open: boolean }>`
   width: 100%;
   font-size: 1.2rem;
   line-height: 2rem;
@@ -77,34 +74,40 @@ const ToggleArrowSVG = styled.img`
   user-select: none;
 `;
 
-const SinglePlayer = ({ track, player }) => {
+type Props = {
+  track: Track;
+  player: Player;
+};
+
+const SinglePlayer = ({ track, player }: Props) => {
   const [showInfo, setShowInfo] = useState(false);
   const defaultHeight = "0px";
-  const [contentHeight, setContentHeight] = useState(defaultHeight);
-  const [heightRef, { height }] = useMeasure();
+  const [contentHeight, setContentHeight] = useState<string | number>(
+    defaultHeight
+  );
+  const [heightRef, { height }] = useMeasure<HTMLDivElement>();
   useEffect(() => {
     //Sets initial height
     setContentHeight(height);
 
     //Adds resize event listener
-    window.addEventListener("resize", setContentHeight(height));
+    window.addEventListener("resize", setContentHeight(height)!);
 
     // Clean-up
-    return window.removeEventListener("resize", setContentHeight(height));
+    return window.removeEventListener("resize", setContentHeight(height)!);
   }, [height]);
   const expand = useSpring({
     config: config.gentle,
     height: showInfo ? `${contentHeight}px` : defaultHeight,
   });
 
-  const playerSwitch = (track) => {
+  const playerSwitch = (track: Track) => {
     switch (player) {
       case "Spotify":
         return (
           <SpotifyEmbed
             title={track.track_name}
             source={track.track_spotify}
-            artist={track.track_artist}
           />
         );
       case "Apple":
@@ -112,7 +115,6 @@ const SinglePlayer = ({ track, player }) => {
           <AppleEmbed
             title={track.track_name}
             source={track.track_apple}
-            artist={track.track_artist}
           />
         );
       case "Tidal":
@@ -120,15 +122,13 @@ const SinglePlayer = ({ track, player }) => {
           <TidalEmbed
             title={track.track_name}
             source={track.track_tidal}
-            artist={track.track_artist}
           />
         );
       default:
         return (
           <SpotifyEmbed
             title={track.track_name}
-            src={track.track_spotify}
-            artist={track.track_artist}
+            source={track.track_spotify}
           />
         );
     }

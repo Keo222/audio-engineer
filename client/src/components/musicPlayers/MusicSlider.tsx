@@ -215,8 +215,10 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
 
   // ANIMATE INFO DIV
   const [showInfo, setShowInfo] = useState(false);
-  const defaultHeight = 0;
-  const [contentHeight, setContentHeight] = useState(defaultHeight);
+  const defaultHeight = "0px";
+  const [contentHeight, setContentHeight] = useState<number | string>(
+    defaultHeight
+  );
   const [heightRef, { height }] = useMeasure<HTMLDivElement>();
 
   // Info Div height toggle animation

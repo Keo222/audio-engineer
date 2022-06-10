@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import { Genre } from "../../types/genres.types";
+import { Genre } from "../../types/types";
 
 import TrackForm from "../../components/Admin/TrackForm";
 
