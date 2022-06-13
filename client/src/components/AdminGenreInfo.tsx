@@ -38,7 +38,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const AdminGenreInfo = ({ numGenres }) => {
+type Props = {
+  numGenres: number;
+};
+
+const AdminGenreInfo = ({ numGenres }: Props) => {
   return (
     <TrackInfoDiv>
       <TrackInfoHeader>Genres</TrackInfoHeader>
