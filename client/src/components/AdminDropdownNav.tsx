@@ -39,7 +39,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const AdminDropdownNav = ({ setHamburgerOpen }) => {
+type Props = {
+  setHamburgerOpen: (val: boolean) => void;
+};
+
+const AdminDropdownNav = ({ setHamburgerOpen }: Props) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
