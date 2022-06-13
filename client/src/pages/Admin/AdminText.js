@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Imported Components
-import UpdateNotification from "../../components/UpdateNotification";
+import UpdateNotification from "../../components//Admin/UpdateNotification";
 import TextSection from "../../components/Admin/Text/TextSection";
 
 // Imported Styled Components

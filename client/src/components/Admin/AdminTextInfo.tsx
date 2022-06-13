@@ -38,7 +38,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const AdminTextInfo = ({ wordCount }) => {
+type Props = {
+  wordCount: number;
+};
+
+const AdminTextInfo = ({ wordCount }: Props) => {
   return (
     <TrackInfoDiv>
       <TrackInfoHeader>Text</TrackInfoHeader>

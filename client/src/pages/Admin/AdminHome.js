@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Components
-import AdminTrackInfo from "../../components/AdminTrackInfo";
-import AdminGenreInfo from "../../components/AdminGenreInfo";
-import AdminTextInfo from "../../components/AdminTextInfo";
+import AdminTrackInfo from "../../components/Admin/AdminTrackInfo";
+import AdminGenreInfo from "../../components/Admin/AdminGenreInfo";
+import AdminTextInfo from "../../components/Admin/AdminTextInfo";
 
 // Imported Styled Elements
 import { PageHeading } from "../../styled/typography";
