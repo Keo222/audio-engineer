@@ -10,7 +10,7 @@ export const getTracks = async () => {
 // UPDATE
 
 // DELETE
-export const deleteTrack = async (deleteId) => {
+export const deleteTrack = async (deleteId: number) => {
   let data = { id: deleteId };
   try {
     const response = await fetch("/api/tracks", {

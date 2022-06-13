@@ -261,7 +261,7 @@ const Admin = () => {
       {popupOpen && (
         <DeleteTrackPopup
           togglePopup={togglePopup}
-          deleteTrack={removeTrack}
+          removeTrack={removeTrack}
           name={deleteTrackInfo.track_name}
           artist={deleteTrackInfo.track_artist}
         />

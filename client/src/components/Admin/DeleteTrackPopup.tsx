@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // Styled Elements
@@ -79,9 +78,21 @@ const DeleteButton = styled(CancelButton)`
   color: ${(props) => props.theme.color.textLight};
 `;
 
-const DeleteTrackPopup = ({ togglePopup, deleteTrack, name, artist }) => {
+type Props = {
+  togglePopup: () => void;
+  removeTrack: () => Promise<void>;
+  name: string;
+  artist: string;
+};
+
+const DeleteTrackPopup = ({
+  togglePopup,
+  removeTrack,
+  name,
+  artist,
+}: Props) => {
   const handleDelete = () => {
-    deleteTrack();
+    removeTrack();
     togglePopup();
   };
   return (
