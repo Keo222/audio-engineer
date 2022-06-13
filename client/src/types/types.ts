@@ -4,6 +4,11 @@ export type Genre = { genre_name: string };
 
 export type Player = "Spotify" | "Tidal" | "Apple";
 
+export type Text = {
+  name: string;
+  stored_text: string[];
+};
+
 export type Track = {
   track_genre: string;
   track_work: string;

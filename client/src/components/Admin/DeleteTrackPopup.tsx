@@ -79,17 +79,17 @@ const DeleteButton = styled(CancelButton)`
 `;
 
 type Props = {
-  togglePopup: () => void;
-  removeTrack: () => Promise<void>;
   name: string;
   artist: string;
+  togglePopup: () => void;
+  removeTrack: () => Promise<void>;
 };
 
 const DeleteTrackPopup = ({
-  togglePopup,
-  removeTrack,
   name,
   artist,
+  togglePopup,
+  removeTrack,
 }: Props) => {
   const handleDelete = () => {
     removeTrack();

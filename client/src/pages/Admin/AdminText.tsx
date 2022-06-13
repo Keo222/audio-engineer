@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Types
+import { Text } from "../../types/types";
+
 // Imported Components
-import UpdateNotification from "../../components//Admin/UpdateNotification";
+import UpdateNotification from "../../components/Admin/UpdateNotification";
 import TextSection from "../../components/Admin/Text/TextSection";
 
 // Imported Styled Components
@@ -13,6 +16,8 @@ const TextUpdateContainer = styled.div`
   margin: 0 auto 5rem;
 `;
 
+type TextTitle = "about" | "contact" | "pricing" | "hire";
+
 const AdminText = () => {
   const [aboutText, setAboutText] = useState("About Text");
   const [contactText, setContactText] = useState("Contact Text");
@@ -20,7 +25,7 @@ const AdminText = () => {
   const [hireText, setHireText] = useState("Hire Text");
   const [updated, setUpdated] = useState(false);
 
-  const whichText = (textName) => {
+  const whichText = (textName: TextTitle) => {
     switch (textName) {
       case "about":
         return aboutText;
@@ -35,30 +40,35 @@ const AdminText = () => {
     }
   };
 
-  const updateText = async (e, textName) => {
+  const updateText = async (
+    e: React.SyntheticEvent,
+    textName: TextTitle
+  ) => {
     e.preventDefault();
     const sectionText = whichText(textName);
 
-    const pArray = sectionText.split(/\n/g).filter((t) => t !== "");
-    const data = { name: textName, text: pArray };
-    if (data.text.length !== 0) {
-      try {
-        await fetch("/api/text", {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "PUT",
-          body: JSON.stringify(data),
-        });
-        setUpdated(true);
-        setTimeout(() => {
-          setUpdated(false);
-        }, 3000);
-      } catch (err) {
-        console.error("Error updating text", err);
+    if (sectionText !== null) {
+      const pArray = sectionText.split(/\n/g).filter((t) => t !== "");
+      const data = { name: textName, text: pArray };
+      if (data.text.length !== 0) {
+        try {
+          await fetch("/api/text", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify(data),
+          });
+          setUpdated(true);
+          setTimeout(() => {
+            setUpdated(false);
+          }, 3000);
+        } catch (err) {
+          console.error("Error updating text", err);
+        }
+      } else {
+        console.error("Text not found");
       }
-    } else {
-      console.error("Text not found");
     }
   };
 
@@ -66,16 +76,16 @@ const AdminText = () => {
     const res = await fetch("/api/text?name=all");
     const allTexts = await res.json();
     const about = allTexts
-      .find((t) => t.name === "about")
+      .find((t: Text) => t.name === "about")
       .stored_text.join("\n\n");
     const contact = allTexts
-      .find((t) => t.name === "contact")
+      .find((t: Text) => t.name === "contact")
       .stored_text.join("\n\n");
     const pricing = allTexts
-      .find((t) => t.name === "pricing")
+      .find((t: Text) => t.name === "pricing")
       .stored_text.join("\n\n");
     const hire = allTexts
-      .find((t) => t.name === "hire")
+      .find((t: Text) => t.name === "hire")
       .stored_text.join("\n\n");
 
     setAboutText(about);

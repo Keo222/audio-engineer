@@ -77,19 +77,30 @@ const UpdateButton = styled(animated.button)`
   }
 `;
 
+type Props = {
+  sectionTitle: string;
+  text: string;
+  section: string;
+  color: string;
+  setAboutText: React.Dispatch<React.SetStateAction<string>>;
+  updateText: (e: React.SyntheticEvent, textName: string) => Promise<void>;
+};
+
 const TextSection = ({
   sectionTitle,
   text,
-  setAboutText,
-  updateText,
   section,
   color,
-}) => {
+  setAboutText,
+  updateText,
+}: Props) => {
   // ANIMATE INFO DIV
   const [showInner, setShowInner] = useState(false);
   const defaultHeight = "0px";
-  const [contentHeight, setContentHeight] = useState(defaultHeight);
-  const [heightRef, { height }] = useMeasure();
+  const [contentHeight, setContentHeight] = useState<number | string>(
+    defaultHeight
+  );
+  const [heightRef, { height }] = useMeasure<HTMLDivElement>();
 
   const expandRef = useSpringRef();
   const showRef = useSpringRef();
@@ -126,10 +137,10 @@ const TextSection = ({
     setContentHeight(height);
 
     //Adds resize event listener
-    window.addEventListener("resize", setContentHeight(height));
+    window.addEventListener("resize", setContentHeight(height)!);
 
     // Clean-up
-    return window.removeEventListener("resize", setContentHeight(height));
+    return window.removeEventListener("resize", setContentHeight(height)!);
   }, [height]);
   return (
     <UpdateSection>
