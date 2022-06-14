@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 // Helper Functions
@@ -10,8 +10,17 @@ import garbage from "../../icons/garbage-red.svg";
 // Imported Styled Elements
 import { PageHeading } from "../../styled/typography";
 import { ErrorMessage } from "../../styled/forms";
+import { Genre } from "../../types/types";
 
 // Styled Elements
+
+type TDisplayGenreList = {
+  displayList: boolean;
+};
+
+type ErrorShown = {
+  errorPresent: boolean;
+};
 
 const GenrePageDiv = styled.div`
   color: ${(props) => props.theme.color.textLight};
@@ -29,7 +38,7 @@ const GenreDisplayToggle = styled.div`
   }
 `;
 
-const AddGenreToggle = styled.div`
+const AddGenreToggle = styled.div<TDisplayGenreList>`
   background-color: ${(props) =>
     props.displayList
       ? props.theme.color.grayedOut
@@ -62,7 +71,7 @@ const DivsContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-const AddGenreDiv = styled.div`
+const AddGenreDiv = styled.div<TDisplayGenreList>`
   width: 42%;
   height: fit-content;
   border: 2px solid ${(props) => props.theme.color.highlight1};
@@ -77,7 +86,7 @@ const AddGenreDiv = styled.div`
     width: 80%;
   }
 `;
-const ViewAndRemoveDiv = styled(AddGenreDiv)`
+const ViewAndRemoveDiv = styled(AddGenreDiv)<TDisplayGenreList>`
   border-color: ${(props) => props.theme.color.highlight3};
   & h3 {
     color: ${(props) => props.theme.color.highlight3};
@@ -111,7 +120,7 @@ const InputText = styled.input`
   flex: 1;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.button<ErrorShown>`
   margin: ${(props) => (props.errorPresent ? "0.5rem 0 3rem" : "3rem 0")};
   border: none;
   padding: 0.8rem 2rem;
@@ -206,33 +215,66 @@ const Icon = styled.img`
 `;
 
 const AdminGenres = () => {
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState<Genre[] | []>([]);
   const [newGenre, setNewGenre] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);
   const [reverseGenres, setReverseGenres] = useState(false);
   const [displayList, setDisplayList] = useState(true);
 
-  const fetchGenres = async () => {
+  // const sortGenres = (genres: Genre[]) => {
+  //   const sortedGenres = reverseGenres
+  //     ? genres
+  //         .sort((a, b) =>
+  //           a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
+  //             ? 1
+  //             : -1
+  //         )
+  //         .reverse()
+  //     : genres.sort((a, b) =>
+  //         a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
+  //       );
+  //   return sortedGenres;
+  // };
+
+  const sortGenres = useCallback(
+    (reverseGenres: boolean, genres: Genre[]) => {
+      const sortedGenres = reverseGenres
+        ? genres
+            .sort((a, b) =>
+              a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
+                ? 1
+                : -1
+            )
+            .reverse()
+        : genres.sort((a, b) =>
+            a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
+              ? 1
+              : -1
+          );
+      return sortedGenres;
+    },
+    []
+  );
+
+  const fetchGenres = useCallback(async () => {
     const allGenres = await getGenres();
-    setGenres(allGenres);
-  };
+    if (allGenres !== undefined && allGenres !== []) {
+      const genreList = sortGenres(false, allGenres);
+      setGenres(genreList);
+    }
+  }, [sortGenres]);
 
   useEffect(() => {
     fetchGenres();
-  }, []);
+  }, [fetchGenres]);
 
-  let sortedGenres = reverseGenres
-    ? genres
-        .sort((a, b) =>
-          a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
-        )
-        .reverse()
-    : genres.sort((a, b) =>
-        a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
-      );
+  useEffect(() => {
+    const newOrder = sortGenres(reverseGenres, genres);
+    setGenres(newOrder);
+  }, [genres, reverseGenres, sortGenres]);
 
-  const addGenre = async (e) => {
+  const addGenre = async (e: React.MouseEvent<Element, MouseEvent>) => {
     let data = {
       newGenre: newGenre,
     };
@@ -265,12 +307,12 @@ const AdminGenres = () => {
         setError(true);
         return;
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
     }
   };
 
-  const deleteGenre = async (name) => {
+  const deleteGenre = async (name: string) => {
     let data = { name: name };
     try {
       await fetch("/api/genres", {
@@ -308,8 +350,8 @@ const AdminGenres = () => {
           <h3>Genre List</h3>
           <GenreTable>
             <colgroup>
-              <ColName span="1" />
-              <ColDelete span="1" />
+              <ColName />
+              <ColDelete />
             </colgroup>
             <thead>
               <TableRow>
@@ -353,8 +395,8 @@ const AdminGenres = () => {
               </TableRow>
             </thead>
             <tbody>
-              {sortedGenres &&
-                sortedGenres.map((g) => (
+              {genres &&
+                genres.map((g) => (
                   <TableRow key={g.genre_name}>
                     <TableData>{g.genre_name}</TableData>
                     <TableIcon>
