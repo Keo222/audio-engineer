@@ -10,7 +10,13 @@ import {
   CardBackBody,
   CardLinkButton,
 } from "../../styled/card";
-const SolidFlipCard = ({ color, numTracks, work }) => {
+
+type Props = {
+  color: string;
+  numTracks: string;
+  work: string;
+};
+const SolidFlipCard = ({ color, numTracks, work }: Props) => {
   const trackOrTracks = numTracks === "1" ? "Track" : "Tracks";
   return (
     <Card>

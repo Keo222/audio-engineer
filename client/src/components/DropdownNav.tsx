@@ -39,7 +39,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const DropdownNav = ({ setHamburgerOpen }) => {
+type Props = {
+  setHamburgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const DropdownNav = ({ setHamburgerOpen }: Props) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
