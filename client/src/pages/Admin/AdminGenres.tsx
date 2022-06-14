@@ -222,57 +222,16 @@ const AdminGenres = () => {
   const [reverseGenres, setReverseGenres] = useState(false);
   const [displayList, setDisplayList] = useState(true);
 
-  // const sortGenres = (genres: Genre[]) => {
-  //   const sortedGenres = reverseGenres
-  //     ? genres
-  //         .sort((a, b) =>
-  //           a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
-  //             ? 1
-  //             : -1
-  //         )
-  //         .reverse()
-  //     : genres.sort((a, b) =>
-  //         a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
-  //       );
-  //   return sortedGenres;
-  // };
-
-  const sortGenres = useCallback(
-    (reverseGenres: boolean, genres: Genre[]) => {
-      const sortedGenres = reverseGenres
-        ? genres
-            .sort((a, b) =>
-              a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
-                ? 1
-                : -1
-            )
-            .reverse()
-        : genres.sort((a, b) =>
-            a.genre_name.toLowerCase() > b.genre_name.toLowerCase()
-              ? 1
-              : -1
-          );
-      return sortedGenres;
-    },
-    []
-  );
-
   const fetchGenres = useCallback(async () => {
     const allGenres = await getGenres();
     if (allGenres !== undefined && allGenres !== []) {
-      const genreList = sortGenres(false, allGenres);
-      setGenres(genreList);
+      setGenres(allGenres);
     }
-  }, [sortGenres]);
+  }, []);
 
   useEffect(() => {
     fetchGenres();
   }, [fetchGenres]);
-
-  useEffect(() => {
-    const newOrder = sortGenres(reverseGenres, genres);
-    setGenres(newOrder);
-  }, [genres, reverseGenres, sortGenres]);
 
   const addGenre = async (e: React.MouseEvent<Element, MouseEvent>) => {
     let data = {
@@ -327,6 +286,17 @@ const AdminGenres = () => {
       console.error(err);
     }
   };
+
+  const sortedGenres = reverseGenres
+    ? genres
+        .sort((a, b) =>
+          a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
+        )
+        .reverse()
+    : genres.sort((a, b) =>
+        a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
+      );
+
   return (
     <GenrePageDiv>
       <title>JG Admin | Genres</title>
@@ -395,8 +365,8 @@ const AdminGenres = () => {
               </TableRow>
             </thead>
             <tbody>
-              {genres &&
-                genres.map((g) => (
+              {sortedGenres &&
+                sortedGenres.map((g) => (
                   <TableRow key={g.genre_name}>
                     <TableData>{g.genre_name}</TableData>
                     <TableIcon>
