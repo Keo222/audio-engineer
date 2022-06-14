@@ -11,7 +11,14 @@ import {
   CardLinkButton,
 } from "../../styled/card";
 
-const FlipCard = ({ color, work, cardTitle, backText }) => {
+type Props = {
+  color: string;
+  work: string;
+  cardTitle: string;
+  backText: string;
+};
+
+const FlipCard = ({ color, work, cardTitle, backText }: Props) => {
   return (
     <Card>
       <ColoredCardFront color={color}>
