@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import { Text } from "../../types/types";
+import type { Text, TextTitle } from "../../types/types";
 
 // Imported Components
 import UpdateNotification from "../../components/Admin/UpdateNotification";
@@ -15,8 +15,6 @@ const TextUpdateContainer = styled.div`
   width: clamp(275px, 60%, 900px);
   margin: 0 auto 5rem;
 `;
-
-type TextTitle = "about" | "contact" | "pricing" | "hire";
 
 const AdminText = () => {
   const [aboutText, setAboutText] = useState("About Text");
@@ -41,7 +39,7 @@ const AdminText = () => {
   };
 
   const updateText = async (
-    e: React.SyntheticEvent,
+    e: React.MouseEvent<Element, MouseEvent>,
     textName: TextTitle
   ) => {
     e.preventDefault();

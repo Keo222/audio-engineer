@@ -9,6 +9,8 @@ export type Text = {
   stored_text: string[];
 };
 
+export type TextTitle = "about" | "contact" | "pricing" | "hire";
+
 export type Track = {
   track_genre: string;
   track_work: string;
