@@ -19,6 +19,7 @@ import downArrow from "../../../icons/downArrowWhite.svg";
 // Imported Styled Components
 import { SectionTitle } from "../../../styled/typography";
 import { handleColorType } from "../../../styled/styleHelperFuncs";
+import { TColor, TColorStyle } from "../../../types/StyledTypes";
 
 // Styled Components
 const UpdateSection = styled.div`
@@ -47,7 +48,7 @@ const UpdateInner = styled.div`
   justify-content: center;
 `;
 
-const StyledTextArea = styled(animated.textarea)`
+const StyledTextArea = styled(animated.textarea)<TColorStyle>`
   display: block;
   width: 90%;
   max-width: 800px;
@@ -58,7 +59,7 @@ const StyledTextArea = styled(animated.textarea)`
   border-radius: 5px;
 `;
 
-const UpdateButton = styled(animated.button)`
+const UpdateButton = styled(animated.button)<TColorStyle>`
   font-weight: 500;
   font-size: 1.4rem;
   width: fit-content;
@@ -84,7 +85,7 @@ type Props = {
   sectionTitle: string;
   text: string;
   section: TextTitle;
-  color: string;
+  color: TColor;
   setAboutText: React.Dispatch<React.SetStateAction<string>>;
   updateText: (
     e: React.MouseEvent<Element, MouseEvent>,

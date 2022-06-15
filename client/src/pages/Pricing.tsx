@@ -12,6 +12,7 @@ import {
   SmallFormattedParagraph,
 } from "../styled/typography";
 import { LinkButton } from "../styled/buttons";
+import { TColorStyle } from "../types/StyledTypes";
 
 // Styled Components
 const InfoTextDiv = styled.div`
@@ -23,7 +24,7 @@ const InfoTextDiv = styled.div`
   margin: 0 auto;
 `;
 
-const SectionTitle = styled.h3`
+const SectionTitle = styled.h3<TColorStyle>`
   color: ${(props) => props.theme.color.textLight};
   font-size: 2.4rem;
   font-weight: 400;
