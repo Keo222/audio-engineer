@@ -227,7 +227,7 @@ const About = () => {
             <Icon src={fbLogo} />
           </SocialIconDiv>
           <MailIconDiv>
-            <Tooltip>Email Joel</Tooltip>
+            <Tooltip>Email</Tooltip>
             <Icon src={mail} />
           </MailIconDiv>
         </InlineSocialsDiv>
