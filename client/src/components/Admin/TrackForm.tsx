@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 // Formik
@@ -97,11 +96,7 @@ const TrackForm = ({ initValues, genreList }: Props) => {
           </InputGroup>
           <InputGroup>
             <InputLabel htmlFor="artist">Artist:</InputLabel>
-            <StyledField
-              type="text"
-              name="artist"
-              placeholder='ex: "Queen"'
-            />
+            <StyledField type="text" name="artist" placeholder='ex: "Queen"' />
             <ErrorMessage component={StyledErrorMessage} name="artist" />
           </InputGroup>
           <InputGroup>

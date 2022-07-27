@@ -1,7 +1,5 @@
-import React from "react";
-
 // Types
-import { TColor } from "../../types/StyledTypes";
+import { TColor } from "types/StyledTypes";
 
 // Imported Styled Components
 import {
@@ -12,7 +10,7 @@ import {
   CardHeadingBack,
   CardBackBody,
   CardLinkButton,
-} from "../../styled/card";
+} from "styled/card";
 
 type Props = {
   color: TColor;

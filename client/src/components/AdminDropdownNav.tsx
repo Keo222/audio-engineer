@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -58,22 +58,13 @@ const AdminDropdownNav = ({ setHamburgerOpen }: Props) => {
         <StyledLink onClick={() => setHamburgerOpen(false)} to="/admin">
           Home
         </StyledLink>
-        <StyledLink
-          onClick={() => setHamburgerOpen(false)}
-          to="/admin/tracks"
-        >
+        <StyledLink onClick={() => setHamburgerOpen(false)} to="/admin/tracks">
           Tracks
         </StyledLink>
-        <StyledLink
-          onClick={() => setHamburgerOpen(false)}
-          to="/admin/genres"
-        >
+        <StyledLink onClick={() => setHamburgerOpen(false)} to="/admin/genres">
           Genres
         </StyledLink>
-        <StyledLink
-          onClick={() => setHamburgerOpen(false)}
-          to="/admin/text"
-        >
+        <StyledLink onClick={() => setHamburgerOpen(false)} to="/admin/text">
           Text
         </StyledLink>
         <StyledLink onClick={() => setHamburgerOpen(false)} to="/">

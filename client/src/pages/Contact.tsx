@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Imported Styled Components
-import {
-  PageHeading,
-  SmallFormattedParagraph,
-} from "../styled/typography";
+import { PageHeading, SmallFormattedParagraph } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
   InputLabel,
   TextInput,
   SubmitButton,
-} from "../styled/forms";
+} from "styled/forms";
 
 // Styled Components
 const PageWrapper = styled.div`

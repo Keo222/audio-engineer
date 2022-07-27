@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Imported icons
-import upArrow from "../../icons/up_arrow.svg";
-import downArrow from "../../icons/down_arrow.svg";
+import upArrow from "icons/up_arrow.svg";
+import downArrow from "icons/down_arrow.svg";
 
 // Imports for animations
 import { animated, useSpring, config } from "react-spring";
@@ -15,7 +15,7 @@ import TidalEmbed from "./TidalEmbed";
 import AppleEmbed from "./AppleEmbed";
 
 // Types
-import { Player, Track } from "../../types/types";
+import { Player, Track } from "types/types";
 
 // Styled Componenets
 const TrackContainer = styled.div`
@@ -105,31 +105,19 @@ const SinglePlayer = ({ track, player }: Props) => {
     switch (player) {
       case "Spotify":
         return (
-          <SpotifyEmbed
-            title={track.track_name}
-            source={track.track_spotify}
-          />
+          <SpotifyEmbed title={track.track_name} source={track.track_spotify} />
         );
       case "Apple":
         return (
-          <AppleEmbed
-            title={track.track_name}
-            source={track.track_apple}
-          />
+          <AppleEmbed title={track.track_name} source={track.track_apple} />
         );
       case "Tidal":
         return (
-          <TidalEmbed
-            title={track.track_name}
-            source={track.track_tidal}
-          />
+          <TidalEmbed title={track.track_name} source={track.track_tidal} />
         );
       default:
         return (
-          <SpotifyEmbed
-            title={track.track_name}
-            source={track.track_spotify}
-          />
+          <SpotifyEmbed title={track.track_name} source={track.track_spotify} />
         );
     }
   };
@@ -153,10 +141,7 @@ const SinglePlayer = ({ track, player }: Props) => {
             onClick={() => setShowInfo(!showInfo)}
           >
             Hide Track Info
-            <ToggleArrowSVG
-              src={upArrow}
-              alt="arrow down to open dropdown"
-            />
+            <ToggleArrowSVG src={upArrow} alt="arrow down to open dropdown" />
           </TrackInfoToggle>
         ) : (
           <TrackInfoToggle
@@ -164,10 +149,7 @@ const SinglePlayer = ({ track, player }: Props) => {
             onClick={() => setShowInfo(!showInfo)}
           >
             Track Info
-            <ToggleArrowSVG
-              src={downArrow}
-              alt="arrow down to open dropdown"
-            />
+            <ToggleArrowSVG src={downArrow} alt="arrow down to open dropdown" />
           </TrackInfoToggle>
         )}
       </TrackDiv>

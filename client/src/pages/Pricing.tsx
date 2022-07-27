@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Components
-import FlipCard from "../components/cards/FlipCard";
-import SolidFlipCard from "../components/cards/SolidFlipCard";
+import FlipCard from "components/cards/FlipCard";
+import SolidFlipCard from "components/cards/SolidFlipCard";
 
 // Imported Styled Components
-import { handleColorType } from "../styled/styleHelperFuncs";
-import {
-  PageHeading,
-  SmallFormattedParagraph,
-} from "../styled/typography";
-import { LinkButton } from "../styled/buttons";
-import { TColorStyle } from "../types/StyledTypes";
+import { handleColorType } from "styled/styleHelperFuncs";
+import { PageHeading, SmallFormattedParagraph } from "styled/typography";
+import { LinkButton } from "styled/buttons";
+import { TColorStyle } from "types/StyledTypes";
 
 // Styled Components
 const InfoTextDiv = styled.div`

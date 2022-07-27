@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Icons
-import instagramLogo from "../icons/instagram.svg";
-import fbLogo from "../icons/fb_logo_blue.svg";
-import mail from "../icons/mail.svg";
+import instagramLogo from "icons/instagram.svg";
+import fbLogo from "icons/fb_logo_blue.svg";
+import mail from "icons/mail.svg";
 
 // Images
-import studioImg from "../images/studio1.jpg";
+import studioImg from "images/studio1.jpg";
 
 // Imported Styled Components
-import { PageHeading } from "../styled/typography";
-import { LinkButton } from "../styled/buttons";
+import { PageHeading } from "styled/typography";
+import { LinkButton } from "styled/buttons";
 
 // Styled Elements
 const HomeDiv = styled.div`

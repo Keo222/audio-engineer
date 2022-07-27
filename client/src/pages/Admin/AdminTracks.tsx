@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Helper Functions
-import { deleteTrack, getTracks } from "../../functions/trackCRUD";
+import { deleteTrack, getTracks } from "functions/trackCRUD";
 
 // Types
-import type { Track } from "../../types/types";
+import type { Track } from "types/types";
 
 // Icons
-import garbage from "../../icons/garbage-red.svg";
-import edit from "../../icons/edit-yellow.svg";
+import garbage from "icons/garbage-red.svg";
+import edit from "icons/edit-yellow.svg";
 
 // Components
-import DeleteTrackPopup from "../../components/Admin/DeleteTrackPopup";
+import DeleteTrackPopup from "components/Admin/DeleteTrackPopup";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Elements
 
@@ -177,13 +177,8 @@ const Admin = () => {
   // STATE HANDLERS
   const [tracks, setTracks] = useState([]);
   const [deleteId, setDeleteId] = useState<number | null>(null);
-  const [deleteTrackInfo, setDeleteTrackInfo] = useState<Track | null>(
-    null
-  );
-  const [popupOpen, togglePopup] = useReducer(
-    (popupOpen) => !popupOpen,
-    false
-  );
+  const [deleteTrackInfo, setDeleteTrackInfo] = useState<Track | null>(null);
+  const [popupOpen, togglePopup] = useReducer((popupOpen) => !popupOpen, false);
   const [sortBy, setSortBy] = useState<SortByType>("num");
   const [reverse, setReverse] = useState(false);
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TColorStyle } from "../types/StyledTypes";
+import { TColorStyle } from "types/StyledTypes";
 import { handleColorType } from "./styleHelperFuncs";
 
 export const PageHeading = styled.h1`

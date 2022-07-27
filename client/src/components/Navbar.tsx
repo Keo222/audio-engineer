@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
 // Image
-import lightbulbWhite from "../images/lightbulb-white.png";
+import lightbulbWhite from "images/lightbulb-white.png";
 // Icon
-import hamburger from "../icons/hamburger-white.svg";
-import closeHamburger from "../icons/x-white.svg";
+import hamburger from "icons/hamburger-white.svg";
+import closeHamburger from "icons/x-white.svg";
 
 // Components
 import DropdownNav from "./DropdownNav";
@@ -218,9 +218,7 @@ const Navbar = () => {
               <LinkButton to="/hire">Hire</LinkButton>
             </NavLinksRight>
           </LargeNav>
-          {hamburgerOpen && (
-            <DropdownNav setHamburgerOpen={setHamburgerOpen} />
-          )}
+          {hamburgerOpen && <DropdownNav setHamburgerOpen={setHamburgerOpen} />}
         </>
       ) : location.pathname !== "/admin/login" ? (
         <>

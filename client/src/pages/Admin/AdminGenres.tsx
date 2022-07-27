@@ -2,15 +2,15 @@ import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 // Helper Functions
-import { getGenres } from "../../functions/genreCRUD";
+import { getGenres } from "functions/genreCRUD";
 
 // Icons
-import garbage from "../../icons/garbage-red.svg";
+import garbage from "icons/garbage-red.svg";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
-import { ErrorMessage } from "../../styled/forms";
-import { Genre } from "../../types/types";
+import { PageHeading } from "styled/typography";
+import { ErrorMessage } from "styled/forms";
+import { Genre } from "types/types";
 
 // Styled Elements
 
@@ -395,10 +395,7 @@ const AdminGenres = () => {
               />
             </InputGroup>
             {error && <ErrorMessage>{errorMsg}</ErrorMessage>}
-            <SubmitButton
-              errorPresent={error}
-              onClick={(e) => addGenre(e)}
-            >
+            <SubmitButton errorPresent={error} onClick={(e) => addGenre(e)}>
               Add Genre
             </SubmitButton>
           </AddNewForm>

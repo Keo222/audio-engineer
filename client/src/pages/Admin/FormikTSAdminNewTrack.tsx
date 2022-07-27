@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import { Genre } from "../../types/types";
+import { Genre } from "types/types";
 
-import TrackForm from "../../components/Admin/TrackForm";
+import TrackForm from "components/Admin/TrackForm";
 
 // Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 const FormikTSAdminNewTrack = () => {
   // Info states

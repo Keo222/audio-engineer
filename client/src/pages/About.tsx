@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Images
-import aboutImgSrc from "../images/about_filler.jpg";
+import aboutImgSrc from "images/about_filler.jpg";
 
 // Social Logos
-import instagramLogo from "../icons/instagram.svg";
-import fbLogo from "../icons/fb_logo_blue.svg";
-import mail from "../icons/mail.svg";
+import instagramLogo from "icons/instagram.svg";
+import fbLogo from "icons/fb_logo_blue.svg";
+import mail from "icons/mail.svg";
 
 // Imported Styled Components
-import { PageHeading, FormattedParagraph } from "../styled/typography";
+import { PageHeading, FormattedParagraph } from "styled/typography";
 
 // Styled Components
 const AboutImg = styled.img`

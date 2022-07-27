@@ -1,18 +1,17 @@
-import React from "react";
 import styled from "styled-components";
 
 // Images
-import logoImg from "../../images/lightbulb-white.png";
+import logoImg from "images/lightbulb-white.png";
 
 // Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
   InputLabel,
   TextInput,
   SubmitButton,
-} from "../../styled/forms";
+} from "styled/forms";
 
 const FullPageFlex = styled.div`
   display: flex;

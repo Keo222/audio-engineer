@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import { Text } from "../../types/types";
+import { Text } from "types/types";
 
 // Components
-import AdminTrackInfo from "../../components/Admin/AdminTrackInfo";
-import AdminGenreInfo from "../../components/Admin/AdminGenreInfo";
-import AdminTextInfo from "../../components/Admin/AdminTextInfo";
+import AdminTrackInfo from "components/Admin/AdminTrackInfo";
+import AdminGenreInfo from "components/Admin/AdminGenreInfo";
+import AdminTextInfo from "components/Admin/AdminTextInfo";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Elements
 const AdminHomeDiv = styled.div`

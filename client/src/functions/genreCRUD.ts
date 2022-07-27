@@ -1,4 +1,4 @@
-import { Genre } from "../types/types";
+import { Genre } from "types/types";
 
 // CREATE
 

@@ -10,16 +10,16 @@ import {
 import styled from "styled-components";
 
 // Types
-import type { TextTitle } from "../../../types/types";
+import type { TextTitle } from "types/types";
 
 // Icons
-import upArrow from "../../../icons/upArrowWhite.svg";
-import downArrow from "../../../icons/downArrowWhite.svg";
+import upArrow from "icons/upArrowWhite.svg";
+import downArrow from "icons/downArrowWhite.svg";
 
 // Imported Styled Components
-import { SectionTitle } from "../../../styled/typography";
-import { handleColorType } from "../../../styled/styleHelperFuncs";
-import { TColor, TColorStyle } from "../../../types/StyledTypes";
+import { SectionTitle } from "styled/typography";
+import { handleColorType } from "styled/styleHelperFuncs";
+import { TColor, TColorStyle } from "types/StyledTypes";
 
 // Styled Components
 const UpdateSection = styled.div`

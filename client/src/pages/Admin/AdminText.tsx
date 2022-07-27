@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import type { Text, TextTitle } from "../../types/types";
+import type { Text, TextTitle } from "types/types";
 
 // Imported Components
-import UpdateNotification from "../../components/Admin/UpdateNotification";
-import TextSection from "../../components/Admin/Text/TextSection";
+import UpdateNotification from "components/Admin/UpdateNotification";
+import { TextSection } from "components/Admin/TextSection";
 
 // Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 const TextUpdateContainer = styled.div`
   width: clamp(275px, 60%, 900px);

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
-import { appleRegex } from "../../regex/trackEmbedRegex";
+import { appleRegex } from "regex/trackEmbedRegex";
 
 const AppleFrame = styled.iframe`
   width: 100%;

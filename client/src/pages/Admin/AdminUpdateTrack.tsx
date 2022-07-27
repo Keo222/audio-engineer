@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 // Types
-import { Genre } from "../../types/types";
+import { Genre } from "types/types";
 
 // Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
@@ -16,7 +16,7 @@ import {
   RadioDiv,
   RadioGroup,
   SubmitButton,
-} from "../../styled/forms";
+} from "styled/forms";
 
 // Styled Components
 const UpdateHeading = styled(PageHeading)`

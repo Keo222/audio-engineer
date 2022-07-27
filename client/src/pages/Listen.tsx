@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { animated } from "react-spring";
 
 // Components
-import MusicSlider from "../components/musicPlayers/MusicSlider";
+import MusicSlider from "components/musicPlayers/MusicSlider";
 
 // Types
-import { Player, Work, Track } from "../types/types";
+import { Player, Work, Track } from "types/types";
 
 // Icons
-import spotifyWhite from "../icons/spotify-white.png";
-import spotifyColor from "../icons/spotify-green.png";
-import tidalWhite from "../icons/tidal-white.png";
-import tidalColor from "../icons/tidal-color.png";
-import appleWhite from "../icons/apple-white.svg";
-import appleColor from "../icons/apple-color.svg";
+import spotifyWhite from "icons/spotify-white.png";
+import spotifyColor from "icons/spotify-green.png";
+import tidalWhite from "icons/tidal-white.png";
+import tidalColor from "icons/tidal-color.png";
+import appleWhite from "icons/apple-white.svg";
+import appleColor from "icons/apple-color.svg";
 
 // Imported Styled Components
-import { PageHeading } from "../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Components Types
 type Selectable = { selected: boolean };
@@ -155,9 +155,9 @@ const GenreSelect = styled.select`
 const Listen = () => {
   const [player, setPlayer] = useState<Player>("Spotify");
   const [tracks, setTracks] = useState<Track[] | [] | null>(null);
-  const [filteredTracks, setFilteredTracks] = useState<
-    Track[] | [] | null
-  >(null);
+  const [filteredTracks, setFilteredTracks] = useState<Track[] | [] | null>(
+    null
+  );
   const [genres, setGenres] = useState<string[] | [] | null>(null);
   const [currentGenre, setCurrentGenre] = useState<string>("All");
   const [work, setWork] = useState<Work>("All");
@@ -239,9 +239,7 @@ const Listen = () => {
       if (currentGenre === "All" && work === "All") {
         filtered = tracks;
       } else if (work === "All") {
-        filtered = tracks.filter(
-          (t: Track) => t.track_genre === currentGenre
-        );
+        filtered = tracks.filter((t: Track) => t.track_genre === currentGenre);
       } else if (currentGenre === "All") {
         filtered = trackWorkSwitch(tracks, work);
       } else {
@@ -324,37 +322,30 @@ const Listen = () => {
           </GenreSelect>
         </GenreSelectDiv>
       </ContainerOfSelects>
-      {genres !== null &&
-        filteredTracks !== null &&
-        currentGenre === "All" && (
-          <div>
-            {filteredTracks.filter((t: Track) => t.track_featured).length >
-              0 && (
+      {genres !== null && filteredTracks !== null && currentGenre === "All" && (
+        <div>
+          {filteredTracks.filter((t: Track) => t.track_featured).length > 0 && (
+            <MusicSlider
+              key={`${work} - Featured`}
+              tracks={filteredTracks.filter((t: Track) => t.track_featured)}
+              player={player}
+              genre="Featured"
+            />
+          )}
+          {genres
+            .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1))
+            .map((g) => (
               <MusicSlider
-                key={`${work} - Featured`}
-                tracks={filteredTracks.filter(
-                  (t: Track) => t.track_featured
-                )}
+                key={g}
+                tracks={
+                  tracks ? tracks.filter((t: Track) => t.track_genre === g) : []
+                }
                 player={player}
-                genre="Featured"
+                genre={g}
               />
-            )}
-            {genres
-              .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1))
-              .map((g) => (
-                <MusicSlider
-                  key={g}
-                  tracks={
-                    tracks
-                      ? tracks.filter((t: Track) => t.track_genre === g)
-                      : []
-                  }
-                  player={player}
-                  genre={g}
-                />
-              ))}
-          </div>
-        )}
+            ))}
+        </div>
+      )}
       {filteredTracks !== null && currentGenre !== "All" && (
         <div>
           {filteredTracks.map((t) => (

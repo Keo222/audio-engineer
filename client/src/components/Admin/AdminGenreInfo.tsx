@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -39,7 +38,7 @@ const StyledLink = styled(Link)`
 `;
 
 type Props = {
-  numGenres: number,
+  numGenres: number;
 };
 
 const AdminGenreInfo = ({ numGenres }: Props) => {
