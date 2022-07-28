@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Components
 import FlipCard from "components/cards/FlipCard";
 import SolidFlipCard from "components/cards/SolidFlipCard";
@@ -76,7 +79,7 @@ const Pricing = () => {
     getText();
   }, []);
   return (
-    <>
+    <MainLayout>
       <title>Joel Gardella | Pricing</title>
       <PageHeading>Pricing</PageHeading>
       <InfoTextDiv>
@@ -153,7 +156,7 @@ const Pricing = () => {
           Book Services
         </LinkButton>
       </CenteringDiv>
-    </>
+    </MainLayout>
   );
 };
 

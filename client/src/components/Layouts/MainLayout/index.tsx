@@ -1,19 +1,19 @@
 import { ReactNode } from "react";
-import { AdminNavbar } from "../navbars";
+import { Navbar } from "../navbars";
 
 type Props = {
   children: ReactNode;
 };
 
-const AdminLayout = ({ children }: Props) => {
+const MainLayout = ({ children }: Props) => {
   return (
     <>
       <header>
-        <AdminNavbar />
+        <Navbar />
       </header>
       <main>{children}</main>
     </>
   );
 };
 
-export default AdminLayout;
+export default MainLayout;

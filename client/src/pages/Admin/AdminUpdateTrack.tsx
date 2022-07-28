@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Types
 import { Genre } from "types/types";
 
@@ -103,7 +106,7 @@ const AdminUpdateTrack = () => {
     }
   };
   return (
-    <div>
+    <AdminLayout>
       <title>JG Admin | Update Track</title>
       <UpdateHeading>Update Track</UpdateHeading>
 
@@ -245,7 +248,7 @@ const AdminUpdateTrack = () => {
 
         <SubmitButton type="submit">Update Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

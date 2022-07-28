@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Types
 import type { Text, TextTitle } from "types/types";
 
@@ -95,7 +98,7 @@ const AdminText = () => {
     setTexts();
   }, []);
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin | Site Text</title>
       <PageHeading>Site Text</PageHeading>
       <TextUpdateContainer>
@@ -137,7 +140,7 @@ const AdminText = () => {
         />
       </TextUpdateContainer>
       {updated && <UpdateNotification />}
-    </>
+    </AdminLayout>
   );
 };
 

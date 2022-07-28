@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Types
 import { Genre } from "types/types";
 
@@ -132,7 +135,7 @@ const AdminTracks = () => {
     }
   };
   return (
-    <div>
+    <AdminLayout>
       <title>JG Admin | New Track</title>
       <PageHeading>Add Track</PageHeading>
       <StyledForm onSubmit={(e) => addTrack(e)}>
@@ -281,7 +284,7 @@ const AdminTracks = () => {
 
         <SubmitButton type="submit">Add Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

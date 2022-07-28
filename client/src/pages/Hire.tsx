@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Imported Stylec Components
 import {
   PageHeading,
@@ -138,7 +141,7 @@ const Hire = () => {
   }, []);
 
   return (
-    <>
+    <MainLayout>
       <title>Joel Gardella | Hire</title>
       <PageHeading>Hire</PageHeading>
       <InfoTextDiv>
@@ -202,7 +205,7 @@ const Hire = () => {
         </EstimatedCost>
         <GridSubmitButton>Submit</GridSubmitButton>
       </GridForm>
-    </>
+    </MainLayout>
   );
 };
 

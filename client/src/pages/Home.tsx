@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Icons
 import instagramLogo from "icons/instagram.svg";
 import fbLogo from "icons/fb_logo_blue.svg";
@@ -190,7 +193,7 @@ const Icon = styled.img`
 
 const Home = () => {
   return (
-    <>
+    <MainLayout>
       <title>Audio Engineer</title>
       <WholeScreenDiv src={studioImg} />
       <HomeDiv>
@@ -239,7 +242,7 @@ const Home = () => {
           </SocialsDiv>
         </LogosDiv>
       </HomeDiv>
-    </>
+    </MainLayout>
   );
 };
 

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Images
 import aboutImgSrc from "images/about_filler.jpg";
 
@@ -206,7 +209,7 @@ const About = () => {
     getText();
   }, []);
   return (
-    <>
+    <MainLayout>
       <title>Joel Gardella | About</title>
       <ImgOverlay />
       <AboutImg src={aboutImgSrc} />
@@ -232,7 +235,7 @@ const About = () => {
           </MailIconDiv>
         </InlineSocialsDiv>
       </AboutInfoContainer>
-    </>
+    </MainLayout>
   );
 };
 

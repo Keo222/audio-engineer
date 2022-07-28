@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Imported Styled Components
 import { PageHeading, SmallFormattedParagraph } from "styled/typography";
 import {
@@ -46,37 +49,39 @@ const Contact = () => {
     getText();
   }, []);
   return (
-    <PageWrapper>
-      <title>Joel Gardella | Contact</title>
-      <PageHeading>Contact</PageHeading>
-      <ContactInfoTextDiv>
-        {text.map((p, i) => (
-          <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
-        ))}
-      </ContactInfoTextDiv>
-      <StyledForm>
-        <InputGroup>
-          <InputLabel htmlFor="name">Name:</InputLabel>
-          <TextInput type="text" name="name" id="name" />
-        </InputGroup>
+    <MainLayout>
+      <PageWrapper>
+        <title>Joel Gardella | Contact</title>
+        <PageHeading>Contact</PageHeading>
+        <ContactInfoTextDiv>
+          {text.map((p, i) => (
+            <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
+          ))}
+        </ContactInfoTextDiv>
+        <StyledForm>
+          <InputGroup>
+            <InputLabel htmlFor="name">Name:</InputLabel>
+            <TextInput type="text" name="name" id="name" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="email">Email:</InputLabel>
-          <TextInput type="email" name="email" id="email" />
-        </InputGroup>
+          <InputGroup>
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <TextInput type="email" name="email" id="email" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="subject">Subject:</InputLabel>
-          <TextInput type="text" name="subject" id="subject" />
-        </InputGroup>
+          <InputGroup>
+            <InputLabel htmlFor="subject">Subject:</InputLabel>
+            <TextInput type="text" name="subject" id="subject" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="message">Message:</InputLabel>
-          <StyledTextArea />
-        </InputGroup>
-        <SubmitButton>Submit</SubmitButton>
-      </StyledForm>
-    </PageWrapper>
+          <InputGroup>
+            <InputLabel htmlFor="message">Message:</InputLabel>
+            <StyledTextArea />
+          </InputGroup>
+          <SubmitButton>Submit</SubmitButton>
+        </StyledForm>
+      </PageWrapper>
+    </MainLayout>
   );
 };
 

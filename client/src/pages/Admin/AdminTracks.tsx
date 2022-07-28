@@ -2,6 +2,9 @@ import { useState, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Helper Functions
 import { deleteTrack, getTracks } from "functions/trackCRUD";
 
@@ -264,7 +267,7 @@ const Admin = () => {
     }
   }, [deleteId, tracks]);
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin | Tracks</title>
       {popupOpen && deleteTrackInfo && (
         <DeleteTrackPopup
@@ -356,7 +359,7 @@ const Admin = () => {
           </tbody>
         </Table>
       </AdminTracksDiv>
-    </>
+    </AdminLayout>
   );
 };
 

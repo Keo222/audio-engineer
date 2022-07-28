@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Types
 import { Text } from "types/types";
 
@@ -106,7 +109,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin</title>
       <AdminHomeDiv>
         <EditAdminDiv>
@@ -116,7 +119,7 @@ const Admin = () => {
           <AdminTrackInfo numTracks={numTracks} />
         </EditAdminDiv>
       </AdminHomeDiv>
-    </>
+    </AdminLayout>
   );
 };
 

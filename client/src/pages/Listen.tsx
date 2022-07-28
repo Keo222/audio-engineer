@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { animated } from "react-spring";
 
+// Layout
+import { MainLayout } from "components/layouts";
+
 // Components
 import MusicSlider from "components/musicPlayers/MusicSlider";
 
@@ -258,107 +261,112 @@ const Listen = () => {
   };
 
   return (
-    <PageDiv>
-      <title>Joel Gardella | Listen</title>
-      <PageHeading>Listen</PageHeading>
-      <ContainerOfSelects>
-        <SelectPlayerDiv>
-          <SelectPlayerLabel>Select Streaming Service:</SelectPlayerLabel>
-          <SelectPlayerLogos>
-            <Logo
-              src={player === "Spotify" ? spotifyColor : spotifyWhite}
-              alt="spotify logo unselected"
-              onClick={() => changePlayer("Spotify")}
-            />
-            <Logo
-              src={player === "Tidal" ? tidalColor : tidalWhite}
-              alt="apple logo unselected"
-              onClick={() => changePlayer("Tidal")}
-            />
-            <Logo
-              src={player === "Apple" ? appleColor : appleWhite}
-              alt="apple logo unselected"
-              onClick={() => changePlayer("Apple")}
-            />
-          </SelectPlayerLogos>
-        </SelectPlayerDiv>
-        <WorkSelect selected={work === "All"}>
-          <WorkTrio>
-            <ProductionTrioItem
-              onClick={() => setWork("Production")}
-              selected={work === "Production"}
+    <MainLayout>
+      <PageDiv>
+        <title>Joel Gardella | Listen</title>
+        <PageHeading>Listen</PageHeading>
+        <ContainerOfSelects>
+          <SelectPlayerDiv>
+            <SelectPlayerLabel>Select Streaming Service:</SelectPlayerLabel>
+            <SelectPlayerLogos>
+              <Logo
+                src={player === "Spotify" ? spotifyColor : spotifyWhite}
+                alt="spotify logo unselected"
+                onClick={() => changePlayer("Spotify")}
+              />
+              <Logo
+                src={player === "Tidal" ? tidalColor : tidalWhite}
+                alt="apple logo unselected"
+                onClick={() => changePlayer("Tidal")}
+              />
+              <Logo
+                src={player === "Apple" ? appleColor : appleWhite}
+                alt="apple logo unselected"
+                onClick={() => changePlayer("Apple")}
+              />
+            </SelectPlayerLogos>
+          </SelectPlayerDiv>
+          <WorkSelect selected={work === "All"}>
+            <WorkTrio>
+              <ProductionTrioItem
+                onClick={() => setWork("Production")}
+                selected={work === "Production"}
+              >
+                Production
+              </ProductionTrioItem>
+              <MixingTrioItem
+                onClick={() => setWork("Mixing")}
+                selected={work === "Mixing"}
+              >
+                Mixing
+              </MixingTrioItem>
+              <MasteringTrioItem
+                onClick={() => setWork("Mastering")}
+                selected={work === "Mastering"}
+              >
+                Mastering
+              </MasteringTrioItem>
+            </WorkTrio>
+            <AllWorkSelect
+              onClick={() => setWork("All")}
+              selected={work === "All"}
             >
-              Production
-            </ProductionTrioItem>
-            <MixingTrioItem
-              onClick={() => setWork("Mixing")}
-              selected={work === "Mixing"}
-            >
-              Mixing
-            </MixingTrioItem>
-            <MasteringTrioItem
-              onClick={() => setWork("Mastering")}
-              selected={work === "Mastering"}
-            >
-              Mastering
-            </MasteringTrioItem>
-          </WorkTrio>
-          <AllWorkSelect
-            onClick={() => setWork("All")}
-            selected={work === "All"}
-          >
-            All
-          </AllWorkSelect>
-        </WorkSelect>
-        <GenreSelectDiv>
-          <GenreSelect onChange={(e) => setCurrentGenre(e.target.value)}>
-            <option>All</option>
-            {genres !== null &&
-              genres.map((g) => (
-                <option key={g} value={g}>
-                  {g}
-                </option>
-              ))}
-          </GenreSelect>
-        </GenreSelectDiv>
-      </ContainerOfSelects>
-      {genres !== null && filteredTracks !== null && currentGenre === "All" && (
-        <div>
-          {filteredTracks.filter((t: Track) => t.track_featured).length > 0 && (
-            <MusicSlider
-              key={`${work} - Featured`}
-              tracks={filteredTracks.filter((t: Track) => t.track_featured)}
-              player={player}
-              genre="Featured"
-            />
-          )}
-          {genres
-            .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1))
-            .map((g) => (
+              All
+            </AllWorkSelect>
+          </WorkSelect>
+          <GenreSelectDiv>
+            <GenreSelect onChange={(e) => setCurrentGenre(e.target.value)}>
+              <option>All</option>
+              {genres !== null &&
+                genres.map((g) => (
+                  <option key={g} value={g}>
+                    {g}
+                  </option>
+                ))}
+            </GenreSelect>
+          </GenreSelectDiv>
+        </ContainerOfSelects>
+        {genres !== null && filteredTracks !== null && currentGenre === "All" && (
+          <div>
+            {filteredTracks.filter((t: Track) => t.track_featured).length >
+              0 && (
               <MusicSlider
-                key={g}
-                tracks={
-                  tracks ? tracks.filter((t: Track) => t.track_genre === g) : []
-                }
+                key={`${work} - Featured`}
+                tracks={filteredTracks.filter((t: Track) => t.track_featured)}
                 player={player}
-                genre={g}
+                genre="Featured"
+              />
+            )}
+            {genres
+              .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1))
+              .map((g) => (
+                <MusicSlider
+                  key={g}
+                  tracks={
+                    tracks
+                      ? tracks.filter((t: Track) => t.track_genre === g)
+                      : []
+                  }
+                  player={player}
+                  genre={g}
+                />
+              ))}
+          </div>
+        )}
+        {filteredTracks !== null && currentGenre !== "All" && (
+          <div>
+            {filteredTracks.map((t) => (
+              <MusicSlider
+                key={t.track_name}
+                tracks={[t]}
+                player={player}
+                genre={`${t.track_name} - ${t.track_artist}`}
               />
             ))}
-        </div>
-      )}
-      {filteredTracks !== null && currentGenre !== "All" && (
-        <div>
-          {filteredTracks.map((t) => (
-            <MusicSlider
-              key={t.track_name}
-              tracks={[t]}
-              player={player}
-              genre={`${t.track_name} - ${t.track_artist}`}
-            />
-          ))}
-        </div>
-      )}
-    </PageDiv>
+          </div>
+        )}
+      </PageDiv>
+    </MainLayout>
   );
 };
 

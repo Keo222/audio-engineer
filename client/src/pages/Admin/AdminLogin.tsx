@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+// Layout
+import { AdminLayout } from "components/layouts";
+
 // Images
 import logoImg from "images/lightbulb-white.png";
 
@@ -41,33 +44,35 @@ const Logo = styled.img`
 
 const AdminLogin = () => {
   return (
-    <FullPageFlex>
-      <ImageContainer>
-        <Logo src={logoImg} />
-      </ImageContainer>
-      <PageHeading>Admin Login</PageHeading>
-      <StyledForm>
-        <InputGroup>
-          <InputLabel htmlFor="username">Username:</InputLabel>
-          <TextInput
-            placeholder="Username..."
-            name="username"
-            id="username"
-            type="text"
-          />
-        </InputGroup>
-        <InputGroup>
-          <InputLabel htmlFor="password">Password:</InputLabel>
-          <TextInput
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password..."
-          />
-        </InputGroup>
-        <SubmitButton>Login</SubmitButton>
-      </StyledForm>
-    </FullPageFlex>
+    <AdminLayout>
+      <FullPageFlex>
+        <ImageContainer>
+          <Logo src={logoImg} />
+        </ImageContainer>
+        <PageHeading>Admin Login</PageHeading>
+        <StyledForm>
+          <InputGroup>
+            <InputLabel htmlFor="username">Username:</InputLabel>
+            <TextInput
+              placeholder="Username..."
+              name="username"
+              id="username"
+              type="text"
+            />
+          </InputGroup>
+          <InputGroup>
+            <InputLabel htmlFor="password">Password:</InputLabel>
+            <TextInput
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password..."
+            />
+          </InputGroup>
+          <SubmitButton>Login</SubmitButton>
+        </StyledForm>
+      </FullPageFlex>
+    </AdminLayout>
   );
 };
 
