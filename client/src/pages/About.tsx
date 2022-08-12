@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Images
 import aboutImgSrc from "../images/about_filler.jpg";
@@ -207,7 +208,9 @@ const About = () => {
   }, []);
   return (
     <>
-      <title>Joel Gardella | About</title>
+      <Helmet>
+        <title>Joel Gardella | About</title>
+      </Helmet>
       <ImgOverlay />
       <AboutImg src={aboutImgSrc} />
       <AboutInfoContainer>

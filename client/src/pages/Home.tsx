@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Icons
 import instagramLogo from "../icons/instagram.svg";
@@ -14,7 +15,7 @@ import { PageHeading } from "../styled/typography";
 import { LinkButton } from "../styled/buttons";
 
 // Styled Elements
-const HomeDiv = styled.div`
+const HomeSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,7 +107,7 @@ const HomePgLinkButton = styled(LinkButton)`
   }
 `;
 
-const LogosDiv = styled.div`
+const LogosSection = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
@@ -191,10 +192,12 @@ const Icon = styled.img`
 const Home = () => {
   return (
     <>
-      <title>Audio Engineer</title>
+      <Helmet>
+        <title>Audio Engineer</title>
+      </Helmet>
       <WholeScreenDiv src={studioImg} />
-      <HomeDiv>
-        <HomeHeader>Audio Engineer</HomeHeader>
+      <HomeSection aria-labelledby="home-header">
+        <HomeHeader id="home-header">Audio Engineer</HomeHeader>
         <DescriptorDiv>
           <DescriptorLink to="/about">Audio Engineer</DescriptorLink>
           <DescriptorLink to="/pricing">Production</DescriptorLink>
@@ -208,7 +211,7 @@ const Home = () => {
             Services
           </HomePgLinkButton>
         </ButtonDiv>
-        <LogosDiv>
+        <LogosSection aria-label="Contact Logo Links">
           <SocialsDiv>
             <SocialIconDiv>
               <Tooltip>Instagram</Tooltip>
@@ -217,7 +220,7 @@ const Home = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Icon src={instagramLogo} />
+                <Icon src={instagramLogo} alt="instagram logo" />
               </a>
             </SocialIconDiv>
             <SocialIconDiv>
@@ -227,18 +230,18 @@ const Home = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Icon src={fbLogo} />
+                <Icon src={fbLogo} alt="facebook logo" />
               </a>
             </SocialIconDiv>
             <MailIconDiv>
               <Tooltip>Email Joel</Tooltip>
               <Link to="/contact">
-                <Icon src={mail} />
+                <Icon src={mail} alt="email icon" />
               </Link>
             </MailIconDiv>
           </SocialsDiv>
-        </LogosDiv>
-      </HomeDiv>
+        </LogosSection>
+      </HomeSection>
     </>
   );
 };
