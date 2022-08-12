@@ -6,15 +6,25 @@ import { animated } from "react-spring";
 import MusicSlider from "../components/musicPlayers/MusicSlider";
 
 // Types
-import { Player, Work, Track } from "../types/types";
+import { Player, Work, Track } from "../types";
 
 // Icons
-import spotifyWhite from "../icons/spotify-white.png";
-import spotifyColor from "../icons/spotify-green.png";
-import tidalWhite from "../icons/tidal-white.png";
-import tidalColor from "../icons/tidal-color.png";
-import appleWhite from "../icons/apple-white.svg";
-import appleColor from "../icons/apple-color.svg";
+// import spotifyWhite from "../../icons/spotify-white.png";
+// import spotifyWhite from "../icons/spotify-white.png";
+// import spotifyColor from "../../icons/spotify-green.png";
+// import tidalWhite from "../icons/tidal-white.png";
+// import tidalColor from "../icons/tidal-color.png";
+// import appleWhite from "../icons/apple-white.svg";
+// import appleColor from "../icons/apple-color.svg";
+
+import {
+  spotifyWhite,
+  spotifyColor,
+  tidalWhite,
+  tidalColor,
+  appleWhite,
+  appleColor,
+} from "../icons";
 
 // Imported Styled Components
 import { PageHeading } from "../styled/typography";
@@ -198,6 +208,31 @@ const Listen = () => {
   }, []);
 
   useEffect(() => {
+    const getFilteredTracks = () => {
+      let filtered;
+      if (tracks !== null) {
+        if (currentGenre === "All" && work === "All") {
+          filtered = tracks;
+        } else if (work === "All") {
+          filtered = tracks.filter(
+            (t: Track) => t.track_genre === currentGenre
+          );
+        } else if (currentGenre === "All") {
+          filtered = trackWorkSwitch(tracks, work);
+        } else {
+          const genreFilteredTracks = tracks.filter(
+            (t) => t.track_genre === currentGenre
+          );
+          filtered = trackWorkSwitch(genreFilteredTracks, work);
+        }
+      }
+      console.log(filtered);
+      if (filtered !== null) {
+        return filtered;
+      } else {
+        return null;
+      }
+    };
     const filtered = getFilteredTracks();
     if (typeof filtered !== "undefined") {
       setFilteredTracks(filtered);
@@ -230,32 +265,6 @@ const Listen = () => {
         return trackArray;
       default:
         return trackArray;
-    }
-  };
-
-  const getFilteredTracks = () => {
-    let filtered;
-    if (tracks !== null) {
-      if (currentGenre === "All" && work === "All") {
-        filtered = tracks;
-      } else if (work === "All") {
-        filtered = tracks.filter(
-          (t: Track) => t.track_genre === currentGenre
-        );
-      } else if (currentGenre === "All") {
-        filtered = trackWorkSwitch(tracks, work);
-      } else {
-        const genreFilteredTracks = tracks.filter(
-          (t) => t.track_genre === currentGenre
-        );
-        filtered = trackWorkSwitch(genreFilteredTracks, work);
-      }
-    }
-    console.log(filtered);
-    if (filtered !== null) {
-      return filtered;
-    } else {
-      return null;
     }
   };
 
