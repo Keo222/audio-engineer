@@ -105,7 +105,7 @@ const AboutInfoContainer = styled.div`
   }
 `;
 
-const AboutInfoDiv = styled.div`
+const AboutInfoSection = styled.section`
   width: 70%;
   margin: 0 auto;
   @media screen and (${(props) => props.theme.responsive.sm}) {
@@ -113,7 +113,7 @@ const AboutInfoDiv = styled.div`
   }
 `;
 
-const InlineSocialsDiv = styled.div`
+const InlineSocialsSection = styled.section`
   width: 30rem;
   height: 8rem;
   margin: 0 auto;
@@ -214,13 +214,13 @@ const About = () => {
       <ImgOverlay />
       <AboutImg src={aboutImgSrc} />
       <AboutInfoContainer>
-        <AboutInfoDiv>
-          <PageHeading>About</PageHeading>
+        <AboutInfoSection aria-labelledby="about-header">
+          <PageHeading id="about-header">About</PageHeading>
           {text.map((p, i) => (
             <FormattedParagraph key={i}>{p}</FormattedParagraph>
           ))}
-        </AboutInfoDiv>
-        <InlineSocialsDiv>
+        </AboutInfoSection>
+        <InlineSocialsSection aria-label="contact buttons">
           <SocialIconDiv>
             <Tooltip>Instagram</Tooltip>
             <Icon src={instagramLogo} />
@@ -233,7 +233,7 @@ const About = () => {
             <Tooltip>Email</Tooltip>
             <Icon src={mail} />
           </MailIconDiv>
-        </InlineSocialsDiv>
+        </InlineSocialsSection>
       </AboutInfoContainer>
     </>
   );
