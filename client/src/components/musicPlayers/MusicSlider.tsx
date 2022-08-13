@@ -247,7 +247,7 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
   };
   // HTML Elements
   return (
-    <>
+    <article aria-label={`${genre} track carousel`}>
       <TopRow>
         <Bumper>&nbsp;</Bumper>
         <TitleContainer>
@@ -261,7 +261,12 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
       </TopRow>
       <TrackAndArrows>
         {tracks.length > 1 ? (
-          <LeftArrowSVG src={leftArrow} onClick={() => prevTrack()} />
+          <LeftArrowSVG
+            src={leftArrow}
+            onClick={() => prevTrack()}
+            role="button"
+            title="Previous Track"
+          />
         ) : (
           <NoArrowDiv>&nbsp;</NoArrowDiv>
         )}
@@ -307,12 +312,17 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
           </TrackContainer>
         ))}
         {tracks.length > 1 ? (
-          <RightArrowSVG src={rightArrow} onClick={() => nextTrack()} />
+          <RightArrowSVG
+            src={rightArrow}
+            onClick={() => nextTrack()}
+            role="button"
+            title="Next Track"
+          />
         ) : (
           <NoArrowDiv>&nbsp;</NoArrowDiv>
         )}
       </TrackAndArrows>
-    </>
+    </article>
   );
 };
 
