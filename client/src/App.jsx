@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Listen from "./pages/Listen";
 import Contact from "./pages/Contact";
-import Pricing from "./pages/Pricing";
+import Services from "./pages/Services";
 import Hire from "./pages/Hire";
 import Admin from "./pages/Admin/AdminHome";
 import AdminLogin from "./pages/Admin/AdminLogin";
@@ -37,7 +37,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/listen" element={<Listen />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/hire" element={<Hire />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/login" element={<AdminLogin />} />

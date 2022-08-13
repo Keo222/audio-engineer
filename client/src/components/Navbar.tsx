@@ -193,7 +193,7 @@ const Navbar = () => {
               <StyledLink to="/about">About</StyledLink>
               <StyledLink to="/listen">Listen</StyledLink>
               <StyledLink to="/contact">Contact</StyledLink>
-              <StyledLink to="/pricing">Pricing</StyledLink>
+              <StyledLink to="/services">Services</StyledLink>
               <LinkButton to="/hire">Hire</LinkButton>
             </SmallNavLinks>
             <HamburgerOpenIcon
@@ -214,7 +214,7 @@ const Navbar = () => {
             </ImageContainer>
             <NavLinksRight>
               <StyledLink to="/contact">Contact</StyledLink>
-              <StyledLink to="/pricing">Pricing</StyledLink>
+              <StyledLink to="/services">Services</StyledLink>
               <LinkButton to="/hire">Hire</LinkButton>
             </NavLinksRight>
           </LargeNav>
