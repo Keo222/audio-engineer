@@ -209,7 +209,7 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>Joel Gardella | About</title>
+        <title>Audio Engineer | About</title>
       </Helmet>
       <ImgOverlay />
       <AboutImg src={aboutImgSrc} />

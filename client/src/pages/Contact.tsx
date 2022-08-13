@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Imported Styled Components
 import {
@@ -18,7 +19,7 @@ import {
 const PageWrapper = styled.div`
   margin-bottom: 4rem;
 `;
-const ContactInfoTextDiv = styled.div`
+const ContactGuidelinesSection = styled.section`
   min-width: 200px;
   width: 60%;
   max-width: 700px;
@@ -49,37 +50,41 @@ const Contact = () => {
     getText();
   }, []);
   return (
-    <PageWrapper>
-      <title>Joel Gardella | Contact</title>
-      <PageHeading>Contact</PageHeading>
-      <ContactInfoTextDiv>
-        {text.map((p, i) => (
-          <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
-        ))}
-      </ContactInfoTextDiv>
-      <StyledForm>
-        <InputGroup>
-          <InputLabel htmlFor="name">Name:</InputLabel>
-          <TextInput type="text" name="name" id="name" />
-        </InputGroup>
+    <>
+      <Helmet>
+        <title>Audio Engineer | Contact</title>
+      </Helmet>
+      <PageWrapper>
+        <PageHeading>Contact</PageHeading>
+        <ContactGuidelinesSection aria-label="Contact Guidelines">
+          {text.map((p, i) => (
+            <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
+          ))}
+        </ContactGuidelinesSection>
+        <StyledForm aria-label="Contact Form">
+          <InputGroup>
+            <InputLabel htmlFor="name">Name:</InputLabel>
+            <TextInput type="text" name="name" id="name" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="email">Email:</InputLabel>
-          <TextInput type="email" name="email" id="email" />
-        </InputGroup>
+          <InputGroup>
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <TextInput type="email" name="email" id="email" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="subject">Subject:</InputLabel>
-          <TextInput type="text" name="subject" id="subject" />
-        </InputGroup>
+          <InputGroup>
+            <InputLabel htmlFor="subject">Subject:</InputLabel>
+            <TextInput type="text" name="subject" id="subject" />
+          </InputGroup>
 
-        <InputGroup>
-          <InputLabel htmlFor="message">Message:</InputLabel>
-          <StyledTextArea />
-        </InputGroup>
-        <SubmitButton>Submit</SubmitButton>
-      </StyledForm>
-    </PageWrapper>
+          <InputGroup>
+            <InputLabel htmlFor="message">Message:</InputLabel>
+            <StyledTextArea />
+          </InputGroup>
+          <SubmitButton>Submit</SubmitButton>
+        </StyledForm>
+      </PageWrapper>
+    </>
   );
 };
 
