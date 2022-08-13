@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Imported Stylec Components
 import {
@@ -10,7 +11,7 @@ import {
 import { GridForm, GridSubmitButton } from "../styled/forms";
 
 // Styled Elements
-const InfoTextDiv = styled.div`
+const InfoTextSection = styled.section`
   min-width: 200px;
   width: 60%;
   max-width: 700px;
@@ -139,14 +140,16 @@ const Hire = () => {
 
   return (
     <>
-      <title>Joel Gardella | Hire</title>
+      <Helmet>
+        <title>Audio Engineer | Hire</title>
+      </Helmet>
       <PageHeading>Hire</PageHeading>
-      <InfoTextDiv>
+      <InfoTextSection aria-label="Hiring Guidelines">
         {text.map((p, i) => (
           <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
         ))}
-      </InfoTextDiv>
-      <GridForm>
+      </InfoTextSection>
+      <GridForm aria-label="Hire Form">
         <Label htmlFor="name">Name:</Label>
         <Input type="text" name="name" id="name" />
         <Label rowStart={1} rowEnd={2} colStart={3} htmlFor="work">
