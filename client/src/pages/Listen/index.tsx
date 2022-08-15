@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { animated } from "react-spring";
 
 // Components
-import MusicSlider from "../components/musicPlayers/MusicSlider";
+import MusicSlider from "components/musicPlayers/MusicSlider";
 
 // Types
-import { Player, Work, Track } from "../types";
-
-// Icons
-// import spotifyWhite from "../../icons/spotify-white.png";
-// import spotifyWhite from "../icons/spotify-white.png";
-// import spotifyColor from "../../icons/spotify-green.png";
-// import tidalWhite from "../icons/tidal-white.png";
-// import tidalColor from "../icons/tidal-color.png";
-// import appleWhite from "../icons/apple-white.svg";
-// import appleColor from "../icons/apple-color.svg";
+import { Player, Work, Track } from "types";
 
 import {
   spotifyWhite,
@@ -24,10 +15,10 @@ import {
   tidalColor,
   appleWhite,
   appleColor,
-} from "../icons";
+} from "icons";
 
 // Imported Styled Components
-import { PageHeading } from "../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Components Types
 type Selectable = { selected: boolean };
