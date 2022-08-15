@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Arrows
-import leftArrow from "../../icons/left_arrow.svg";
-import rightArrow from "../../icons/right_arrow.svg";
-import upArrow from "../../icons/up_arrow.svg";
-import downArrow from "../../icons/down_arrow.svg";
+import leftArrow from "icons/left_arrow.svg";
+import rightArrow from "icons/right_arrow.svg";
+import upArrow from "icons/up_arrow.svg";
+import downArrow from "icons/down_arrow.svg";
 
 // Music Players
-import AppleEmbed from "./AppleEmbed";
-import SpotifyEmbed from "./SpotifyEmbed";
-import TidalEmbed from "./TidalEmbed";
+import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicPlayers";
 
 // Types
-import { Player, Track } from "../../types/types";
+import { TPlayer, Track } from "../types/types";
 
 import {
   animated,
@@ -150,7 +148,7 @@ const ToggleArrowSVG = styled.img`
 `;
 
 type Props = {
-  player: Player;
+  player: TPlayer;
   genre: string;
   tracks: Track[];
 };
@@ -158,6 +156,9 @@ type Props = {
 const MusicSlider = ({ player, genre, tracks }: Props) => {
   const [current, setCurrent] = useState(0);
   const length = tracks.length;
+  useEffect(() => {
+    console.log(tracks);
+  }, [tracks]);
 
   // Choose which media player is embedded
   const playerSwitch = (track: Track) => {

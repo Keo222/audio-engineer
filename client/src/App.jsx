@@ -14,14 +14,14 @@ import Listen from "./pages/Listen";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Hire from "./pages/Hire";
-import Admin from "./pages/Admin/AdminHome";
-import AdminLogin from "./pages/Admin/AdminLogin";
-import AdminTracks from "./pages/Admin/AdminTracks";
-import AdminNewTrack from "./pages/Admin/AdminNewTrack";
-import FormikTSAdminNewTrack from "./pages/Admin/FormikTSAdminNewTrack";
-import AdminUpdateTrack from "./pages/Admin/AdminUpdateTrack";
-import AdminText from "./pages/Admin/AdminText";
-import AdminGenres from "./pages/Admin/AdminGenres";
+import Admin from "./pages/admin/AdminHome";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminTracks from "./pages/admin/AdminTracks";
+import AdminNewTrack from "./pages/admin/AdminNewTrack";
+import FormikTSAdminNewTrack from "./pages/admin/FormikTSAdminNewTrack";
+import AdminUpdateTrack from "./pages/admin/AdminUpdateTrack";
+import AdminText from "./pages/admin/AdminText";
+import AdminGenres from "./pages/admin/AdminGenres";
 
 // Components
 import Navbar from "./components/Navbar";

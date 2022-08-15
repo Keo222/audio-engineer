@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Imported icons
@@ -15,7 +15,7 @@ import TidalEmbed from "./TidalEmbed";
 import AppleEmbed from "./AppleEmbed";
 
 // Types
-import { Player, Track } from "../../types/types";
+import { TPlayer, Track } from "../../types/types";
 
 // Styled Componenets
 const TrackContainer = styled.div`
@@ -76,7 +76,7 @@ const ToggleArrowSVG = styled.img`
 
 type Props = {
   track: Track;
-  player: Player;
+  player: TPlayer;
 };
 
 const SinglePlayer = ({ track, player }: Props) => {

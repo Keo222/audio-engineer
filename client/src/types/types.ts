@@ -2,7 +2,7 @@
 
 export type Genre = { genre_name: string };
 
-export type Player = "Spotify" | "Tidal" | "Apple";
+export type TPlayer = "Spotify" | "Tidal" | "Apple";
 
 export type Text = {
   name: string;
