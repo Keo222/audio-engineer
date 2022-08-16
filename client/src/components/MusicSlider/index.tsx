@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Arrows
-import leftArrow from "icons/left_arrow.svg";
-import rightArrow from "icons/right_arrow.svg";
-import upArrow from "icons/up_arrow.svg";
-import downArrow from "icons/down_arrow.svg";
+import { leftArrow, rightArrow, upArrow, downArrow } from "images/icons";
 
 // Music Players
 import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicPlayers";

@@ -8,7 +8,7 @@ import { getGenres } from "utils/functions";
 import type { TGenre } from "utils/types";
 
 // Icons
-import garbage from "icons/garbage-red.svg";
+import { garbageIcon } from "images/icons";
 
 // Imported Styled Elements
 import { PageHeading } from "styled/typography";
@@ -373,7 +373,7 @@ const AdminGenres = () => {
                     <TableData>{g.genre_name}</TableData>
                     <TableIcon>
                       <Icon
-                        src={garbage}
+                        src={garbageIcon}
                         alt="Delete Button"
                         onClick={() => deleteGenre(g.genre_name)}
                       />

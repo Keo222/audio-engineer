@@ -6,10 +6,7 @@ import { Helmet } from "react-helmet";
 import aboutImgSrc from "images/about_filler.jpg";
 
 // Social Logos
-import instagramLogo from "icons/instagram.svg";
-import fbLogo from "icons/fb_logo_blue.svg";
-import mail from "icons/mail.svg";
-
+import { instagramLogo, facebookLogo, mailIcon } from "images/icons";
 // Imported Styled Components
 import { PageHeading, FormattedParagraph } from "styled/typography";
 
@@ -227,11 +224,11 @@ const About = () => {
           </SocialIconDiv>
           <SocialIconDiv>
             <Tooltip>Facebook</Tooltip>
-            <Icon src={fbLogo} />
+            <Icon src={facebookLogo} />
           </SocialIconDiv>
           <MailIconDiv>
             <Tooltip>Email</Tooltip>
-            <Icon src={mail} />
+            <Icon src={mailIcon} />
           </MailIconDiv>
         </InlineSocialsSection>
       </AboutInfoContainer>

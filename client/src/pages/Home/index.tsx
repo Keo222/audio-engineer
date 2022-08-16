@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 // Icons
-import instagramLogo from "icons/instagram.svg";
-import fbLogo from "icons/fb_logo_blue.svg";
-import mail from "icons/mail.svg";
+import { instagramLogo, facebookLogo, mailIcon } from "images/icons";
 
 // Images
 import studioImg from "images/studio1.jpg";
@@ -230,13 +228,13 @@ const Home = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Icon src={fbLogo} alt="facebook logo" />
+                <Icon src={facebookLogo} alt="facebook logo" />
               </a>
             </SocialIconDiv>
             <MailIconDiv>
               <Tooltip>Email Joel</Tooltip>
               <Link to="/contact">
-                <Icon src={mail} alt="email icon" />
+                <Icon src={mailIcon} alt="email icon" />
               </Link>
             </MailIconDiv>
           </SocialsDiv>

@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
 // Image
-import lightbulbWhite from "../images/lightbulb-white.png";
+import lightbulbWhite from "images/lightbulb-white.png";
 // Icon
-import hamburger from "../icons/hamburger-white.svg";
-import closeHamburger from "../icons/x-white.svg";
+import { hamburgerIcon, closeIcon } from "images/icons";
 
 // Components
 import DropdownNav from "./DropdownNav";
@@ -198,7 +197,7 @@ const Navbar = () => {
             </SmallNavLinks>
             <HamburgerOpenIcon
               onClick={() => setHamburgerOpen(!hamburgerOpen)}
-              src={hamburgerOpen ? closeHamburger : hamburger}
+              src={hamburgerOpen ? closeIcon : hamburgerIcon}
             />
           </SmallNav>
           <LargeNav>
@@ -239,7 +238,7 @@ const Navbar = () => {
             </AdminNavLinks>
             <HamburgerOpenIcon
               onClick={() => setHamburgerOpen(!hamburgerOpen)}
-              src={hamburgerOpen ? closeHamburger : hamburger}
+              src={hamburgerOpen ? closeIcon : hamburgerIcon}
             />
           </AdminNav>
           {hamburgerOpen && (

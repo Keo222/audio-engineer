@@ -26,6 +26,7 @@ import editIcon from "./edit-yellow.svg";
 import garbageIcon from "./garbage-red.svg";
 import mailIcon from "./mail.svg";
 import closeIcon from "./x-white.svg";
+import hamburgerIcon from "./hamburger-white.svg";
 
 export {
   appleColor,
@@ -48,4 +49,5 @@ export {
   garbageIcon,
   mailIcon,
   closeIcon,
+  hamburgerIcon,
 };

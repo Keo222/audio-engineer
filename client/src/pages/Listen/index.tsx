@@ -11,8 +11,8 @@ import {
   GenreSelect,
   StreamingServiceSelect,
   WorkSelect,
-} from "./listenComponents/selects";
-import TrackList from "./listenComponents/TrackList";
+} from "./pageComponents/selects";
+import TrackList from "./pageComponents/TrackList";
 
 // Styled Components
 const PageDiv = styled.div`

@@ -13,8 +13,7 @@ import styled from "styled-components";
 import type { TTextTitle } from "utils/types";
 
 // Icons
-import upArrow from "icons/upArrowWhite.svg";
-import downArrow from "icons/downArrowWhite.svg";
+import { upArrow, downArrow } from "images/icons";
 
 // Imported Styled Components
 import { SectionTitle } from "styled/typography";

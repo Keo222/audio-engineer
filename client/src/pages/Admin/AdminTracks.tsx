@@ -9,8 +9,7 @@ import { deleteTrack, getTracks } from "utils/functions";
 import type { TTrack } from "utils/types";
 
 // Icons
-import garbage from "icons/garbage-red.svg";
-import edit from "icons/edit-yellow.svg";
+import { garbageIcon, editIcon } from "images/icons";
 
 // Components
 import DeleteTrackPopup from "components/Admin/DeleteTrackPopup";
@@ -346,12 +345,12 @@ const AdminTracks = () => {
                 <TableDataLgScreen>{t.track_year}</TableDataLgScreen>
                 <TableIcon>
                   <Link to={`/admin/tracks/update/${t.track_id}`}>
-                    <Icon src={edit} alt="Edit Button" />
+                    <Icon src={editIcon} alt="Edit Button" />
                   </Link>
                 </TableIcon>
                 <TableIcon>
                   <Icon
-                    src={garbage}
+                    src={garbageIcon}
                     alt="Delete Button"
                     onClick={() => openDeletePopup(t.track_id)}
                   />
