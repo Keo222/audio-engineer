@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import FlipCard from "components/cards/FlipCard";
-import SolidFlipCard from "components/cards/SolidFlipCard";
+import { FlipCard, SolidFlipCard } from "components/cards";
 
 // Imported Styled Components
 import { handleColorType } from "styled/styleHelperFuncs";
