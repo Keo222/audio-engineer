@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import type { TSelectable } from "styled/types";
-import { TWork } from "types";
+import type { TWork } from "utils/types";
 
 // Styled Components
 const WorkSelectContainer = styled.div<TSelectable>`

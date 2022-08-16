@@ -4,13 +4,15 @@ import styled from "styled-components";
 // Helper Functions
 import { getGenres } from "utils/functions";
 
+// Types
+import type { TGenre } from "utils/types";
+
 // Icons
 import garbage from "icons/garbage-red.svg";
 
 // Imported Styled Elements
 import { PageHeading } from "styled/typography";
 import { ErrorMessage } from "styled/forms";
-import type { TGenre } from "types";
 
 // Styled Elements
 

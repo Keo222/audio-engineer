@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import { TText } from "types";
+import type { TText } from "utils/types";
 
 // Components
 import AdminTrackInfo from "components/Admin/AdminTrackInfo";

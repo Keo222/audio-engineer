@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 import { deleteTrack, getTracks } from "utils/functions";
 
 // Types
-import type { TTrack } from "types";
+import type { TTrack } from "utils/types";
 
 // Icons
-import garbage from "../../icons/garbage-red.svg";
-import edit from "../../icons/edit-yellow.svg";
+import garbage from "icons/garbage-red.svg";
+import edit from "icons/edit-yellow.svg";
 
 // Components
-import DeleteTrackPopup from "../../components/Admin/DeleteTrackPopup";
+import DeleteTrackPopup from "components/Admin/DeleteTrackPopup";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Elements
 

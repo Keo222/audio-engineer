@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import type { TText, TTextTitle } from "types";
+import type { TText, TTextTitle } from "utils/types";
 
 // Imported Components
 import UpdateNotification from "components/Admin/UpdateNotification";

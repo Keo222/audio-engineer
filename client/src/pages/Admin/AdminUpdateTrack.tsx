@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 // Types
-import { TGenre } from "types";
+import type { TGenre } from "utils/types";
 
 // Imported Styled Components
 import { PageHeading } from "styled/typography";

@@ -1,4 +1,4 @@
-import { TGenre } from "types";
+import { TGenre } from "utils/types";
 
 // CREATE
 

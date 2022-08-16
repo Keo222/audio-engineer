@@ -11,7 +11,7 @@ import downArrow from "icons/down_arrow.svg";
 import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicPlayers";
 
 // Types
-import { TPlayer, TTrack } from "types";
+import type { TPlayer, TTrack } from "utils/types";
 
 import {
   animated,

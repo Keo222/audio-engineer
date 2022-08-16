@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Types
-import { TPlayer, TWork, TTrack } from "types";
+import type { TPlayer, TWork, TTrack } from "utils/types";
 
 // Imported Styled Components
 import { PageHeading } from "styled/typography";

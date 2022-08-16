@@ -15,7 +15,7 @@ import TidalEmbed from "./TidalEmbed";
 import AppleEmbed from "./AppleEmbed";
 
 // Types
-import { TPlayer, TTrack } from "types";
+import type { TPlayer, TTrack } from "utils/types";
 
 // Styled Componenets
 const TrackContainer = styled.div`

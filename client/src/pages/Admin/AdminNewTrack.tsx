@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import { TGenre } from "types";
+import type { TGenre } from "utils/types";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
