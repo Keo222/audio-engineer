@@ -10,7 +10,7 @@ import SolidFlipCard from "components/cards/SolidFlipCard";
 import { handleColorType } from "styled/styleHelperFuncs";
 import { PageHeading, SmallFormattedParagraph } from "styled/typography";
 import { LinkButton } from "styled/buttons";
-import type { TColorStyle } from "types/StyledTypes";
+import type { TColorProp } from "styled/types";
 
 // Styled Components
 const InfoTextSection = styled.section`
@@ -22,7 +22,7 @@ const InfoTextSection = styled.section`
   margin: 0 auto;
 `;
 
-const SectionTitle = styled.h3<TColorStyle>`
+const SectionTitle = styled.h3<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
   font-size: 2.4rem;
   font-weight: 400;

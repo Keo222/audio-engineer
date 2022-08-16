@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Types
-import { TColorStyle } from "types/StyledTypes";
+import type { TColorProp } from "styled/types";
 
 // Helper Functions
 import { handleColorType } from "./styleHelperFuncs";
 
 // Colored Button Link -- Required props:
 // - Color: "1", "2", or "3" for different highlight colors
-export const LinkButton = styled(Link)<TColorStyle>`
+export const LinkButton = styled(Link)<TColorProp>`
   background: ${({ color }) => handleColorType(color)};
   color: ${(props) => props.theme.color.textDark};
   font-weight: 500;

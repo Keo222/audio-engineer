@@ -19,7 +19,7 @@ import downArrow from "icons/downArrowWhite.svg";
 // Imported Styled Components
 import { SectionTitle } from "styled/typography";
 import { handleColorType } from "styled/styleHelperFuncs";
-import { TColor, TColorStyle } from "types/StyledTypes";
+import { TColor, TColorProp } from "styled/types";
 
 // Styled Components
 const UpdateSection = styled.div`
@@ -48,7 +48,7 @@ const UpdateInner = styled.div`
   justify-content: center;
 `;
 
-const StyledTextArea = styled(animated.textarea)<TColorStyle>`
+const StyledTextArea = styled(animated.textarea)<TColorProp>`
   display: block;
   width: 90%;
   max-width: 800px;
@@ -59,7 +59,7 @@ const StyledTextArea = styled(animated.textarea)<TColorStyle>`
   border-radius: 5px;
 `;
 
-const UpdateButton = styled(animated.button)<TColorStyle>`
+const UpdateButton = styled(animated.button)<TColorProp>`
   font-weight: 500;
   font-size: 1.4rem;
   width: fit-content;

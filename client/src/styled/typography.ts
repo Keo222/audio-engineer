@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TColorStyle } from "types/StyledTypes";
+import type { TColorProp } from "styled/types";
 import { handleColorType } from "./styleHelperFuncs";
 
 export const PageHeading = styled.h1`
@@ -11,7 +11,7 @@ export const PageHeading = styled.h1`
   margin: 3vh 0;
 `;
 
-export const SectionTitle = styled.h3<TColorStyle>`
+export const SectionTitle = styled.h3<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
   font-size: 2.4rem;
   font-weight: 200;

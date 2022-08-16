@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { handleColorType } from "./styleHelperFuncs";
 
 // Types
-import type { TColorStyle } from "types/StyledTypes";
+import type { TColorProp } from "styled/types";
 
 export const StyledForm = styled.form`
   color: ${(props) => props.theme.color.textLight};
@@ -62,7 +62,7 @@ export const RadioDiv = styled.div`
 
 export const RadioGroup = styled.div``;
 
-export const SubmitButton = styled.button<TColorStyle>`
+export const SubmitButton = styled.button<TColorProp>`
   color: ${(props) => props.theme.color.textDark};
   background: ${({ color }) => handleColorType(color)};
   border: none;

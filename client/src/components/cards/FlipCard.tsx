@@ -1,5 +1,5 @@
 // Types
-import { TColor } from "types/StyledTypes";
+import { TColor } from "styled/types";
 
 // Imported Styled Components
 import {

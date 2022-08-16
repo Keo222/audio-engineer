@@ -6,7 +6,7 @@ import { LinkButton } from "./buttons";
 import { handleColorType, handleGlowType } from "./styleHelperFuncs";
 
 // Types
-import type { TColorStyle } from "types/StyledTypes";
+import type { TColorProp } from "styled/types";
 
 // Styled Components
 export const Card = styled.div`
@@ -39,11 +39,11 @@ const CardSide = styled.div`
   overflow: hidden;
 `;
 
-const SolidCardSide = styled(CardSide)<TColorStyle>`
+const SolidCardSide = styled(CardSide)<TColorProp>`
   box-shadow: 0 0 5rem 1rem ${({ color }) => handleGlowType(color)}; ;
 `;
 
-export const ColoredCardFront = styled(CardSide)<TColorStyle>`
+export const ColoredCardFront = styled(CardSide)<TColorProp>`
   background-image: linear-gradient(
     to bottom,
     #eee,
@@ -66,7 +66,7 @@ export const ColoredHeadingFront = styled(CardHeading)`
   color: ${(props) => props.theme.color.textDark};
 `;
 
-export const SolidHeadingFront = styled(CardHeading)<TColorStyle>`
+export const SolidHeadingFront = styled(CardHeading)<TColorProp>`
   color: ${({ color }) => handleColorType(color)};
   letter-spacing: unset;
 `;
@@ -96,7 +96,7 @@ export const CardHeadingBack = styled(CardHeading)`
   margin: auto 0;
 `;
 
-export const CardBackBody = styled.p<TColorStyle>`
+export const CardBackBody = styled.p<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
   width: 75%;
   flex: 1;
