@@ -7,8 +7,8 @@ import {
   PageHeading,
   BoldSpan,
   SmallFormattedParagraph,
-} from "../styled/typography";
-import { GridForm, GridSubmitButton } from "../styled/forms";
+} from "styled/typography";
+import { GridForm, GridSubmitButton } from "styled/forms";
 
 // Styled Elements
 const InfoTextSection = styled.section`
