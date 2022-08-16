@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Types
-import { TPlayer, Work, Track } from "types";
+import { TPlayer, TWork, TTrack } from "types";
 
 // Imported Styled Components
 import { PageHeading } from "styled/typography";
@@ -29,9 +29,9 @@ const SelectsSection = styled.section`
 
 const Listen = () => {
   const [player, setPlayer] = useState<TPlayer>("Spotify");
-  const [tracks, setTracks] = useState<Track[]>();
+  const [tracks, setTracks] = useState<TTrack[]>();
   const [currentGenre, setCurrentGenre] = useState<string>("All");
-  const [work, setWork] = useState<Work>("All");
+  const [work, setWork] = useState<TWork>("All");
 
   // Get tracks from DB
   useEffect(() => {
@@ -60,10 +60,10 @@ const Listen = () => {
   }, []);
 
   // Parse genres from tracks
-  const getGenres = (trackArr: Track[] | undefined) => {
+  const getGenres = (trackArr: TTrack[] | undefined) => {
     if (trackArr) {
       const genreSet = new Set();
-      trackArr.map((t: Track) => genreSet.add(t.track_genre));
+      trackArr.map((t: TTrack) => genreSet.add(t.track_genre));
       const genreList = Array.from(genreSet) as string[];
       return genreList;
     }

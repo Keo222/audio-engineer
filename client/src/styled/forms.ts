@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { handleColorType } from "./styleHelperFuncs";
 
 // Types
-import type { TColorStyle } from "../types/StyledTypes";
+import type { TColorStyle } from "types/StyledTypes";
 
 export const StyledForm = styled.form`
   color: ${(props) => props.theme.color.textLight};

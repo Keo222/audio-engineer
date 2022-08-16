@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import { Genre } from "../../types/types";
+import { TGenre } from "types";
 
-import TrackForm from "../../components/Admin/TrackForm";
+import TrackForm from "components/Admin/TrackForm";
 
 // Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 const FormikTSAdminNewTrack = () => {
   // Info states
@@ -28,10 +28,10 @@ const FormikTSAdminNewTrack = () => {
     const response = await fetch("/api/genres/");
     const allGenres = await response.json();
     const sortedGenres = allGenres
-      .sort((a: Genre, b: Genre) =>
+      .sort((a: TGenre, b: TGenre) =>
         a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
       )
-      .map((g: Genre) => g.genre_name);
+      .map((g: TGenre) => g.genre_name);
     setGenresList(sortedGenres);
   };
 

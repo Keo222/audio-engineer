@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Types
-import { TColorStyle } from "../types/StyledTypes";
+import { TColorStyle } from "types/StyledTypes";
 
 // Helper Functions
 import { handleColorType } from "./styleHelperFuncs";

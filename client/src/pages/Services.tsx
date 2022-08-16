@@ -3,17 +3,14 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Components
-import FlipCard from "../components/cards/FlipCard";
-import SolidFlipCard from "../components/cards/SolidFlipCard";
+import FlipCard from "components/cards/FlipCard";
+import SolidFlipCard from "components/cards/SolidFlipCard";
 
 // Imported Styled Components
-import { handleColorType } from "../styled/styleHelperFuncs";
-import {
-  PageHeading,
-  SmallFormattedParagraph,
-} from "../styled/typography";
-import { LinkButton } from "../styled/buttons";
-import { TColorStyle } from "../types/StyledTypes";
+import { handleColorType } from "styled/styleHelperFuncs";
+import { PageHeading, SmallFormattedParagraph } from "styled/typography";
+import { LinkButton } from "styled/buttons";
+import type { TColorStyle } from "types/StyledTypes";
 
 // Styled Components
 const InfoTextSection = styled.section`

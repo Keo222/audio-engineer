@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 // Types
-import { Genre } from "../../types/types";
+import { TGenre } from "types";
 
 // Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
@@ -16,7 +16,7 @@ import {
   RadioDiv,
   RadioGroup,
   SubmitButton,
-} from "../../styled/forms";
+} from "styled/forms";
 
 // Styled Components
 const UpdateHeading = styled(PageHeading)`
@@ -39,7 +39,7 @@ const AdminUpdateTrack = () => {
   const getGenres = async () => {
     const response = await fetch("/api/genres/");
     const allGenres = await response.json();
-    const sortedGenres = allGenres.sort((a: Genre, b: Genre) =>
+    const sortedGenres = allGenres.sort((a: TGenre, b: TGenre) =>
       a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
     );
     setGenreList(sortedGenres);
@@ -163,7 +163,7 @@ const AdminUpdateTrack = () => {
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
             >
-              {genreList.map((g: Genre) => (
+              {genreList.map((g: TGenre) => (
                 <option value={g.genre_name}>{g.genre_name}</option>
               ))}
             </select>

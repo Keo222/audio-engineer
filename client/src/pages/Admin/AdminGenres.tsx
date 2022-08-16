@@ -2,15 +2,15 @@ import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 // Helper Functions
-import { getGenres } from "../../functions/genreCRUD";
+import { getGenres } from "functions/genreCRUD";
 
 // Icons
-import garbage from "../../icons/garbage-red.svg";
+import garbage from "icons/garbage-red.svg";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
-import { ErrorMessage } from "../../styled/forms";
-import { Genre } from "../../types/types";
+import { PageHeading } from "styled/typography";
+import { ErrorMessage } from "styled/forms";
+import type { TGenre } from "types";
 
 // Styled Elements
 
@@ -215,7 +215,7 @@ const Icon = styled.img`
 `;
 
 const AdminGenres = () => {
-  const [genres, setGenres] = useState<Genre[] | []>([]);
+  const [genres, setGenres] = useState<TGenre[] | []>([]);
   const [newGenre, setNewGenre] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [error, setError] = useState(false);

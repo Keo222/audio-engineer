@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import type { TSelectable } from "styled/types";
-import { Work } from "types";
+import { TWork } from "types";
 
 // Styled Components
 const WorkSelectContainer = styled.div<TSelectable>`
@@ -72,8 +72,8 @@ const AllWorkSelect = styled.div<TSelectable>`
 `;
 
 type Props = {
-  work: Work;
-  setWork: React.Dispatch<React.SetStateAction<Work>>;
+  work: TWork;
+  setWork: React.Dispatch<React.SetStateAction<TWork>>;
 };
 
 const WorkSelect = ({ work, setWork }: Props) => {

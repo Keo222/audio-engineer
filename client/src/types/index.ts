@@ -1,3 +1,10 @@
-import type { TPlayer, Work, Track } from "./types";
+import type {
+  TGenre,
+  TPlayer,
+  TText,
+  TTextTitle,
+  TTrack,
+  TWork,
+} from "./types";
 
-export { TPlayer, Work, Track };
+export type { TGenre, TPlayer, TText, TTextTitle, TWork, TTrack };

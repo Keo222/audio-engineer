@@ -1,13 +1,13 @@
 import { useMemo } from "react";
-import { TPlayer, Track, Work } from "types";
+import { TPlayer, TTrack, TWork } from "types";
 
 import MusicSlider from "components/MusicSlider";
 
 type Props = {
   genres: string[] | undefined;
-  tracks: Track[] | undefined;
+  tracks: TTrack[] | undefined;
   currentGenre: string;
-  work: Work;
+  work: TWork;
   player: TPlayer;
 };
 
@@ -19,7 +19,7 @@ const TrackList = ({
   player,
 }: Props) => {
   const filteredTracks = useMemo(() => {
-    const trackWorkSwitch = (trackArray: Track[], work: Work) => {
+    const trackWorkSwitch = (trackArray: TTrack[], work: TWork) => {
       switch (work) {
         case "Production":
           return trackArray.filter((t) => t.track_work === "Production");
@@ -49,7 +49,9 @@ const TrackList = ({
       if (currentGenre === "All" && work === "All") {
         return tracks;
       } else if (work === "All") {
-        return tracks.filter((t: Track) => t.track_genre === currentGenre);
+        return tracks.filter(
+          (t: TTrack) => t.track_genre === currentGenre
+        );
       } else if (currentGenre === "All") {
         return trackWorkSwitch(tracks, work);
       } else {
@@ -69,12 +71,12 @@ const TrackList = ({
         work === "All" && (
           <section aria-label="Track">
             {typeof filteredTracks !== "undefined" &&
-              filteredTracks.filter((t: Track) => t.track_featured)
+              filteredTracks.filter((t: TTrack) => t.track_featured)
                 .length > 0 && (
                 <MusicSlider
                   key={`${work} - Featured`}
                   tracks={filteredTracks.filter(
-                    (t: Track) => t.track_featured
+                    (t: TTrack) => t.track_featured
                   )}
                   player={player}
                   genre="Featured"
@@ -91,7 +93,7 @@ const TrackList = ({
                     tracks={
                       filteredTracks
                         ? filteredTracks.filter(
-                            (t: Track) => t.track_genre === g
+                            (t: TTrack) => t.track_genre === g
                           )
                         : []
                     }

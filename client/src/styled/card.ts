@@ -6,7 +6,7 @@ import { LinkButton } from "./buttons";
 import { handleColorType, handleGlowType } from "./styleHelperFuncs";
 
 // Types
-import type { TColorStyle } from "../types/StyledTypes";
+import type { TColorStyle } from "types/StyledTypes";
 
 // Styled Components
 export const Card = styled.div`

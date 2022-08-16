@@ -1,17 +1,17 @@
 // All custom types in alphabetical order
 
-export type Genre = { genre_name: string };
+export type TGenre = { genre_name: string };
 
 export type TPlayer = "Spotify" | "Tidal" | "Apple";
 
-export type Text = {
+export type TText = {
   name: string;
   stored_text: string[];
 };
 
-export type TextTitle = "about" | "contact" | "pricing" | "hire";
+export type TTextTitle = "about" | "contact" | "pricing" | "hire";
 
-export type Track = {
+export type TTrack = {
   track_id: number;
   track_genre: string;
   track_work: string;
@@ -26,4 +26,4 @@ export type Track = {
   numOrder?: number;
 };
 
-export type Work = "Production" | "Mixing" | "Mastering" | "All";
+export type TWork = "Production" | "Mixing" | "Mastering" | "All";
