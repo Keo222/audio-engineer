@@ -10,7 +10,7 @@ import {
   tidalColor,
   appleWhite,
   appleColor,
-} from "icons";
+} from "images/icons";
 
 // Styled Components
 const SelectPlayerSection = styled.section`
