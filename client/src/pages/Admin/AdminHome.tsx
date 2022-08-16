@@ -4,6 +4,9 @@ import styled from "styled-components";
 // Types
 import type { TText } from "utils/types";
 
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
 // Components
 import AdminTrackInfo from "components/Admin/AdminTrackInfo";
 import AdminGenreInfo from "components/Admin/AdminGenreInfo";
@@ -106,7 +109,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin</title>
       <AdminHomeDiv>
         <EditAdminDiv>
@@ -116,7 +119,7 @@ const Admin = () => {
           <AdminTrackInfo numTracks={numTracks} />
         </EditAdminDiv>
       </AdminHomeDiv>
-    </>
+    </AdminLayout>
   );
 };
 

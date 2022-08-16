@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
 import type { TGenre } from "utils/types";
 
-// Imported Styled Components
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
+// Styled Components
 import { PageHeading } from "styled/typography";
 import {
   StyledForm,
@@ -18,7 +22,6 @@ import {
   SubmitButton,
 } from "styled/forms";
 
-// Styled Components
 const UpdateHeading = styled(PageHeading)`
   color: ${(props) => props.theme.color.highlight3};
 `;
@@ -103,8 +106,10 @@ const AdminUpdateTrack = () => {
     }
   };
   return (
-    <div>
-      <title>JG Admin | Update Track</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | Update Track</title>
+      </Helmet>
       <UpdateHeading>Update Track</UpdateHeading>
 
       <StyledForm onSubmit={(e) => updateTrack(e)}>
@@ -245,7 +250,7 @@ const AdminUpdateTrack = () => {
 
         <SubmitButton type="submit">Update Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

@@ -7,14 +7,15 @@ import { getGenres } from "utils/functions";
 // Types
 import type { TGenre } from "utils/types";
 
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
 // Icons
 import { garbageIcon } from "images/icons";
 
-// Imported Styled Elements
+// Styled Elements
 import { PageHeading } from "styled/typography";
 import { ErrorMessage } from "styled/forms";
-
-// Styled Elements
 
 type TDisplayGenreList = {
   displayList: boolean;
@@ -300,113 +301,115 @@ const AdminGenres = () => {
       );
 
   return (
-    <GenrePageDiv>
-      <title>JG Admin | Genres</title>
-      <PageHeading>Genres</PageHeading>
-      <GenreDisplayToggle>
-        <ViewGenresToggle
-          displayList={displayList}
-          onClick={() => setDisplayList(true)}
-        >
-          View & Remove
-        </ViewGenresToggle>
-        <AddGenreToggle
-          displayList={displayList}
-          onClick={() => setDisplayList(false)}
-        >
-          Add Genre
-        </AddGenreToggle>
-      </GenreDisplayToggle>
-      <DivsContainer>
-        <ViewAndRemoveDiv displayList={displayList}>
-          <h3>Genre List</h3>
-          <GenreTable>
-            <colgroup>
-              <ColName />
-              <ColDelete />
-            </colgroup>
-            <thead>
-              <TableRow>
-                <TableHeading
-                  onClick={() =>
-                    setReverseGenres((currReverse) => !currReverse)
-                  }
-                >
-                  <HeadingText>Genre</HeadingText>
-                  {reverseGenres ? (
-                    <SvgDiv>
-                      <SvgIcon
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M11.258 7.758a1.05 1.05 0 0 1 1.484 0l6 6a1.05 1.05 0 1 1-1.484 1.484L12 9.985l-5.258 5.257a1.05 1.05 0 0 1-1.484-1.484l6-6Z"
-                          fill="#fff"
-                          fillRule="nonzero"
-                          className="fill-000000"
-                        ></path>
-                      </SvgIcon>
-                    </SvgDiv>
-                  ) : (
-                    <SvgDiv>
-                      <SvgIcon
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="m11.258 16.242-6-6a1.05 1.05 0 1 1 1.484-1.484L12 14.015l5.258-5.257a1.05 1.05 0 1 1 1.484 1.484l-6 6a1.05 1.05 0 0 1-1.484 0Z"
-                          fill="#fff"
-                          fillRule="nonzero"
-                          className="fill-000000"
-                        ></path>
-                      </SvgIcon>
-                    </SvgDiv>
-                  )}
-                </TableHeading>
-                <TableIconHeading>Delete</TableIconHeading>
-              </TableRow>
-            </thead>
-            <tbody>
-              {sortedGenres &&
-                sortedGenres.map((g) => (
-                  <TableRow key={g.genre_name}>
-                    <TableData>{g.genre_name}</TableData>
-                    <TableIcon>
-                      <Icon
-                        src={garbageIcon}
-                        alt="Delete Button"
-                        onClick={() => deleteGenre(g.genre_name)}
-                      />
-                    </TableIcon>
-                  </TableRow>
-                ))}
-            </tbody>
-          </GenreTable>
-        </ViewAndRemoveDiv>
-        <AddGenreDiv displayList={displayList}>
-          <h3>Add Genre</h3>
-          <AddNewForm>
-            <InputGroup>
-              <InputLabel htmlFor="genre">New Genre:</InputLabel>
-              <InputText
-                type="text"
-                name="genre"
-                placeholder='ex: "Indie Rock"'
-                value={newGenre}
-                onChange={(e) => setNewGenre(e.target.value)}
-              />
-            </InputGroup>
-            {error && <ErrorMessage>{errorMsg}</ErrorMessage>}
-            <SubmitButton
-              errorPresent={error}
-              onClick={(e) => addGenre(e)}
-            >
-              Add Genre
-            </SubmitButton>
-          </AddNewForm>
-        </AddGenreDiv>
-      </DivsContainer>
-    </GenrePageDiv>
+    <AdminLayout>
+      <GenrePageDiv>
+        <title>JG Admin | Genres</title>
+        <PageHeading>Genres</PageHeading>
+        <GenreDisplayToggle>
+          <ViewGenresToggle
+            displayList={displayList}
+            onClick={() => setDisplayList(true)}
+          >
+            View & Remove
+          </ViewGenresToggle>
+          <AddGenreToggle
+            displayList={displayList}
+            onClick={() => setDisplayList(false)}
+          >
+            Add Genre
+          </AddGenreToggle>
+        </GenreDisplayToggle>
+        <DivsContainer>
+          <ViewAndRemoveDiv displayList={displayList}>
+            <h3>Genre List</h3>
+            <GenreTable>
+              <colgroup>
+                <ColName />
+                <ColDelete />
+              </colgroup>
+              <thead>
+                <TableRow>
+                  <TableHeading
+                    onClick={() =>
+                      setReverseGenres((currReverse) => !currReverse)
+                    }
+                  >
+                    <HeadingText>Genre</HeadingText>
+                    {reverseGenres ? (
+                      <SvgDiv>
+                        <SvgIcon
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M11.258 7.758a1.05 1.05 0 0 1 1.484 0l6 6a1.05 1.05 0 1 1-1.484 1.484L12 9.985l-5.258 5.257a1.05 1.05 0 0 1-1.484-1.484l6-6Z"
+                            fill="#fff"
+                            fillRule="nonzero"
+                            className="fill-000000"
+                          ></path>
+                        </SvgIcon>
+                      </SvgDiv>
+                    ) : (
+                      <SvgDiv>
+                        <SvgIcon
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="m11.258 16.242-6-6a1.05 1.05 0 1 1 1.484-1.484L12 14.015l5.258-5.257a1.05 1.05 0 1 1 1.484 1.484l-6 6a1.05 1.05 0 0 1-1.484 0Z"
+                            fill="#fff"
+                            fillRule="nonzero"
+                            className="fill-000000"
+                          ></path>
+                        </SvgIcon>
+                      </SvgDiv>
+                    )}
+                  </TableHeading>
+                  <TableIconHeading>Delete</TableIconHeading>
+                </TableRow>
+              </thead>
+              <tbody>
+                {sortedGenres &&
+                  sortedGenres.map((g) => (
+                    <TableRow key={g.genre_name}>
+                      <TableData>{g.genre_name}</TableData>
+                      <TableIcon>
+                        <Icon
+                          src={garbageIcon}
+                          alt="Delete Button"
+                          onClick={() => deleteGenre(g.genre_name)}
+                        />
+                      </TableIcon>
+                    </TableRow>
+                  ))}
+              </tbody>
+            </GenreTable>
+          </ViewAndRemoveDiv>
+          <AddGenreDiv displayList={displayList}>
+            <h3>Add Genre</h3>
+            <AddNewForm>
+              <InputGroup>
+                <InputLabel htmlFor="genre">New Genre:</InputLabel>
+                <InputText
+                  type="text"
+                  name="genre"
+                  placeholder='ex: "Indie Rock"'
+                  value={newGenre}
+                  onChange={(e) => setNewGenre(e.target.value)}
+                />
+              </InputGroup>
+              {error && <ErrorMessage>{errorMsg}</ErrorMessage>}
+              <SubmitButton
+                errorPresent={error}
+                onClick={(e) => addGenre(e)}
+              >
+                Add Genre
+              </SubmitButton>
+            </AddNewForm>
+          </AddGenreDiv>
+        </DivsContainer>
+      </GenrePageDiv>
+    </AdminLayout>
   );
 };
 

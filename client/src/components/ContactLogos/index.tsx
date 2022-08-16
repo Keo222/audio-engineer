@@ -87,9 +87,7 @@ const Icon = styled.img`
   }
 `;
 
-type Props = {};
-
-const ContactLogos = (props: Props) => {
+const ContactLogos = () => {
   return (
     <LogosSection aria-label="Contact Logo Links">
       <SocialsDiv>

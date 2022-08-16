@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+// Components
 import ContactLogos from "components/ContactLogos";
 
 // Images
 import aboutImgSrc from "images/about_filler.jpg";
 
-// Imported Styled Components
+// Styled Components
 import { PageHeading, FormattedParagraph } from "styled/typography";
 
-// Styled Components
 const AboutImg = styled.img`
   position: fixed;
   top: 0;

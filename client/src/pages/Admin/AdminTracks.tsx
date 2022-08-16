@@ -8,6 +8,9 @@ import { deleteTrack, getTracks } from "utils/functions";
 // Types
 import type { TTrack } from "utils/types";
 
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
 // Icons
 import { garbageIcon, editIcon } from "images/icons";
 
@@ -268,7 +271,7 @@ const AdminTracks = () => {
     }
   }, [deleteId, tracks]);
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin | Tracks</title>
       {popupOpen && deleteTrackInfo && (
         <DeleteTrackPopup
@@ -360,7 +363,7 @@ const AdminTracks = () => {
           </tbody>
         </Table>
       </AdminTracksDiv>
-    </>
+    </AdminLayout>
   );
 };
 

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
 import type { TText, TTextTitle } from "utils/types";
 
-// Imported Components
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
+// Components
 import UpdateNotification from "components/Admin/UpdateNotification";
 import TextSection from "components/Admin/Text/TextSection";
 
-// Imported Styled Components
+// Styled Components
 import { PageHeading } from "styled/typography";
 
 const TextUpdateContainer = styled.div`
@@ -95,8 +99,10 @@ const AdminText = () => {
     setTexts();
   }, []);
   return (
-    <>
-      <title>JG Admin | Site Text</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | Site Text</title>
+      </Helmet>
       <PageHeading>Site Text</PageHeading>
       <TextUpdateContainer>
         {/* ABOUT TEXT */}
@@ -137,7 +143,7 @@ const AdminText = () => {
         />
       </TextUpdateContainer>
       {updated && <UpdateNotification />}
-    </>
+    </AdminLayout>
   );
 };
 

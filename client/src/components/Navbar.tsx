@@ -9,9 +9,9 @@ import { hamburgerIcon, closeIcon } from "images/icons";
 
 // Components
 import DropdownNav from "./DropdownNav";
-import AdminDropdownNav from "./AdminDropdownNav";
 
-// Styled Elements
+// Styled Components
+import { StyledLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
 const SmallNav = styled.nav`
   display: none;
   height: 15rem;
@@ -41,30 +41,6 @@ const LargeNav = styled.nav`
   } ;
 `;
 
-const AdminNav = styled.nav`
-  width: 90%;
-  max-width: 150rem;
-  margin: 0 auto;
-  font-size: 1.6rem;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const AdminNavLinks = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 30vw;
-  margin: 0 4rem;
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    min-width: 50vw;
-  }
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    display: none;
-  } ;
-`;
-
 const SmallNavLinks = styled.div`
   display: flex;
   justify-content: space-between;
@@ -88,24 +64,6 @@ const NavLinksRight = styled.div`
   margin-left: 6rem;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${(props) => props.theme.color.textLight};
-
-  &:after {
-    display: block;
-    content: "";
-    border-bottom: solid 3px ${(props) => props.theme.color.highlight1};
-    transform: scaleX(0);
-    transition: transform 0.25s ease-in-out;
-    border-radius: 20px;
-  }
-
-  &:hover:after {
-    transform: scaleX(1);
-  }
-`;
-
 const LinkButton = styled(Link)`
   background: ${(props) => props.theme.color.highlight1};
   color: ${(props) => props.theme.color.textDark};
@@ -119,13 +77,6 @@ const LinkButton = styled(Link)`
     filter: brightness(0.7);
   }
 `;
-
-const AdminLinkButton = styled(LinkButton)`
-  padding: 0.6rem 1.1rem;
-  font-weight: inherit;
-  font-size: 1.4rem;
-`;
-
 const ImageContainer = styled.div`
   width: 12rem;
   height: 15rem;
@@ -141,36 +92,6 @@ const ImageContainer = styled.div`
   }
 `;
 
-const AdminImageContainer = styled.div`
-  width: 12rem;
-  height: 15rem;
-  margin: 0 2rem;
-  display: flex;
-  align-items: center;
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    width: 8rem;
-    height: 10rem;
-  }
-`;
-
-const Logo = styled.img`
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-`;
-
-const HamburgerOpenIcon = styled.img`
-  width: 6rem;
-  height: 6rem;
-  display: none;
-  margin-top: 2.5rem;
-  margin-right: 2rem;
-  cursor: pointer;
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    display: block;
-  } ;
-`;
-
 const Navbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
@@ -184,7 +105,7 @@ const Navbar = () => {
           <SmallNav>
             <ImageContainer>
               <Link to="/">
-                <Logo src={lightbulbWhite} />
+                <NavLogo src={lightbulbWhite} />
               </Link>
             </ImageContainer>
             <SmallNavLinks>
@@ -208,7 +129,7 @@ const Navbar = () => {
             </NavLinksLeft>
             <ImageContainer>
               <Link to="/">
-                <Logo src={lightbulbWhite} />
+                <NavLogo src={lightbulbWhite} />
               </Link>
             </ImageContainer>
             <NavLinksRight>
@@ -219,30 +140,6 @@ const Navbar = () => {
           </LargeNav>
           {hamburgerOpen && (
             <DropdownNav setHamburgerOpen={setHamburgerOpen} />
-          )}
-        </>
-      ) : location.pathname !== "/admin/login" ? (
-        <>
-          <AdminNav>
-            <AdminImageContainer>
-              <Link to="/">
-                <Logo src={lightbulbWhite} />
-              </Link>
-            </AdminImageContainer>
-            <AdminNavLinks>
-              <StyledLink to="/admin/">Home</StyledLink>
-              <StyledLink to="/admin/tracks">Tracks</StyledLink>
-              <StyledLink to="/admin/genres">Genres</StyledLink>
-              <StyledLink to="/admin/text">Text</StyledLink>
-              <AdminLinkButton to="/">Main Site</AdminLinkButton>
-            </AdminNavLinks>
-            <HamburgerOpenIcon
-              onClick={() => setHamburgerOpen(!hamburgerOpen)}
-              src={hamburgerOpen ? closeIcon : hamburgerIcon}
-            />
-          </AdminNav>
-          {hamburgerOpen && (
-            <AdminDropdownNav setHamburgerOpen={setHamburgerOpen} />
           )}
         </>
       ) : (

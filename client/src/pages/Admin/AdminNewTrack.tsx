@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 // Types
 import type { TGenre } from "utils/types";
 
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
 // Styled Components
 import { PageHeading } from "styled/typography";
 import {
@@ -132,7 +135,7 @@ const AdminTracks = () => {
     }
   };
   return (
-    <div>
+    <AdminLayout>
       <title>JG Admin | New Track</title>
       <PageHeading>Add Track</PageHeading>
       <StyledForm onSubmit={(e) => addTrack(e)}>
@@ -287,7 +290,7 @@ const AdminTracks = () => {
 
         <SubmitButton type="submit">Add Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

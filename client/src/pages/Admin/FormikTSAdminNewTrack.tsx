@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Types
 import type { TGenre } from "utils/types";
 
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
+// Components
 import TrackForm from "components/Admin/TrackForm";
 
 // Styled Components
@@ -94,8 +99,10 @@ const FormikTSAdminNewTrack = () => {
     }
   };
   return (
-    <div>
-      <title>JG Admin | New Track</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | New Track</title>
+      </Helmet>
       <PageHeading>Add Track</PageHeading>
       {genresList !== [] ? (
         <TrackForm
@@ -116,7 +123,7 @@ const FormikTSAdminNewTrack = () => {
       ) : (
         <p>Please add genres first.</p>
       )}
-    </div>
+    </AdminLayout>
   );
 };
 
