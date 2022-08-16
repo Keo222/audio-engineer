@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Helper Functions
-import { deleteTrack, getTracks } from "../../functions/trackCRUD";
+import { deleteTrack, getTracks } from "utils/functions";
 
 // Types
 import type { TTrack } from "types";

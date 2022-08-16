@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 // Helper Functions
-import { getGenres } from "functions/genreCRUD";
+import { getGenres } from "utils/functions";
 
 // Icons
 import garbage from "icons/garbage-red.svg";
