@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
-import { tidalRegex } from "../../../regex/trackEmbedRegex";
+import { tidalRegex } from "utils/regex/trackEmbedRegex";
 
 const TidalFrame = styled.iframe<{ big: boolean }>`
   top: 0;
