@@ -58,7 +58,6 @@ const AdminUpdateTrack = () => {
     const fetch_url = `/api/tracks/single?id=${id}`;
     const response = await fetch(fetch_url);
     const trackInfo = await response.json();
-    console.log("got track info!");
     setName(trackInfo.track_name);
     setAlbum(trackInfo.track_album);
     setArtist(trackInfo.track_artist);
