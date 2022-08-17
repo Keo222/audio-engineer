@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 // Navbar
-import AdminNavbar from "components/AdminNavbar";
+import { AdminNavbar } from "components/navbars";
 
 type Props = {
   children: ReactNode;

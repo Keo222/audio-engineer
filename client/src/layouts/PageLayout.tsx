@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import Navbar from "components/Navbar";
+import { Navbar } from "components/navbars/";
 
 type Props = {
   children: ReactNode;
@@ -8,12 +8,12 @@ type Props = {
 
 const PageLayout = ({ children }: Props) => {
   return (
-    <div>
+    <>
       <header>
         <Navbar />
       </header>
       <main>{children}</main>
-    </div>
+    </>
   );
 };
 
