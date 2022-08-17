@@ -5,16 +5,20 @@ import { Helmet } from "react-helmet";
 // Types
 import type { TPlayer, TWork, TTrack } from "utils/types";
 
-// Imported Styled Components
-import { PageHeading } from "styled/typography";
+// Layout
+import PageLayout from "layouts/PageLayout";
+
+// Components
 import {
   GenreSelect,
   StreamingServiceSelect,
   WorkSelect,
 } from "./pageComponents/selects";
-import TrackList from "./pageComponents/TrackList";
 
 // Styled Components
+import { PageHeading } from "styled/typography";
+import TrackList from "./pageComponents/TrackList";
+
 const PageDiv = styled.div`
   margin-bottom: 10rem;
 `;
@@ -71,7 +75,7 @@ const Listen = () => {
   const genres = getGenres(tracks);
 
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Joel Gardella | Listen</title>
       </Helmet>
@@ -90,7 +94,7 @@ const Listen = () => {
           player={player}
         />
       </PageDiv>
-    </>
+    </PageLayout>
   );
 };
 

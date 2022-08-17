@@ -13,7 +13,7 @@ const AdminLayout = ({ children }: Props) => {
       <header>
         <AdminNavbar />
       </header>
-      {children}
+      <main>{children}</main>
     </div>
   );
 };

@@ -12,7 +12,7 @@ import { hamburgerIcon, closeIcon } from "images/icons";
 
 // Styled Components
 import { StyledLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-import { LinkButton } from "styled/buttons";
+import { NavLinkButton } from "styled/buttons";
 
 const AdminNav = styled.nav`
   width: 90%;
@@ -50,11 +50,11 @@ const AdminNavLinks = styled.div`
   } ;
 `;
 
-const AdminLinkButton = styled(LinkButton)`
-  padding: 0.6rem 1.1rem;
-  font-weight: inherit;
-  font-size: 1.4rem;
-`;
+// const AdminLinkButton = styled(LinkButton)`
+//   padding: 0.6rem 1.1rem;
+//   font-weight: inherit;
+//   font-size: 1.4rem;
+// `;
 
 const AdminNavbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
@@ -71,7 +71,7 @@ const AdminNavbar = () => {
           <StyledLink to="/admin/tracks">Tracks</StyledLink>
           <StyledLink to="/admin/genres">Genres</StyledLink>
           <StyledLink to="/admin/text">Text</StyledLink>
-          <AdminLinkButton to="/">Main Site</AdminLinkButton>
+          <NavLinkButton to="/">Main Site</NavLinkButton>
         </AdminNavLinks>
         <HamburgerOpenIcon
           onClick={() => setHamburgerOpen(!hamburgerOpen)}

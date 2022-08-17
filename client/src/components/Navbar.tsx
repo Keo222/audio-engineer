@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Image
 import lightbulbWhite from "images/lightbulb-white.png";
@@ -12,71 +12,54 @@ import DropdownNav from "./DropdownNav";
 
 // Styled Components
 import { StyledLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-const SmallNav = styled.nav`
-  display: none;
-  height: 15rem;
-  width: 100%;
-  font-size: 1.6rem;
-  font-weight: 500;
-  justify-content: space-between;
-  z-index: 100;
-  @media screen and (${(props) => props.theme.responsive.lg}) {
-    display: flex;
-  }
-  @media screen and (${(props) => props.theme.responsive.xs}) {
-    height: 10rem;
-  } ;
-`;
+import { NavLinkButton } from "styled/buttons";
 
-const LargeNav = styled.nav`
+const StyledNav = styled.nav`
   width: 90%;
   max-width: 150rem;
+  display: grid;
+  grid-template-columns: 1fr 240px 1fr;
+  gap: 30px;
   margin: 0 auto;
   font-size: 1.6rem;
   font-weight: 500;
-  display: grid;
-  grid-template-columns: 1fr 240px 1fr;
   @media screen and (${(props) => props.theme.responsive.lg}) {
-    display: none;
+    display: flex;
+    height: 15rem;
+    width: 95%;
+    font-size: 1.6rem;
+    font-weight: 500;
+    z-index: 100;
+  }
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    justify-content: space-between;
   } ;
 `;
 
-const SmallNavLinks = styled.div`
+const NavLinksContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 50rem;
-  margin: 0 4rem;
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    gap: 30px;
+  }
   @media screen and (${(props) => props.theme.responsive.sm}) {
     display: none;
   } ;
 `;
-const NavLinksLeft = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 6rem;
-`;
-const NavLinksRight = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 6rem;
-`;
 
-const LinkButton = styled(Link)`
-  background: ${(props) => props.theme.color.highlight1};
-  color: ${(props) => props.theme.color.textDark};
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.8rem 2rem;
-  border-radius: 5px;
-  transition: all 0.3s;
-  &:hover,
-  &:active {
-    filter: brightness(0.7);
+const NavLinksLeft = styled(NavLinksContainer)`
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    order: 1;
+    margin-left: auto;
   }
 `;
+const NavLinksRight = styled(NavLinksContainer)`
+  @media screen and (${(props) => props.theme.responsive.lg}) {
+    order: 2;
+  }
+`;
+
 const ImageContainer = styled.div`
   width: 12rem;
   height: 15rem;
@@ -95,55 +78,31 @@ const ImageContainer = styled.div`
 const Navbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
-  let location = useLocation();
-  const adminRegex = /^\/admin/;
-
   return (
     <>
-      {!adminRegex.test(location.pathname) ? (
-        <>
-          <SmallNav>
-            <ImageContainer>
-              <Link to="/">
-                <NavLogo src={lightbulbWhite} />
-              </Link>
-            </ImageContainer>
-            <SmallNavLinks>
-              <StyledLink to="/">Home</StyledLink>
-              <StyledLink to="/about">About</StyledLink>
-              <StyledLink to="/listen">Listen</StyledLink>
-              <StyledLink to="/contact">Contact</StyledLink>
-              <StyledLink to="/services">Services</StyledLink>
-              <LinkButton to="/hire">Hire</LinkButton>
-            </SmallNavLinks>
-            <HamburgerOpenIcon
-              onClick={() => setHamburgerOpen(!hamburgerOpen)}
-              src={hamburgerOpen ? closeIcon : hamburgerIcon}
-            />
-          </SmallNav>
-          <LargeNav>
-            <NavLinksLeft>
-              <StyledLink to="/">Home</StyledLink>
-              <StyledLink to="/about">About</StyledLink>
-              <StyledLink to="/listen">Listen</StyledLink>
-            </NavLinksLeft>
-            <ImageContainer>
-              <Link to="/">
-                <NavLogo src={lightbulbWhite} />
-              </Link>
-            </ImageContainer>
-            <NavLinksRight>
-              <StyledLink to="/contact">Contact</StyledLink>
-              <StyledLink to="/services">Services</StyledLink>
-              <LinkButton to="/hire">Hire</LinkButton>
-            </NavLinksRight>
-          </LargeNav>
-          {hamburgerOpen && (
-            <DropdownNav setHamburgerOpen={setHamburgerOpen} />
-          )}
-        </>
-      ) : (
-        <></>
+      <StyledNav>
+        <NavLinksLeft>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/about">About</StyledLink>
+          <StyledLink to="/listen">Listen</StyledLink>
+        </NavLinksLeft>
+        <ImageContainer>
+          <Link to="/">
+            <NavLogo src={lightbulbWhite} />
+          </Link>
+        </ImageContainer>
+        <NavLinksRight>
+          <StyledLink to="/contact">Contact</StyledLink>
+          <StyledLink to="/services">Services</StyledLink>
+          <NavLinkButton to="/hire">Hire</NavLinkButton>
+        </NavLinksRight>
+        <HamburgerOpenIcon
+          onClick={() => setHamburgerOpen(!hamburgerOpen)}
+          src={hamburgerOpen ? closeIcon : hamburgerIcon}
+        />
+      </StyledNav>
+      {hamburgerOpen && (
+        <DropdownNav setHamburgerOpen={setHamburgerOpen} />
       )}
     </>
   );

@@ -28,3 +28,7 @@ export const LinkButton = styled(Link)<TColorProp>`
     padding: 1rem 1.5rem;
   }
 `;
+
+export const NavLinkButton = styled(LinkButton)`
+  padding: 0.8rem 1.6rem;
+`;

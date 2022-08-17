@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
-// Imported Styled Components
+// Layout
+import PageLayout from "layouts/PageLayout";
+
+// Styled Components
 import { PageHeading, SmallFormattedParagraph } from "styled/typography";
 import {
   StyledForm,
@@ -12,7 +15,6 @@ import {
   SubmitButton,
 } from "styled/forms";
 
-// Styled Components
 const PageWrapper = styled.div`
   margin-bottom: 4rem;
 `;
@@ -47,7 +49,7 @@ const Contact = () => {
     getText();
   }, []);
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Audio Engineer | Contact</title>
       </Helmet>
@@ -81,7 +83,7 @@ const Contact = () => {
           <SubmitButton>Submit</SubmitButton>
         </StyledForm>
       </PageWrapper>
-    </>
+    </PageLayout>
   );
 };
 

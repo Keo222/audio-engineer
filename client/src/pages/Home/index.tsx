@@ -2,11 +2,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-// Images
-import studioImg from "images/studio1.jpg";
+// Layout
+import PageLayout from "layouts/PageLayout";
 
 // Components
 import ContactLogos from "components/ContactLogos";
+
+// Images
+import studioImg from "images/studio1.jpg";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
@@ -106,7 +109,7 @@ const HomePgLinkButton = styled(LinkButton)`
 
 const Home = () => {
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Audio Engineer</title>
       </Helmet>
@@ -128,7 +131,7 @@ const Home = () => {
         </ButtonDiv>
         <ContactLogos />
       </HomeSection>
-    </>
+    </PageLayout>
   );
 };
 

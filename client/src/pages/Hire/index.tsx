@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
-// Imported Stylec Components
+// Layout
+import PageLayout from "layouts/PageLayout";
+
+// Styled Elements
 import {
   PageHeading,
   BoldSpan,
@@ -10,7 +13,6 @@ import {
 } from "styled/typography";
 import { GridForm, GridSubmitButton } from "styled/forms";
 
-// Styled Elements
 const InfoTextSection = styled.section`
   min-width: 200px;
   width: 60%;
@@ -139,7 +141,7 @@ const Hire = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Audio Engineer | Hire</title>
       </Helmet>
@@ -205,7 +207,7 @@ const Hire = () => {
         </EstimatedCost>
         <GridSubmitButton>Submit</GridSubmitButton>
       </GridForm>
-    </>
+    </PageLayout>
   );
 };
 

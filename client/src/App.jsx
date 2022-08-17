@@ -13,6 +13,7 @@ import Listen from "pages/Listen";
 import Contact from "pages/Contact";
 import Services from "pages/Services";
 import Hire from "pages/Hire";
+// ADMIN PAGES
 import Admin from "pages/admin/AdminHome";
 import AdminLogin from "pages/admin/AdminLogin";
 import AdminTracks from "pages/admin/AdminTracks";
@@ -22,15 +23,11 @@ import AdminUpdateTrack from "pages/admin/AdminUpdateTrack";
 import AdminText from "pages/admin/AdminText";
 import AdminGenres from "pages/admin/AdminGenres";
 
-// Components
-import Navbar from "components/Navbar";
-
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

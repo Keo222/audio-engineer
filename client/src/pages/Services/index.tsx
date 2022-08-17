@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+// Layout
+import PageLayout from "layouts/PageLayout";
+
 // Components
 import { FlipCard, SolidFlipCard } from "components/cards";
 
-// Imported Styled Components
+// Styled Components
+import type { TColorProp } from "styled/types";
 import { handleColorType } from "styled/styleHelperFuncs";
 import { PageHeading, SmallFormattedParagraph } from "styled/typography";
 import { LinkButton } from "styled/buttons";
-import type { TColorProp } from "styled/types";
 
-// Styled Components
 const InfoTextSection = styled.section`
   min-width: 200px;
   width: 60%;
@@ -76,7 +78,7 @@ const Pricing = () => {
     getText();
   }, []);
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Audio Engineer | Services</title>
       </Helmet>
@@ -162,7 +164,7 @@ const Pricing = () => {
           Book Services
         </LinkButton>
       </CenteringDiv>
-    </>
+    </PageLayout>
   );
 };
 

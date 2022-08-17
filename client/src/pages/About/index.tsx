@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
+// Layout
+import PageLayout from "layouts/PageLayout";
+
 // Components
 import ContactLogos from "components/ContactLogos";
 
@@ -127,7 +130,7 @@ const About = () => {
     getText();
   }, []);
   return (
-    <>
+    <PageLayout>
       <Helmet>
         <title>Audio Engineer | About</title>
       </Helmet>
@@ -142,7 +145,7 @@ const About = () => {
         </AboutInfoSection>
         <ContactLogos />
       </AboutInfoContainer>
-    </>
+    </PageLayout>
   );
 };
 
