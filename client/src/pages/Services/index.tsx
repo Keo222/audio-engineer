@@ -62,8 +62,10 @@ const Pricing = () => {
       <InfoText textName="services" />
 
       <AllCardsDiv>
-        <section>
-          <SectionTitle color={"1"}>Mixing</SectionTitle>
+        <section aria-labelledby="mixing-header">
+          <SectionTitle id="mixing-header" color={"1"}>
+            Mixing
+          </SectionTitle>
           <FlipCardDiv>
             <FlipCard
               color={"3"}
