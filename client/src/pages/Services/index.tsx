@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
@@ -11,17 +10,9 @@ import { FlipCard, SolidFlipCard } from "components/cards";
 // Styled Components
 import type { TColorProp } from "styled/types";
 import { handleColorType } from "styled/styleHelperFuncs";
-import { PageHeading, SmallFormattedParagraph } from "styled/typography";
+import { PageHeading } from "styled/typography";
 import { LinkButton } from "styled/buttons";
-
-const InfoTextSection = styled.section`
-  min-width: 200px;
-  width: 60%;
-  max-width: 700px;
-  border: 2px solid ${(props) => props.theme.color.highlight2};
-  border-radius: 10px;
-  margin: 0 auto;
-`;
+import InfoText from "components/Admin/Text/InfoText";
 
 const SectionTitle = styled.h3<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
@@ -62,32 +53,13 @@ const CenteringDiv = styled.div`
 `;
 
 const Pricing = () => {
-  const [text, setText] = useState([]);
-
-  useEffect(() => {
-    const getText = async () => {
-      const fetch_url = "/api/text?name=pricing";
-      try {
-        const response = await fetch(fetch_url);
-        const { stored_text } = await response.json();
-        setText(stored_text);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getText();
-  }, []);
   return (
     <PageLayout>
       <Helmet>
         <title>Audio Engineer | Services</title>
       </Helmet>
-      <PageHeading>Pricing</PageHeading>
-      <InfoTextSection aria-label="Services Information">
-        {text.map((p, i) => (
-          <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
-        ))}
-      </InfoTextSection>
+      <PageHeading>Services</PageHeading>
+      <InfoText textName="services" />
 
       <AllCardsDiv>
         <section>

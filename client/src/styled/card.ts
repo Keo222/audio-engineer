@@ -96,11 +96,11 @@ export const CardHeadingBack = styled(CardHeading)`
   margin: auto 0;
 `;
 
-export const CardBackBody = styled.p<TColorProp>`
+export const CardBackBody = styled.ul<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
   width: 75%;
   flex: 1;
-  /* height: 100%; */
+  list-style-position: inside;
   margin: 0.8rem auto;
   padding: 0.5rem;
   border: 2px solid ${({ color }) => handleColorType(color)};

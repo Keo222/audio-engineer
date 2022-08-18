@@ -12,7 +12,7 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: clamp(250px, 80%, 600px);
-  margin: 0 auto;
+  margin: 3rem auto;
 `;
 
 export const GridForm = styled.form`

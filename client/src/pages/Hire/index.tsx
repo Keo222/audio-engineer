@@ -5,22 +5,12 @@ import { Helmet } from "react-helmet";
 // Layout
 import PageLayout from "layouts/PageLayout";
 
-// Styled Elements
-import {
-  PageHeading,
-  BoldSpan,
-  SmallFormattedParagraph,
-} from "styled/typography";
-import { GridForm, GridSubmitButton } from "styled/forms";
+// Components
+import InfoText from "components/Admin/Text/InfoText";
 
-const InfoTextSection = styled.section`
-  min-width: 200px;
-  width: 60%;
-  max-width: 700px;
-  border: 2px solid ${(props) => props.theme.color.highlight2};
-  border-radius: 10px;
-  margin: 0 auto;
-`;
+// Styled Elements
+import { PageHeading, BoldSpan } from "styled/typography";
+import { GridForm, GridSubmitButton } from "styled/forms";
 
 interface IGrid {
   rowStart?: number;
@@ -94,23 +84,8 @@ const EstimatedCost = styled.p`
 `;
 
 const Hire = () => {
-  const [text, setText] = useState([]);
   const [numTracks, setNumTracks] = useState(1);
   const [work, setWork] = useState("Mix");
-
-  useEffect(() => {
-    const getText = async () => {
-      const fetch_url = "/api/text?name=hire";
-      try {
-        const response = await fetch(fetch_url);
-        const { stored_text } = await response.json();
-        setText(stored_text);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getText();
-  }, []);
 
   const handleWorkType = (work: string) => {
     switch (work) {
@@ -146,11 +121,7 @@ const Hire = () => {
         <title>Audio Engineer | Hire</title>
       </Helmet>
       <PageHeading>Hire</PageHeading>
-      <InfoTextSection aria-label="Hiring Guidelines">
-        {text.map((p, i) => (
-          <SmallFormattedParagraph key={i}>{p}</SmallFormattedParagraph>
-        ))}
-      </InfoTextSection>
+      <InfoText textName="hire" />
       <GridForm aria-label="Hire Form">
         <Label htmlFor="name">Name:</Label>
         <Input type="text" name="name" id="name" />

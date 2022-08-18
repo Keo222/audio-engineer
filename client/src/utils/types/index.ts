@@ -9,6 +9,10 @@ type TText = {
 
 type TTextTitle = "about" | "contact" | "pricing" | "hire";
 
+type TInfoTextTitle =
+  | Exclude<TTextTitle, "about" | "pricing">
+  | "services";
+
 type TTrack = {
   track_id: number;
   track_genre: string;
@@ -26,4 +30,12 @@ type TTrack = {
 
 type TWork = "Production" | "Mixing" | "Mastering" | "All";
 
-export type { TGenre, TPlayer, TText, TTextTitle, TWork, TTrack };
+export type {
+  TGenre,
+  TPlayer,
+  TText,
+  TTextTitle,
+  TInfoTextTitle,
+  TWork,
+  TTrack,
+};

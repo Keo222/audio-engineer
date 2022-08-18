@@ -64,7 +64,7 @@ const Listen = () => {
   }, []);
 
   // Parse genres from tracks
-  const getGenres = (trackArr: TTrack[] | undefined) => {
+  const getTrackGenres = (trackArr: TTrack[] | undefined) => {
     if (trackArr) {
       const genreSet = new Set();
       trackArr.map((t: TTrack) => genreSet.add(t.track_genre));
@@ -72,7 +72,7 @@ const Listen = () => {
       return genreList;
     }
   };
-  const genres = getGenres(tracks);
+  const genres = getTrackGenres(tracks);
 
   return (
     <PageLayout>

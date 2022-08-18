@@ -22,7 +22,7 @@ type Props = {
 const FlipCard = ({ color, work, cardTitle, backText }: Props) => {
   return (
     <Card>
-      <ColoredCardFront color={color}>
+      <ColoredCardFront aria-hidden="true" color={color}>
         <ColoredHeadingFront>{cardTitle}</ColoredHeadingFront>
       </ColoredCardFront>
       <CardBack>
