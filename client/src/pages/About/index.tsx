@@ -49,6 +49,7 @@ const About = () => {
     <PageLayout>
       <Helmet>
         <title>Audio Engineer | About</title>
+        <meta name="description" content="About Audio Engineer" />
       </Helmet>
       <BackgroundImage />
       <AboutInfoContainer>
