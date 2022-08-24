@@ -77,7 +77,11 @@ const Listen = () => {
   return (
     <PageLayout>
       <Helmet>
-        <title>Joel Gardella | Listen</title>
+        <title>Audio Engineer | Listen</title>
+        <meta
+          name="description"
+          content="Audio Engineers portofolio displaying tracks they've mixed, mastered, and produced."
+        />
       </Helmet>
       <PageDiv>
         <PageHeading>Listen</PageHeading>
