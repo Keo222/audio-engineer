@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledLink = styled(Link)`
+export const NavbarLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.color.textLight};
 

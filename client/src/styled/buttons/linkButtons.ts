@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import type { TColorProp } from "styled/types";
 
 // Helper Functions
-import { handleColorType } from "./styleHelperFuncs";
+import { handleColorType } from "../styleHelperFuncs";
 
 // Colored Button Link -- Required props:
 // - Color: "1", "2", or "3" for different highlight colors
-export const LinkButton = styled(Link)<TColorProp>`
+const LinkButton = styled(Link)<TColorProp>`
   background: ${({ color }) => handleColorType(color)};
   color: ${(props) => props.theme.color.textDark};
   font-weight: 500;
@@ -29,6 +29,21 @@ export const LinkButton = styled(Link)<TColorProp>`
   }
 `;
 
-export const NavLinkButton = styled(LinkButton)`
+const LinkButtonLg = styled(LinkButton)`
+  font-size: 1.8rem;
+  padding: 1.5rem 3rem;
+
+  @media screen and (${(props) => props.theme.responsive.md}) {
+    padding: 1.2rem 2.6rem;
+  }
+
+  @media screen and (${(props) => props.theme.responsive.xs}) {
+    padding: 1rem 2rem;
+  }
+`;
+
+const LinkButtonNav = styled(LinkButton)`
   padding: 0.8rem 1.6rem;
 `;
+
+export { LinkButton, LinkButtonLg, LinkButtonNav };

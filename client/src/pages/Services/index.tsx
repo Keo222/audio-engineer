@@ -11,7 +11,7 @@ import { FlipCard, SolidFlipCard } from "components/cards";
 import type { TColorProp } from "styled/types";
 import { handleColorType } from "styled/styleHelperFuncs";
 import { PageHeading } from "styled/typography";
-import { LinkButton } from "styled/buttons";
+import { LinkButton } from "styled/buttons/linkButtons";
 import InfoText from "components/Admin/Text/InfoText";
 
 const SectionTitle = styled.h3<TColorProp>`

@@ -11,8 +11,8 @@ import { hamburgerIcon, closeIcon } from "images/icons";
 import DropdownNav from "./DropdownNav";
 
 // Styled Components
-import { StyledLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-import { NavLinkButton } from "styled/buttons";
+import { NavbarLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
+import { LinkButtonNav } from "styled/buttons/linkButtons";
 
 const StyledNav = styled.nav`
   width: 90%;
@@ -82,9 +82,9 @@ const Navbar = () => {
     <>
       <StyledNav>
         <NavLinksLeft>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/about">About</StyledLink>
-          <StyledLink to="/listen">Listen</StyledLink>
+          <NavbarLink to="/">Home</NavbarLink>
+          <NavbarLink to="/about">About</NavbarLink>
+          <NavbarLink to="/listen">Listen</NavbarLink>
         </NavLinksLeft>
         <ImageContainer>
           <Link to="/">
@@ -92,9 +92,9 @@ const Navbar = () => {
           </Link>
         </ImageContainer>
         <NavLinksRight>
-          <StyledLink to="/contact">Contact</StyledLink>
-          <StyledLink to="/services">Services</StyledLink>
-          <NavLinkButton to="/hire">Hire</NavLinkButton>
+          <NavbarLink to="/contact">Contact</NavbarLink>
+          <NavbarLink to="/services">Services</NavbarLink>
+          <LinkButtonNav to="/hire">Hire</LinkButtonNav>
         </NavLinksRight>
         <HamburgerOpenIcon
           onClick={() => setHamburgerOpen(!hamburgerOpen)}

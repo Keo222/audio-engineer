@@ -11,8 +11,8 @@ import lightbulbWhite from "images/lightbulb-white.png";
 import { hamburgerIcon, closeIcon } from "images/icons";
 
 // Styled Components
-import { StyledLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-import { NavLinkButton } from "styled/buttons";
+import { NavbarLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
+import { LinkButtonNav } from "styled/buttons/linkButtons";
 
 const AdminNav = styled.nav`
   width: 90%;
@@ -67,11 +67,11 @@ const AdminNavbar = () => {
           </Link>
         </AdminImageContainer>
         <AdminNavLinks>
-          <StyledLink to="/admin/">Home</StyledLink>
-          <StyledLink to="/admin/tracks">Tracks</StyledLink>
-          <StyledLink to="/admin/genres">Genres</StyledLink>
-          <StyledLink to="/admin/text">Text</StyledLink>
-          <NavLinkButton to="/">Main Site</NavLinkButton>
+          <NavbarLink to="/admin/">Home</NavbarLink>
+          <NavbarLink to="/admin/tracks">Tracks</NavbarLink>
+          <NavbarLink to="/admin/genres">Genres</NavbarLink>
+          <NavbarLink to="/admin/text">Text</NavbarLink>
+          <LinkButtonNav to="/">Main Site</LinkButtonNav>
         </AdminNavLinks>
         <HamburgerOpenIcon
           onClick={() => setHamburgerOpen(!hamburgerOpen)}

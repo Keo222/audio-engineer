@@ -13,7 +13,7 @@ import studioImg from "images/studio1.jpg";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
-import { LinkButton } from "styled/buttons";
+import { LinkButtonLg } from "styled/buttons/linkButtons";
 
 const HomeSection = styled.section`
   display: flex;
@@ -95,23 +95,15 @@ const ButtonDiv = styled.div`
   align-items: start;
 `;
 
-const HomePgLinkButton = styled(LinkButton)`
-  padding: 1.7rem 3.5rem;
-
-  @media screen and (${(props) => props.theme.responsive.md}) {
-    padding: 1.2rem 2.6rem;
-  }
-
-  @media screen and (${(props) => props.theme.responsive.xs}) {
-    padding: 1rem 2rem;
-  }
-`;
-
 const Home = () => {
   return (
     <PageLayout>
       <Helmet>
         <title>Audio Engineer</title>
+        <meta
+          name="description"
+          content="A site to view an Audio Engineers portfolio and hire them for future work."
+        />
       </Helmet>
       <WholeScreenDiv src={studioImg} />
       <HomeSection aria-labelledby="home-header">
@@ -119,15 +111,17 @@ const Home = () => {
         <DescriptorDiv>
           <DescriptorLink to="/about">Audio Engineer</DescriptorLink>
           <DescriptorLink to="/pricing">Production</DescriptorLink>
-          <DescriptorLink to="/pricing">Mixing & Mastering</DescriptorLink>
+          <DescriptorLink to="/pricing">
+            Mixing &amp; Mastering
+          </DescriptorLink>
         </DescriptorDiv>
         <ButtonDiv>
-          <HomePgLinkButton to="/listen" color={"1"}>
+          <LinkButtonLg to="/listen" color={"1"}>
             Listen
-          </HomePgLinkButton>
-          <HomePgLinkButton to="/pricing" color={"1"}>
+          </LinkButtonLg>
+          <LinkButtonLg to="/pricing" color={"1"}>
             Services
-          </HomePgLinkButton>
+          </LinkButtonLg>
         </ButtonDiv>
         <ContactLogos />
       </HomeSection>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { LinkButton } from "./buttons";
+import { LinkButton } from "./buttons/linkButtons";
 
 // Helper Functions
 import { handleColorType, handleGlowType } from "./styleHelperFuncs";
