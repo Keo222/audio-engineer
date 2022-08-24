@@ -11,21 +11,19 @@ import InfoText from "components/Admin/Text/InfoText";
 import { PageHeading } from "styled/typography";
 import { ContactForm } from "./pageComponents";
 
-const PageWrapper = styled.div`
-  margin-bottom: 4rem;
-`;
-
 const Contact = () => {
   return (
     <PageLayout>
       <Helmet>
         <title>Audio Engineer | Contact</title>
+        <meta
+          name="description"
+          content="Contact Audio Engineer for all mixing, mastering, and producing inquiries."
+        />
       </Helmet>
-      <PageWrapper>
-        <PageHeading>Contact</PageHeading>
-        <InfoText textName="contact" />
-        <ContactForm />
-      </PageWrapper>
+      <PageHeading>Contact</PageHeading>
+      <InfoText textName="contact" />
+      <ContactForm />
     </PageLayout>
   );
 };
