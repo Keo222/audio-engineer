@@ -121,9 +121,7 @@ const EstimatedCost = styled.p`
   }
 `;
 
-type Props = {};
-
-const HireForm = (props: Props) => {
+const HireForm = () => {
   const [numTracks, setNumTracks] = useState(1);
   const [work, setWork] = useState("Mix");
 
