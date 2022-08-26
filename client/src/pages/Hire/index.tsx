@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import PageLayout from "layouts/PageLayout";
 
 // Components
-import InfoText from "components/Admin/Text/InfoText";
+import InfoText from "components/Text/InfoText";
 
 // Styled Elements
 import { PageHeading } from "styled/typography";

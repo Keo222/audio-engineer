@@ -1,16 +1,28 @@
+import styled from "styled-components";
+
 // Types
 import { TColor } from "styled/types";
 
-// Imported Styled Components
+// Styled Components
 import {
   Card,
   SolidCardFront,
   SolidHeadingFront,
   SolidCardBack,
   CardHeadingBack,
-  CardBackBody,
   CardLinkButton,
-} from "styled/card";
+} from "./styled";
+import { handleColorType } from "styled/styleHelperFuncs";
+
+const SolidCardBackBody = styled.p<{ color: TColor }>`
+  color: ${(props) => props.theme.color.textLight};
+  width: 75%;
+  flex: 1;
+  margin: 0.8rem auto;
+  padding: 0.5rem;
+  border: 2px solid ${({ color }) => handleColorType(color)};
+  border-radius: 5px;
+`;
 
 type Props = {
   color: TColor;
@@ -30,23 +42,7 @@ const SolidFlipCard = ({ color, numTracks, work }: Props) => {
         <CardHeadingBack>
           {numTracks} {trackOrTracks}
         </CardHeadingBack>
-        <CardBackBody color={color}>
-          <li>One</li>
-          <li>Two</li>
-          <li>Three</li>
-          <li>Four</li>
-          <li>Five</li>
-          <li>Six</li>
-          <li>Seven</li>
-          <li>Eight</li>
-          <li>Nine</li>
-          <li>Ten</li>
-          <li>Eleven</li>
-          <li>Twelve</li>
-          <li>Thirteen</li>
-          <li>Fourteen</li>
-          <li>Fifteen</li>
-        </CardBackBody>
+        <SolidCardBackBody color={color}></SolidCardBackBody>
         <CardLinkButton
           to={`/hire?tracks=${numTracks}&work=${work}`}
           color={color}

@@ -10,7 +10,7 @@ import {
   CardHeadingBack,
   CardBackBody,
   CardLinkButton,
-} from "styled/card";
+} from "./styled";
 
 type Props = {
   color: TColor;

@@ -67,8 +67,8 @@ const DropdownNav = ({ setHamburgerOpen }: Props) => {
         <StyledLink onClick={() => setHamburgerOpen(false)} to="/contact">
           Contact
         </StyledLink>
-        <StyledLink onClick={() => setHamburgerOpen(false)} to="/pricing">
-          Pricing
+        <StyledLink onClick={() => setHamburgerOpen(false)} to="/services">
+          Services
         </StyledLink>
         <StyledLink onClick={() => setHamburgerOpen(false)} to="/hire">
           Hire

@@ -10,7 +10,7 @@ import AdminLayout from "layouts/AdminLayout";
 
 // Components
 import UpdateNotification from "components/Admin/UpdateNotification";
-import TextSection from "components/Admin/Text/TextSection";
+import TextSection from "components/Text/TextSection";
 
 // Styled Components
 import { PageHeading } from "styled/typography";

@@ -12,11 +12,14 @@ import { SmallFormattedParagraph } from "styled/typography";
 
 const InfoTextSection = styled.section`
   min-width: 200px;
-  width: 60%;
-  max-width: 700px;
+  width: clamp(350px, 70%, 750px);
   border: 2px solid ${(props) => props.theme.color.highlight2};
   border-radius: 10px;
   margin: 0 auto;
+
+  @media screen and (max-width: 400px) {
+    width: 95%;
+  } ;
 `;
 
 // Props Type

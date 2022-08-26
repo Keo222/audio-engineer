@@ -5,14 +5,17 @@ import { Helmet } from "react-helmet";
 import PageLayout from "layouts/PageLayout";
 
 // Components
-import { FlipCard, SolidFlipCard } from "components/cards";
+import {
+  FlipCard,
+  SolidFlipCard,
+} from "pages/Services/pageComponents/cards";
 
 // Styled Components
 import type { TColorProp } from "styled/types";
 import { handleColorType } from "styled/styleHelperFuncs";
 import { PageHeading } from "styled/typography";
 import { LinkButton } from "styled/buttons/linkButtons";
-import InfoText from "components/Admin/Text/InfoText";
+import InfoText from "components/Text/InfoText";
 
 const SectionTitle = styled.h3<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
@@ -89,8 +92,10 @@ const Pricing = () => {
             />
           </FlipCardDiv>
         </section>
-        <section>
-          <SectionTitle color={"2"}>Mastering</SectionTitle>
+        <section aria-labelledby="mastering-header">
+          <SectionTitle id="mastering-header" color={"2"}>
+            Mastering
+          </SectionTitle>
           <FlipCardDiv>
             <FlipCard
               color={"1"}
@@ -118,20 +123,6 @@ const Pricing = () => {
             />
           </FlipCardDiv>
         </section>
-
-        {/* <SectionTitle color={"3"}>Mixing & Mastering</SectionTitle>
-        <FlipCardDiv>
-          <FlipCard color={"2"} numTracks={"1"} work={"MixMaster"} />
-          <MiddleDiv>
-            <BestDealText>Hire Now</BestDealText>
-            <SolidFlipCard
-              color={"3"}
-              numTracks={"12"}
-              work={"MixMaster"}
-            />
-          </MiddleDiv>
-          <FlipCard color={"2"} numTracks={"5"} work={"MixMaster"} />
-        </FlipCardDiv> */}
       </AllCardsDiv>
       <CenteringDiv>
         <LinkButton to="/hire" color={"3"}>

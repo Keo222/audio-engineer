@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-import { LinkButton } from "./buttons/linkButtons";
+import { LinkButton } from "../../../../styled/buttons/linkButtons";
 
 // Helper Functions
-import { handleColorType, handleGlowType } from "./styleHelperFuncs";
+import {
+  handleColorType,
+  handleGlowType,
+} from "../../../../styled/styleHelperFuncs";
 
 // Types
 import type { TColorProp } from "styled/types";
