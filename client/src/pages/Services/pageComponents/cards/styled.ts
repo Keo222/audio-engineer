@@ -90,7 +90,7 @@ export const SolidCardBack = styled(SolidCardSide)`
   padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 `;
 
 export const CardHeadingBack = styled(CardHeading)`

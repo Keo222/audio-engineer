@@ -12,16 +12,21 @@ import {
   CardHeadingBack,
   CardLinkButton,
 } from "./styled";
-import { handleColorType } from "styled/styleHelperFuncs";
 
 const SolidCardBackBody = styled.p<{ color: TColor }>`
-  color: ${(props) => props.theme.color.textLight};
-  width: 75%;
+  display: flex;
+  align-items: center;
   flex: 1;
+
+  color: ${(props) => props.theme.color.highlight3};
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  line-height: 2.6;
+
   margin: 0.8rem auto;
   padding: 0.5rem;
-  border: 2px solid ${({ color }) => handleColorType(color)};
-  border-radius: 5px;
+
+  transform: rotate(-30deg) translate(8px, -15px);
 `;
 
 type Props = {
@@ -42,7 +47,9 @@ const SolidFlipCard = ({ color, numTracks, work }: Props) => {
         <CardHeadingBack>
           {numTracks} {trackOrTracks}
         </CardHeadingBack>
-        <SolidCardBackBody color={color}></SolidCardBackBody>
+        <SolidCardBackBody color={color}>
+          12 Track <br /> Discount!
+        </SolidCardBackBody>
         <CardLinkButton
           to={`/hire?tracks=${numTracks}&work=${work}`}
           color={color}
