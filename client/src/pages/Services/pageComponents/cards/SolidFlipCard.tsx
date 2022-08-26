@@ -19,14 +19,15 @@ const SolidCardBackBody = styled.p<{ color: TColor }>`
   flex: 1;
 
   color: ${(props) => props.theme.color.highlight3};
-  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px ${(props) => props.theme.color.highlight3};
+  font-size: 2.7rem;
   letter-spacing: 5px;
   line-height: 2.6;
 
   margin: 0.8rem auto;
   padding: 0.5rem;
 
-  transform: rotate(-30deg) translate(8px, -15px);
+  transform: rotate(-30deg) translate(5px, -15px);
 `;
 
 type Props = {
