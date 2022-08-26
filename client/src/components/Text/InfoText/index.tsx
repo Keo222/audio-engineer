@@ -17,7 +17,7 @@ const InfoTextSection = styled.section`
   border-radius: 10px;
   margin: 0 auto;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 475px) {
     width: 95%;
   } ;
 `;
