@@ -8,7 +8,8 @@ import PageLayout from "layouts/PageLayout";
 import {
   FlipCard,
   SolidFlipCard,
-} from "pages/Services/pageComponents/cards";
+  MiddleCard,
+} from "./pageComponents/cards";
 
 // Styled Components
 import type { TColorProp } from "styled/types";
@@ -23,11 +24,20 @@ const SectionTitle = styled.h3<TColorProp>`
   font-weight: 400;
   letter-spacing: 0.5ch;
   margin-bottom: 1.5rem;
+  margin-left: 2rem;
   text-decoration: underline 1px ${({ color }) => handleColorType(color)};
 `;
 
 const AllCardsDiv = styled.div`
-  width: clamp(900px, 80%, 1200px);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const CardSection = styled.section`
+  width: 90%;
+  max-width: 1500px;
   margin: 0 auto;
 `;
 
@@ -36,8 +46,22 @@ const FlipCardDiv = styled.div`
   justify-content: space-between;
   height: 50rem;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 1000px) {
+    justify-content: space-around;
+    height: 40rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 80rem;
+    margin-top: 3rem;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    gap: 10rem;
+  }
 `;
-const MiddleDiv = styled.div``;
 
 const BestDealText = styled.p`
   text-transform: uppercase;
@@ -53,6 +77,9 @@ const CenteringDiv = styled.div`
   align-items: center;
   justify-content: center;
   margin: 3rem 0 8rem;
+  @media screen and (max-width: 700px) {
+    margin: 1.5rem 0 5rem;
+  }
 `;
 
 const Pricing = () => {
@@ -65,7 +92,7 @@ const Pricing = () => {
       <InfoText textName="services" />
 
       <AllCardsDiv>
-        <section aria-labelledby="mixing-header">
+        <CardSection aria-labelledby="mixing-header">
           <SectionTitle id="mixing-header" color={"1"}>
             Mixing
           </SectionTitle>
@@ -78,10 +105,10 @@ const Pricing = () => {
               }
               work={"Mix"}
             />
-            <MiddleDiv>
+            <MiddleCard>
               <BestDealText>Hire Now</BestDealText>
               <SolidFlipCard color={"1"} numTracks={"12"} work={"Mix"} />
-            </MiddleDiv>
+            </MiddleCard>
             <FlipCard
               color={"3"}
               cardTitle={"LP Deal (7+ tracks)"}
@@ -91,8 +118,8 @@ const Pricing = () => {
               work={"Mix"}
             />
           </FlipCardDiv>
-        </section>
-        <section aria-labelledby="mastering-header">
+        </CardSection>
+        <CardSection aria-labelledby="mastering-header">
           <SectionTitle id="mastering-header" color={"2"}>
             Mastering
           </SectionTitle>
@@ -105,14 +132,14 @@ const Pricing = () => {
               }
               work={"Master"}
             />
-            <MiddleDiv>
+            <MiddleCard>
               <BestDealText>Hire Now</BestDealText>
               <SolidFlipCard
                 color={"2"}
                 numTracks={"12"}
                 work={"Master"}
               />
-            </MiddleDiv>
+            </MiddleCard>
             <FlipCard
               color={"1"}
               cardTitle={"Full album master (7+ tracks)"}
@@ -122,7 +149,7 @@ const Pricing = () => {
               work={"Master"}
             />
           </FlipCardDiv>
-        </section>
+        </CardSection>
       </AllCardsDiv>
       <CenteringDiv>
         <LinkButton to="/hire" color={"3"}>

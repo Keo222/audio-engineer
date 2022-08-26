@@ -9,6 +9,11 @@ export const PageHeading = styled.h1`
   color: ${(props) => props.theme.color.highlight2};
   letter-spacing: 1.6rem;
   margin: 3vh 0;
+
+  @media screen and (max-width: 380px) {
+    font-size: 3.5rem;
+    letter-spacing: 1rem;
+  }
 `;
 
 export const SectionTitle = styled.h3<TColorProp>`

@@ -43,7 +43,7 @@ const CardSide = styled.div`
 `;
 
 const SolidCardSide = styled(CardSide)<TColorProp>`
-  box-shadow: 0 0 5rem 1rem ${({ color }) => handleGlowType(color)}; ;
+  box-shadow: 0 0 5rem 1rem ${({ color }) => handleGlowType(color)};
 `;
 
 export const ColoredCardFront = styled(CardSide)<TColorProp>`
