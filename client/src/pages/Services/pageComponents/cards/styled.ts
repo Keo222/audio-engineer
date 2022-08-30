@@ -1,29 +1,37 @@
 import styled from "styled-components";
 
-import { LinkButton } from "../../../../styled/buttons/linkButtons";
+import { LinkButton } from "styled/buttons/linkButtons";
 
 // Helper Functions
-import {
-  handleColorType,
-  handleGlowType,
-} from "../../../../styled/styleHelperFuncs";
+import { handleColorType, handleGlowType } from "styled/styleHelperFuncs";
 
 // Types
 import type { TColorProp } from "styled/types";
 
 // Styled Components
-export const Card = styled.div`
+type TFlip = { flip?: boolean };
+
+export const Card = styled.div<TFlip>`
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
   height: 30rem;
   width: 25rem;
 
-  &:hover div:nth-of-type(1) {
-    transform: rotateY(-180deg);
+  div:nth-of-type(1) {
+    transform: ${(props) => (props.flip ? "rotateY(-180deg)" : "")};
   }
-  &:hover div:nth-of-type(2) {
-    transform: rotateY(0deg);
+  div:nth-of-type(2) {
+    transform: ${(props) => (props.flip ? "rotateY(0deg)" : "")};
+  }
+
+  @media screen and (min-width: 700px) {
+    &:hover div:nth-of-type(1) {
+      transform: rotateY(-180deg);
+    }
+    &:hover div:nth-of-type(2) {
+      transform: rotateY(0deg);
+    }
   }
 `;
 
@@ -53,6 +61,12 @@ export const ColoredCardFront = styled(CardSide)<TColorProp>`
     ${({ color }) => handleColorType(color)} 50%,
     ${({ color }) => handleColorType(color)}
   );
+
+  @media screen and (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 export const SolidCardFront = styled(SolidCardSide)`
