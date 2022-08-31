@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import type { TGenre } from "utils/types";
+import type { TGenre } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

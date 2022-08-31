@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { deleteTrack, getTracks } from "utils/functions";
 
 // Types
-import type { TTrack } from "utils/types";
+import type { TTrack } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

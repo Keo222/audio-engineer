@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 
 // Types
-import type { TTextTitle } from "utils/types";
+import type { TTextTitle } from "types";
 
 // Icons
 import { upArrow, downArrow } from "images/icons";

@@ -8,7 +8,7 @@ import { leftArrow, rightArrow, upArrow, downArrow } from "images/icons";
 import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicPlayers";
 
 // Types
-import type { TPlayer, TTrack } from "utils/types";
+import type { TPlayer, TTrack } from "types";
 
 import {
   animated,

@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
-import type { TGenre } from "utils/types";
+import type { TGenre } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

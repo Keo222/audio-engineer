@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 // Types
-import type { TGenre } from "utils/types";
+import type { TGenre } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

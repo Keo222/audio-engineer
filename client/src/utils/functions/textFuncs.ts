@@ -1,4 +1,4 @@
-import { TInfoTextTitle } from "utils/types";
+import { TInfoTextTitle } from "types";
 
 export function textAria(name: TInfoTextTitle) {
   const ariaLabel = {

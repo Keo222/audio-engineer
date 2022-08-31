@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import type { TText } from "utils/types";
+import type { TText } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

@@ -1,5 +1,5 @@
 import React from "react";
-import type { TPlayer } from "utils/types";
+import type { TPlayer } from "types";
 
 import styled from "styled-components";
 

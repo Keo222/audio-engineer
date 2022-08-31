@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getText } from "utils/functions/textCRUD";
 import { textAria } from "utils/functions/textFuncs";
 // Types
-import { TText, TInfoTextTitle } from "utils/types";
+import { TText, TInfoTextTitle } from "types";
 
 // Styled Components
 import { SmallFormattedParagraph } from "styled/typography";

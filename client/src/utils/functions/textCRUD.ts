@@ -1,4 +1,4 @@
-import { TTextTitle, TText } from "utils/types";
+import { TTextTitle, TText } from "types";
 
 // CREATE
 

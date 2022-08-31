@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { TPlayer, TTrack, TWork } from "utils/types";
+import type { TPlayer, TTrack, TWork } from "types";
 
 import MusicSlider from "components/MusicSlider";
 

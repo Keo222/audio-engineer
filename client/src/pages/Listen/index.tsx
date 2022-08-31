@@ -3,17 +3,13 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Types
-import type { TPlayer, TWork, TTrack } from "utils/types";
+import type { TPlayer, TWork, TTrack } from "types";
 
 // Layout
 import PageLayout from "layouts/PageLayout";
 
 // Components
-import {
-  GenreSelect,
-  StreamingServiceSelect,
-  WorkSelect,
-} from "./pageComponents/selects";
+import ListenControls from "./pageComponents/ListenControls";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
@@ -21,14 +17,6 @@ import TrackList from "./pageComponents/TrackList";
 
 const PageDiv = styled.div`
   margin-bottom: 10rem;
-`;
-
-const SelectsSection = styled.section`
-  display: flex;
-  width: clamp(250px, 85%, 1400px);
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const Listen = () => {
@@ -85,11 +73,14 @@ const Listen = () => {
       </Helmet>
       <PageDiv>
         <PageHeading>Listen</PageHeading>
-        <SelectsSection aria-label="Track Controls">
-          <StreamingServiceSelect player={player} setPlayer={setPlayer} />
-          <WorkSelect work={work} setWork={setWork} />
-          <GenreSelect genres={genres} setCurrentGenre={setCurrentGenre} />
-        </SelectsSection>
+        <ListenControls
+          player={player}
+          setPlayer={setPlayer}
+          work={work}
+          setWork={setWork}
+          genres={genres}
+          setCurrentGenre={setCurrentGenre}
+        />
         <TrackList
           genres={genres}
           tracks={tracks}

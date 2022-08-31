@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { getGenres } from "utils/functions";
 
 // Types
-import type { TGenre } from "utils/types";
+import type { TGenre } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

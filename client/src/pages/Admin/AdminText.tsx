@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
-import type { TText, TTextTitle } from "utils/types";
+import type { TText, TTextTitle } from "types";
 
 // Layout
 import AdminLayout from "layouts/AdminLayout";

@@ -6,7 +6,7 @@ const GenreSelectDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25rem;
+  width: 12vw;
 `;
 
 const SelectGenre = styled.select`

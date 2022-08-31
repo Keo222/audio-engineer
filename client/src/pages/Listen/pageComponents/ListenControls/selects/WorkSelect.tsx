@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import type { TSelectable } from "styled/types";
-import type { TWork } from "utils/types";
+import type { TWork } from "types";
 
 // Styled Components
 const WorkSelectContainer = styled.div<TSelectable>`
@@ -12,7 +12,21 @@ const WorkSelectContainer = styled.div<TSelectable>`
   background: ${(props) => (props.selected ? "#404040" : "#606060")};
   border-radius: 55px;
   overflow: hidden;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    max-width: 400px;
+    order: 3;
+    grid-column: span 2;
+    justify-self: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-column: span 1;
+    margin-top: 60px;
+  }
 `;
+
 const WorkTrio = styled.div`
   display: flex;
   align-items: center;
