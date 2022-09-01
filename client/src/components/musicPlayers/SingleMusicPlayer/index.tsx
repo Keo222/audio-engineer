@@ -10,9 +10,9 @@ import { animated, useSpring, config } from "react-spring";
 import { useMeasure } from "react-use";
 
 // Import track embeds
-import SpotifyEmbed from "./SpotifyEmbed";
-import TidalEmbed from "./TidalEmbed";
-import AppleEmbed from "./AppleEmbed";
+import SpotifyEmbed from "../musicEmbeds/SpotifyEmbed";
+import TidalEmbed from "../musicEmbeds/TidalEmbed";
+import AppleEmbed from "../musicEmbeds/AppleEmbed";
 
 // Types
 import type { TPlayer, TTrack } from "types";

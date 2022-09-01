@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { leftArrow, rightArrow, upArrow, downArrow } from "images/icons";
 
 // Music Players
-import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicPlayers";
+import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "../musicEmbeds";
 
 // Types
 import type { TPlayer, TTrack } from "types";

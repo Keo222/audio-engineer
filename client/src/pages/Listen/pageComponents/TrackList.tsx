@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import type { TPlayer, TTrack, TWork } from "types";
 
-import MusicSlider from "components/MusicSlider";
+import MusicSlider from "components/musicPlayers/MusicSlider";
 
 type Props = {
   genres: string[] | undefined;
