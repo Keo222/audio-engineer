@@ -15,7 +15,7 @@ import {
 const SelectsSection = styled.section`
   display: flex;
   width: clamp(250px, 85%, 1400px);
-  margin: 0 auto;
+  margin: 40px auto;
   align-items: center;
   justify-content: space-between;
 
