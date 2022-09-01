@@ -80,6 +80,7 @@ const TrackList = ({
                   )}
                   player={player}
                   genre="Featured"
+                  rounded={player === "Spotify"}
                 />
               )}
             {genres &&
@@ -99,11 +100,12 @@ const TrackList = ({
                     }
                     player={player}
                     genre={g}
+                    rounded={player === "Spotify"}
                   />
                 ))}
           </section>
         )}
-      {typeof filteredTracks !== "undefined" && (
+      {filteredTracks && !(currentGenre === "All" && work === "All") && (
         <section aria-label="Tracks">
           {typeof filteredTracks !== "undefined" &&
             filteredTracks.map((t) => (
@@ -112,6 +114,7 @@ const TrackList = ({
                 tracks={[t]}
                 player={player}
                 genre={`${t.track_name} - ${t.track_artist}`}
+                rounded={player === "Spotify"}
               />
             ))}
         </section>

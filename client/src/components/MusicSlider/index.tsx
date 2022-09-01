@@ -93,11 +93,14 @@ const TrackContainer = styled.div`
   width: 81rem;
 `;
 
-const TrackDiv = styled(animated.div)`
+// Spotify needs more rounded corners.
+// When MusicSlider is rendered on the Listen page,
+// rounded is true if spotify is the selected player.
+const TrackDiv = styled(animated.div)<{ rounded: boolean }>`
   margin: 0 auto;
   width: 100%;
   background: #eee;
-  border-radius: 5px;
+  border-radius: ${(props) => (props.rounded ? "13px" : "5px")};
   overflow: hidden;
 `;
 
@@ -148,9 +151,10 @@ type Props = {
   player: TPlayer;
   genre: string;
   tracks: TTrack[];
+  rounded: boolean;
 };
 
-const MusicSlider = ({ player, genre, tracks }: Props) => {
+const MusicSlider = ({ player, genre, tracks, rounded }: Props) => {
   const [current, setCurrent] = useState(0);
   const length = tracks.length;
   useEffect(() => {
@@ -270,7 +274,7 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
         )}
         {transitions((styles, i) => (
           <TrackContainer>
-            <TrackDiv style={styles}>
+            <TrackDiv style={styles} rounded={rounded}>
               <EmbedDiv>{playerSwitch(tracks[i])}</EmbedDiv>
 
               <animated.div style={expand}>
