@@ -121,9 +121,28 @@ const EstimatedCost = styled.p`
   }
 `;
 
+type THireFormWork =
+  | "Mix"
+  | "Mix + Edit"
+  | "Master"
+  | "Mix & Master"
+  | "Produce";
+
 const HireForm = () => {
   const [numTracks, setNumTracks] = useState(1);
-  const [work, setWork] = useState("Mix");
+  const [work, setWork] = useState<THireFormWork>("Mix");
+
+  const getTotalCost = (numTracks: number, work: THireFormWork) => {
+    const pricePerTrack = {
+      Mix: 250,
+      "Mix + Edit": 325,
+      Master: 400,
+      "Mix & Master": 600,
+      Produce: 475,
+    };
+
+    return numTracks * pricePerTrack[work];
+  };
 
   useEffect(() => {
     const queries = window.location.search;
@@ -144,12 +163,28 @@ const HireForm = () => {
     switch (work) {
       case "Mix":
         return "Mix";
+      case "MixEdit":
+        return "Mix + Edit";
       case "Master":
         return "Master";
       case "MixMaster":
-        return "Mix/Master";
+        return "Mix & Master";
+      case "Produce":
+        return "Produce";
       default:
         return "Mix";
+    }
+  };
+
+  const handleWorkChange = (newWork: string) => {
+    if (
+      newWork === "Mix" ||
+      newWork === "Mix + Edit" ||
+      newWork === "Master" ||
+      newWork === "Mix & Master" ||
+      newWork === "Produce"
+    ) {
+      setWork(newWork);
     }
   };
   return (
@@ -167,12 +202,12 @@ const HireForm = () => {
         colStart={4}
         color={"2"}
         value={work}
-        onChange={(e) => setWork(e.target.value)}
+        onChange={(e) => handleWorkChange(e.target.value)}
       >
         <option value="Mix">Mix</option>
         <option value="Mix + Edit">Mix + Edit</option>
         <option value="Master">Master</option>
-        <option value="Mix & Master">Mix & Master</option>
+        <option value="Mix & Master">Mix &amp; Master</option>
         <option value="Produce">Produce</option>
       </StyledSelect>
       <Label rowStart={2} rowEnd={3} colStart={3} htmlFor="numSongs">
@@ -208,7 +243,7 @@ const HireForm = () => {
       <Label htmlFor="message">Message:</Label>
       <StyledTextArea colStart={2} colEnd={-1} color={"2"} />
       <EstimatedCost>
-        <BoldSpan>Estimate:</BoldSpan> ${numTracks * 10000}.00
+        <BoldSpan>Estimate:</BoldSpan> ${getTotalCost(numTracks, work)}.00
       </EstimatedCost>
       <StyledHireButton>Submit</StyledHireButton>
     </HireGridForm>
