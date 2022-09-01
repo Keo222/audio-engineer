@@ -4,9 +4,18 @@ import styled from "styled-components";
 // Styled Components
 const GenreSelectDiv = styled.div`
   display: flex;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   width: 12vw;
+  gap: 8px;
+`;
+
+const GenresLabel = styled.label`
+  color: ${(props) => props.theme.color.textLight};
+  font-size: 17px;
+  font-weight: 300;
+  /* align-self: start; */
 `;
 
 const SelectGenre = styled.select`
@@ -27,7 +36,12 @@ type Props = {
 const GenreSelect = ({ genres, setCurrentGenre }: Props) => {
   return (
     <GenreSelectDiv>
-      <SelectGenre onChange={(e) => setCurrentGenre(e.target.value)}>
+      <GenresLabel htmlFor="genres">Genre:</GenresLabel>
+      <SelectGenre
+        onChange={(e) => setCurrentGenre(e.target.value)}
+        name="genres"
+        id="genres"
+      >
         <option>All</option>
         {genres &&
           genres.map((g) => (
