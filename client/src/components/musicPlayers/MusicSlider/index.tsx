@@ -37,25 +37,30 @@ const TrackAndArrows = styled.div`
   margin: 0 auto 5rem;
   display: flex;
   align-items: center;
+  gap: 2rem;
   @media screen and (${(props) => props.theme.responsive.md}) {
     width: 92%;
+  }
+  @media screen and (max-width: 640px) {
+    gap: 1rem;
   }
 `;
 
 const NoArrowDiv = styled.div`
-  margin-left: 5rem;
+  margin-left: 3rem;
+  @media screen and (max-width: 640px) {
+    margin-left: 2rem;
+  }
 `;
 
 const LeftArrowSVG = styled.img`
   height: 3rem;
-  margin-right: 2rem;
   cursor: pointer;
   user-select: none;
 `;
 
 const RightArrowSVG = styled.img`
   height: 3rem;
-  margin-left: 2rem;
   cursor: pointer;
   user-select: none;
 `;
@@ -96,16 +101,20 @@ const TrackContainer = styled.div`
 // Spotify needs more rounded corners.
 // When MusicSlider is rendered on the Listen page,
 // rounded is true if spotify is the selected player.
-const TrackDiv = styled(animated.div)<{ rounded: boolean }>`
+const TrackDiv = styled(animated.div)<{ player: TPlayer }>`
   margin: 0 auto;
   width: 100%;
   background: #eee;
-  border-radius: ${(props) => (props.rounded ? "13px" : "5px")};
+  border-radius: ${(props) =>
+    props.player === "Spotify" ? "13px" : "5px"};
   overflow: hidden;
 `;
 
-const EmbedDiv = styled.div`
+const EmbedDiv = styled.div<{ player: TPlayer }>`
   width: 100%;
+  @media screen and (max-width: 450px) {
+    height: ${(props) => (props.player === "Spotify" ? "232px" : "auto")};
+  }
 `;
 
 // Track info elements
@@ -154,7 +163,7 @@ type Props = {
   rounded: boolean;
 };
 
-const MusicSlider = ({ player, genre, tracks, rounded }: Props) => {
+const MusicSlider = ({ player, genre, tracks }: Props) => {
   const [current, setCurrent] = useState(0);
   const length = tracks.length;
   useEffect(() => {
@@ -274,8 +283,10 @@ const MusicSlider = ({ player, genre, tracks, rounded }: Props) => {
         )}
         {transitions((styles, i) => (
           <TrackContainer>
-            <TrackDiv style={styles} rounded={rounded}>
-              <EmbedDiv>{playerSwitch(tracks[i])}</EmbedDiv>
+            <TrackDiv style={styles} player={player}>
+              <EmbedDiv player={player}>
+                {playerSwitch(tracks[i])}
+              </EmbedDiv>
 
               <animated.div style={expand}>
                 <TrackInfoDiv ref={heightRef}>

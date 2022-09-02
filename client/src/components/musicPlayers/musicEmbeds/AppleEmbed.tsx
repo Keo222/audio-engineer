@@ -8,6 +8,12 @@ const AppleFrame = styled.iframe`
   overflow: hidden;
   background: transparent;
   border: 0;
+  @media screen and (max-width: 580px) {
+    min-height: 190px;
+  }
+  @media screen and (max-width: 370px) {
+    min-height: 220px;
+  }
 `;
 
 type Props = {
