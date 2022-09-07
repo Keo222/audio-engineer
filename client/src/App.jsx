@@ -14,14 +14,14 @@ import Contact from "pages/Contact";
 import Services from "pages/Services";
 import Hire from "pages/Hire";
 // ADMIN PAGES
-import AdminHome from "./pages/admin/AdminHome";
-import AdminLogin from "pages/admin/AdminLogin";
-import AdminTracks from "pages/admin/AdminTracks";
-import AdminNewTrack from "pages/admin/AdminNewTrack";
-import FormikTSAdminNewTrack from "pages/admin/FormikTSAdminNewTrack";
-import AdminUpdateTrack from "pages/admin/AdminUpdateTrack";
-import AdminText from "pages/admin/AdminText";
-import AdminGenres from "pages/admin/AdminGenres";
+import AdminHome from "pages/PagesAdmin/AdminHome";
+import AdminLogin from "pages/PagesAdmin/AdminLogin";
+import AdminTracks from "pages/PagesAdmin/AdminTracks";
+import AdminNewTrack from "pages/PagesAdmin/AdminNewTrack";
+import FormikTSAdminNewTrack from "pages/PagesAdmin/FormikTSAdminNewTrack";
+import AdminUpdateTrack from "pages/PagesAdmin/AdminUpdateTrack";
+import AdminText from "pages/PagesAdmin/AdminText";
+import AdminGenres from "pages/PagesAdmin/AdminGenres";
 
 const App = () => {
   return (
