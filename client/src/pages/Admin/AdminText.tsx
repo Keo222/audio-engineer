@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
-import type { Text, TextTitle } from "../../types/types";
+import type { TText, TTextTitle } from "types";
 
-// Imported Components
-import UpdateNotification from "../../components/Admin/UpdateNotification";
-import TextSection from "../../components/Admin/Text/TextSection";
+// Layout
+import AdminLayout from "layouts/AdminLayout";
 
-// Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+// Components
+import UpdateNotification from "components/Admin/UpdateNotification";
+import TextSection from "components/Text/TextSection";
+
+// Styled Components
+import { PageHeading } from "styled/typography";
 
 const TextUpdateContainer = styled.div`
   width: clamp(275px, 60%, 900px);
@@ -23,7 +27,7 @@ const AdminText = () => {
   const [hireText, setHireText] = useState("Hire Text");
   const [updated, setUpdated] = useState(false);
 
-  const whichText = (textName: TextTitle) => {
+  const whichText = (textName: TTextTitle) => {
     switch (textName) {
       case "about":
         return aboutText;
@@ -40,7 +44,7 @@ const AdminText = () => {
 
   const updateText = async (
     e: React.MouseEvent<Element, MouseEvent>,
-    textName: TextTitle
+    textName: TTextTitle
   ) => {
     e.preventDefault();
     const sectionText = whichText(textName);
@@ -74,16 +78,16 @@ const AdminText = () => {
     const res = await fetch("/api/text?name=all");
     const allTexts = await res.json();
     const about = allTexts
-      .find((t: Text) => t.name === "about")
+      .find((t: TText) => t.name === "about")
       .stored_text.join("\n\n");
     const contact = allTexts
-      .find((t: Text) => t.name === "contact")
+      .find((t: TText) => t.name === "contact")
       .stored_text.join("\n\n");
     const pricing = allTexts
-      .find((t: Text) => t.name === "pricing")
+      .find((t: TText) => t.name === "pricing")
       .stored_text.join("\n\n");
     const hire = allTexts
-      .find((t: Text) => t.name === "hire")
+      .find((t: TText) => t.name === "hire")
       .stored_text.join("\n\n");
 
     setAboutText(about);
@@ -95,8 +99,10 @@ const AdminText = () => {
     setTexts();
   }, []);
   return (
-    <>
-      <title>JG Admin | Site Text</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | Site Text</title>
+      </Helmet>
       <PageHeading>Site Text</PageHeading>
       <TextUpdateContainer>
         {/* ABOUT TEXT */}
@@ -137,7 +143,7 @@ const AdminText = () => {
         />
       </TextUpdateContainer>
       {updated && <UpdateNotification />}
-    </>
+    </AdminLayout>
   );
 };
 

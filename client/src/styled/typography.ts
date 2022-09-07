@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TColorStyle } from "../types/StyledTypes";
+import type { TColorProp } from "styled/types";
 import { handleColorType } from "./styleHelperFuncs";
 
 export const PageHeading = styled.h1`
@@ -9,9 +9,14 @@ export const PageHeading = styled.h1`
   color: ${(props) => props.theme.color.highlight2};
   letter-spacing: 1.6rem;
   margin: 3vh 0;
+
+  @media screen and (max-width: 380px) {
+    font-size: 3.5rem;
+    letter-spacing: 1rem;
+  }
 `;
 
-export const SectionTitle = styled.h3<TColorStyle>`
+export const SectionTitle = styled.h3<TColorProp>`
   color: ${(props) => props.theme.color.textLight};
   font-size: 2.4rem;
   font-weight: 200;

@@ -1,22 +1,24 @@
-import React, { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Helper Functions
-import { deleteTrack, getTracks } from "../../functions/trackCRUD";
+import { deleteTrack, getTracks } from "utils/functions";
 
 // Types
-import type { Track } from "../../types/types";
+import type { TTrack } from "types";
+
+// Layout
+import AdminLayout from "layouts/AdminLayout";
 
 // Icons
-import garbage from "../../icons/garbage-red.svg";
-import edit from "../../icons/edit-yellow.svg";
+import { garbageIcon, editIcon } from "images/icons";
 
 // Components
-import DeleteTrackPopup from "../../components/Admin/DeleteTrackPopup";
+import DeleteTrackPopup from "components/Admin/DeleteTrackPopup";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Elements
 
@@ -173,11 +175,11 @@ const Icon = styled.img`
 
 type SortByType = "num" | "name" | "album" | "artist" | "genre" | "year";
 
-const Admin = () => {
+const AdminTracks = () => {
   // STATE HANDLERS
   const [tracks, setTracks] = useState([]);
   const [deleteId, setDeleteId] = useState<number | null>(null);
-  const [deleteTrackInfo, setDeleteTrackInfo] = useState<Track | null>(
+  const [deleteTrackInfo, setDeleteTrackInfo] = useState<TTrack | null>(
     null
   );
   const [popupOpen, togglePopup] = useReducer(
@@ -190,31 +192,31 @@ const Admin = () => {
   const sortSwitch = (sortBy: SortByType) => {
     switch (sortBy) {
       case "num":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_id > b.track_id ? 1 : -1
         );
       case "name":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_name > b.track_name ? 1 : -1
         );
       case "album":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_album > b.track_album ? 1 : -1
         );
       case "artist":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_artist > b.track_artist ? 1 : -1
         );
       case "genre":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_genre > b.track_genre ? 1 : -1
         );
       case "year":
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_year > b.track_year ? 1 : -1
         );
       default:
-        return tracks.sort((a: Track, b: Track) =>
+        return tracks.sort((a: TTrack, b: TTrack) =>
           a.track_id > b.track_id ? 1 : -1
         );
     }
@@ -237,8 +239,8 @@ const Admin = () => {
   const fetchTracks = async () => {
     const allTracks = await getTracks();
     const sortedAndNumberedTracks = allTracks
-      .sort((a: Track, b: Track) => (a.track_id > b.track_id ? 1 : -1))
-      .map((t: Track, i: number) => ({ ...t, numOrder: i + 1 }));
+      .sort((a: TTrack, b: TTrack) => (a.track_id > b.track_id ? 1 : -1))
+      .map((t: TTrack, i: number) => ({ ...t, numOrder: i + 1 }));
     setTracks(sortedAndNumberedTracks);
   };
 
@@ -264,12 +266,12 @@ const Admin = () => {
 
   useEffect(() => {
     if (tracks && deleteId) {
-      const info = tracks.filter((t: Track) => t.track_id === deleteId);
+      const info = tracks.filter((t: TTrack) => t.track_id === deleteId);
       setDeleteTrackInfo(info[0] || {});
     }
   }, [deleteId, tracks]);
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin | Tracks</title>
       {popupOpen && deleteTrackInfo && (
         <DeleteTrackPopup
@@ -336,7 +338,7 @@ const Admin = () => {
             </TableRow>
           </thead>
           <tbody>
-            {sortedTracks.map((t: Track) => (
+            {sortedTracks.map((t: TTrack) => (
               <TableRow key={t.track_id}>
                 <TableData>{t.numOrder}</TableData>
                 <TableData>{t.track_name}</TableData>
@@ -346,12 +348,12 @@ const Admin = () => {
                 <TableDataLgScreen>{t.track_year}</TableDataLgScreen>
                 <TableIcon>
                   <Link to={`/admin/tracks/update/${t.track_id}`}>
-                    <Icon src={edit} alt="Edit Button" />
+                    <Icon src={editIcon} alt="Edit Button" />
                   </Link>
                 </TableIcon>
                 <TableIcon>
                   <Icon
-                    src={garbage}
+                    src={garbageIcon}
                     alt="Delete Button"
                     onClick={() => openDeletePopup(t.track_id)}
                   />
@@ -361,8 +363,8 @@ const Admin = () => {
           </tbody>
         </Table>
       </AdminTracksDiv>
-    </>
+    </AdminLayout>
   );
 };
 
-export default Admin;
+export default AdminTracks;

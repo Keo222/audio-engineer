@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Types
-import { Genre } from "../../types/types";
+import type { TGenre } from "types";
+
+// Layout
+import AdminLayout from "layouts/AdminLayout";
 
 // Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
@@ -43,10 +46,10 @@ const AdminTracks = () => {
     const response = await fetch("/api/genres/");
     const allGenres = await response.json();
     const sortedGenres = allGenres
-      .sort((a: Genre, b: Genre) =>
+      .sort((a: TGenre, b: TGenre) =>
         a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
       )
-      .map((g: Genre) => g.genre_name);
+      .map((g: TGenre) => g.genre_name);
     setGenreList(sortedGenres);
   };
 
@@ -132,7 +135,7 @@ const AdminTracks = () => {
     }
   };
   return (
-    <div>
+    <AdminLayout>
       <title>JG Admin | New Track</title>
       <PageHeading>Add Track</PageHeading>
       <StyledForm onSubmit={(e) => addTrack(e)}>
@@ -287,7 +290,7 @@ const AdminTracks = () => {
 
         <SubmitButton type="submit">Add Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

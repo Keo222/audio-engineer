@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Types
-import { Genre } from "../../types/types";
+import type { TGenre } from "types";
 
-import TrackForm from "../../components/Admin/TrackForm";
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
+// Components
+import TrackForm from "components/Admin/TrackForm";
 
 // Styled Components
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 const FormikTSAdminNewTrack = () => {
   // Info states
@@ -28,10 +33,10 @@ const FormikTSAdminNewTrack = () => {
     const response = await fetch("/api/genres/");
     const allGenres = await response.json();
     const sortedGenres = allGenres
-      .sort((a: Genre, b: Genre) =>
+      .sort((a: TGenre, b: TGenre) =>
         a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
       )
-      .map((g: Genre) => g.genre_name);
+      .map((g: TGenre) => g.genre_name);
     setGenresList(sortedGenres);
   };
 
@@ -94,8 +99,10 @@ const FormikTSAdminNewTrack = () => {
     }
   };
   return (
-    <div>
-      <title>JG Admin | New Track</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | New Track</title>
+      </Helmet>
       <PageHeading>Add Track</PageHeading>
       {genresList !== [] ? (
         <TrackForm
@@ -116,7 +123,7 @@ const FormikTSAdminNewTrack = () => {
       ) : (
         <p>Please add genres first.</p>
       )}
-    </div>
+    </AdminLayout>
   );
 };
 

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 // Types
-import { Genre } from "../../types/types";
+import type { TGenre } from "types";
 
-// Imported Styled Components
-import { PageHeading } from "../../styled/typography";
+// Layout
+import AdminLayout from "layouts/AdminLayout";
+
+// Styled Components
+import { PageHeading } from "styled/typography";
 import {
   StyledForm,
   InputGroup,
@@ -16,9 +20,8 @@ import {
   RadioDiv,
   RadioGroup,
   SubmitButton,
-} from "../../styled/forms";
+} from "styled/forms";
 
-// Styled Components
 const UpdateHeading = styled(PageHeading)`
   color: ${(props) => props.theme.color.highlight3};
 `;
@@ -39,7 +42,7 @@ const AdminUpdateTrack = () => {
   const getGenres = async () => {
     const response = await fetch("/api/genres/");
     const allGenres = await response.json();
-    const sortedGenres = allGenres.sort((a: Genre, b: Genre) =>
+    const sortedGenres = allGenres.sort((a: TGenre, b: TGenre) =>
       a.genre_name.toLowerCase() > b.genre_name.toLowerCase() ? 1 : -1
     );
     setGenreList(sortedGenres);
@@ -55,7 +58,6 @@ const AdminUpdateTrack = () => {
     const fetch_url = `/api/tracks/single?id=${id}`;
     const response = await fetch(fetch_url);
     const trackInfo = await response.json();
-    console.log("got track info!");
     setName(trackInfo.track_name);
     setAlbum(trackInfo.track_album);
     setArtist(trackInfo.track_artist);
@@ -103,8 +105,10 @@ const AdminUpdateTrack = () => {
     }
   };
   return (
-    <div>
-      <title>JG Admin | Update Track</title>
+    <AdminLayout>
+      <Helmet>
+        <title>JG Admin | Update Track</title>
+      </Helmet>
       <UpdateHeading>Update Track</UpdateHeading>
 
       <StyledForm onSubmit={(e) => updateTrack(e)}>
@@ -163,7 +167,7 @@ const AdminUpdateTrack = () => {
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
             >
-              {genreList.map((g: Genre) => (
+              {genreList.map((g: TGenre) => (
                 <option value={g.genre_name}>{g.genre_name}</option>
               ))}
             </select>
@@ -245,7 +249,7 @@ const AdminUpdateTrack = () => {
 
         <SubmitButton type="submit">Update Track</SubmitButton>
       </StyledForm>
-    </div>
+    </AdminLayout>
   );
 };
 

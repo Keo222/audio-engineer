@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Types
-import { Text } from "../../types/types";
+import type { TText } from "types";
+
+// Layout
+import AdminLayout from "layouts/AdminLayout";
 
 // Components
-import AdminTrackInfo from "../../components/Admin/AdminTrackInfo";
-import AdminGenreInfo from "../../components/Admin/AdminGenreInfo";
-import AdminTextInfo from "../../components/Admin/AdminTextInfo";
+import AdminTrackInfo from "components/Admin/AdminTrackInfo";
+import AdminGenreInfo from "components/Admin/AdminGenreInfo";
+import AdminTextInfo from "components/Admin/AdminTextInfo";
 
 // Imported Styled Elements
-import { PageHeading } from "../../styled/typography";
+import { PageHeading } from "styled/typography";
 
 // Styled Elements
 const AdminHomeDiv = styled.div`
@@ -72,22 +75,22 @@ const Admin = () => {
         const texts = await response.json();
         // About Text
         const aboutTextLength = texts
-          .find((t: Text) => t.name === "about")
+          .find((t: TText) => t.name === "about")
           .stored_text.join(" ")
           .split(" ").length;
         // Contact Text
         const contactTextLength = texts
-          .find((t: Text) => t.name === "contact")
+          .find((t: TText) => t.name === "contact")
           .stored_text.join(" ")
           .split(" ").length;
         // Pricing Text
         const pricingTextLength = texts
-          .find((t: Text) => t.name === "pricing")
+          .find((t: TText) => t.name === "pricing")
           .stored_text.join(" ")
           .split(" ").length;
         // Hire Text
         const hireTextLength = texts
-          .find((t: Text) => t.name === "hire")
+          .find((t: TText) => t.name === "hire")
           .stored_text.join(" ")
           .split(" ").length;
 
@@ -106,7 +109,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <>
+    <AdminLayout>
       <title>JG Admin</title>
       <AdminHomeDiv>
         <EditAdminDiv>
@@ -116,7 +119,7 @@ const Admin = () => {
           <AdminTrackInfo numTracks={numTracks} />
         </EditAdminDiv>
       </AdminHomeDiv>
-    </>
+    </AdminLayout>
   );
 };
 

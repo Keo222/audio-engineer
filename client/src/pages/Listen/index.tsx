@@ -3,35 +3,27 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 
 // Types
-import { TPlayer, Work, Track } from "types";
+import type { TPlayer, TWork, TTrack } from "types";
 
-// Imported Styled Components
-import { PageHeading } from "styled/typography";
-import {
-  GenreSelect,
-  StreamingServiceSelect,
-  WorkSelect,
-} from "./listenComponents/selects";
-import TrackList from "./listenComponents/TrackList";
+// Layout
+import PageLayout from "layouts/PageLayout";
+
+// Components
+import ListenControls from "./pageComponents/ListenControls";
 
 // Styled Components
+import { PageHeading } from "styled/typography";
+import TrackList from "./pageComponents/TrackList";
+
 const PageDiv = styled.div`
   margin-bottom: 10rem;
 `;
 
-const SelectsSection = styled.section`
-  display: flex;
-  width: clamp(250px, 85%, 1400px);
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Listen = () => {
   const [player, setPlayer] = useState<TPlayer>("Spotify");
-  const [tracks, setTracks] = useState<Track[]>();
+  const [tracks, setTracks] = useState<TTrack[]>();
   const [currentGenre, setCurrentGenre] = useState<string>("All");
-  const [work, setWork] = useState<Work>("All");
+  const [work, setWork] = useState<TWork>("All");
 
   // Get tracks from DB
   useEffect(() => {
@@ -60,28 +52,35 @@ const Listen = () => {
   }, []);
 
   // Parse genres from tracks
-  const getGenres = (trackArr: Track[] | undefined) => {
+  const getTrackGenres = (trackArr: TTrack[] | undefined) => {
     if (trackArr) {
       const genreSet = new Set();
-      trackArr.map((t: Track) => genreSet.add(t.track_genre));
+      trackArr.map((t: TTrack) => genreSet.add(t.track_genre));
       const genreList = Array.from(genreSet) as string[];
       return genreList;
     }
   };
-  const genres = getGenres(tracks);
+  const genres = getTrackGenres(tracks);
 
   return (
-    <>
+    <PageLayout>
       <Helmet>
-        <title>Joel Gardella | Listen</title>
+        <title>Audio Engineer | Listen</title>
+        <meta
+          name="description"
+          content="Audio Engineers portofolio displaying tracks they've mixed, mastered, and produced."
+        />
       </Helmet>
       <PageDiv>
         <PageHeading>Listen</PageHeading>
-        <SelectsSection aria-label="Track Controls">
-          <StreamingServiceSelect player={player} setPlayer={setPlayer} />
-          <WorkSelect work={work} setWork={setWork} />
-          <GenreSelect genres={genres} setCurrentGenre={setCurrentGenre} />
-        </SelectsSection>
+        <ListenControls
+          player={player}
+          setPlayer={setPlayer}
+          work={work}
+          setWork={setWork}
+          genres={genres}
+          setCurrentGenre={setCurrentGenre}
+        />
         <TrackList
           genres={genres}
           tracks={tracks}
@@ -90,7 +89,7 @@ const Listen = () => {
           player={player}
         />
       </PageDiv>
-    </>
+    </PageLayout>
   );
 };
 

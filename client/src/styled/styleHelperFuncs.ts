@@ -1,4 +1,4 @@
-import { TColor } from "../types/StyledTypes";
+import { TColor } from "styled/types";
 
 export const handleColorType = (color: TColor | undefined) => {
   switch (color) {
