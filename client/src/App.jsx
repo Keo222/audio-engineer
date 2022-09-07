@@ -14,7 +14,7 @@ import Contact from "pages/Contact";
 import Services from "pages/Services";
 import Hire from "pages/Hire";
 // ADMIN PAGES
-import Admin from "pages/admin/AdminHome";
+import AdminHome from "./pages/admin/AdminHome";
 import AdminLogin from "pages/admin/AdminLogin";
 import AdminTracks from "pages/admin/AdminTracks";
 import AdminNewTrack from "pages/admin/AdminNewTrack";
@@ -35,7 +35,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
           <Route path="/hire" element={<Hire />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/tracks" element={<AdminTracks />} />
           <Route path="/admin/tracks/new" element={<AdminNewTrack />} />
