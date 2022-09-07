@@ -23,7 +23,6 @@ const WorkSelectContainer = styled.div<TSelectable>`
 
   @media screen and (max-width: 600px) {
     grid-column: span 1;
-    margin-top: 60px;
   }
 `;
 
@@ -98,19 +97,19 @@ const WorkSelect = ({ work, setWork }: Props) => {
           onClick={() => setWork("Production")}
           selected={work === "Production"}
         >
-          Production
+          Produced
         </ProductionTrioItem>
         <MixingTrioItem
           onClick={() => setWork("Mixing")}
           selected={work === "Mixing"}
         >
-          Mixing
+          Mixed
         </MixingTrioItem>
         <MasteringTrioItem
           onClick={() => setWork("Mastering")}
           selected={work === "Mastering"}
         >
-          Mastering
+          Mastered
         </MasteringTrioItem>
       </WorkTrio>
       <AllWorkSelect

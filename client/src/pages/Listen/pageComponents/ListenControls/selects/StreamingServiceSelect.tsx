@@ -14,27 +14,33 @@ import {
 
 // Styled Components
 const SelectPlayerSection = styled.section`
-  margin: 2rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 const SelectPlayerLabel = styled.h4`
   font-size: 1.6rem;
   font-weight: 300;
-  margin-block: 1.5rem;
+  margin-block: 0;
   color: ${(props) => props.theme.color.textLight};
 `;
 
 const SelectPlayerLogos = styled.div`
-  margin-left: 1rem;
   display: flex;
   align-items: bottom;
+  gap: 3rem;
+  margin-left: 3rem;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 0;
+  }
 `;
 
 const Logo = styled.img`
   width: 50px;
   height: 50px;
   object-fit: contain;
-  margin-left: 3rem;
   cursor: pointer;
   user-select: none;
   filter: green;

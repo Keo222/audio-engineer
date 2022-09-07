@@ -16,7 +16,7 @@ const SelectsSection = styled.section`
   display: flex;
   width: clamp(250px, 85%, 1400px);
   margin: 40px auto;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 
   @media screen and (max-width: 1200px) {
@@ -24,6 +24,7 @@ const SelectsSection = styled.section`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     justify-items: center;
+    gap: 40px;
   }
 
   @media screen and (max-width: 600px) {
