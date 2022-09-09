@@ -1,3 +1,3 @@
-import { LinkButton, LinkButtonLg, LinkButtonNav } from "./linkButtons";
+import { LinkButton, LinkButtonNav } from "./linkButtons";
 
-export { LinkButton, LinkButtonLg, LinkButtonNav };
+export { LinkButton, LinkButtonNav };

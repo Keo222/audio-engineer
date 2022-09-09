@@ -13,7 +13,7 @@ import studioImg from "images/studio1.jpg";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
-import { LinkButtonLg } from "styled/buttons/linkButtons";
+import { LinkButton } from "styled/buttons/linkButtons";
 
 const HomeSection = styled.section`
   display: flex;
@@ -116,12 +116,12 @@ const Home = () => {
           </DescriptorLink>
         </DescriptorDiv>
         <ButtonDiv>
-          <LinkButtonLg to="/listen" color={"1"}>
+          <LinkButton to="/listen" color={"1"}>
             Listen
-          </LinkButtonLg>
-          <LinkButtonLg to="/pricing" color={"1"}>
+          </LinkButton>
+          <LinkButton to="/pricing" color={"1"}>
             Services
-          </LinkButtonLg>
+          </LinkButton>
         </ButtonDiv>
         <ContactLogos />
       </HomeSection>

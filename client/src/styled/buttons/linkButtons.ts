@@ -29,21 +29,8 @@ const LinkButton = styled(Link)<TColorProp>`
   }
 `;
 
-const LinkButtonLg = styled(LinkButton)`
-  font-size: 1.8rem;
-  padding: 1.5rem 3rem;
-
-  @media screen and (${(props) => props.theme.responsive.md}) {
-    padding: 1.2rem 2.6rem;
-  }
-
-  @media screen and (${(props) => props.theme.responsive.xs}) {
-    padding: 1rem 2rem;
-  }
-`;
-
 const LinkButtonNav = styled(LinkButton)`
   padding: 0.8rem 1.6rem;
 `;
 
-export { LinkButton, LinkButtonLg, LinkButtonNav };
+export { LinkButton, LinkButtonNav };
