@@ -1,10 +1,6 @@
 import { ComponentType } from "react";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import styled from "styled-components";
-
-const LoadingDiv = styled.div`
-  color: white;
-`;
+import LoadingSpinner from "components/etc/LoadingSpinner";
 
 type Props = {
   component: ComponentType<object>;
@@ -12,11 +8,7 @@ type Props = {
 
 const ProtectedRoute = ({ component }: Props) => {
   const Component = withAuthenticationRequired(component, {
-    onRedirecting: () => (
-      <LoadingDiv>
-        <p>Loading...</p>
-      </LoadingDiv>
-    ),
+    onRedirecting: () => <LoadingSpinner />,
   });
 
   return <Component />;
