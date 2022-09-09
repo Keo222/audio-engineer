@@ -23,7 +23,6 @@ import AdminLogin from "pages/PagesAdmin/AdminLogin";
 import AdminLogout from "pages/PagesAdmin/AdminLogout";
 import AdminTracks from "pages/PagesAdmin/AdminTracks";
 import AdminNewTrack from "pages/PagesAdmin/AdminNewTrack";
-import FormikTSAdminNewTrack from "pages/PagesAdmin/FormikTSAdminNewTrack";
 import AdminUpdateTrack from "pages/PagesAdmin/AdminUpdateTrack";
 import AdminText from "pages/PagesAdmin/AdminText";
 import AdminGenres from "pages/PagesAdmin/AdminGenres";
@@ -57,10 +56,6 @@ const App = () => {
           <Route
             path="/admin/tracks/new"
             element={<ProtectedRoute component={AdminNewTrack} />}
-          />
-          <Route
-            path="/admin/tracks/new-formik"
-            element={<FormikTSAdminNewTrack />}
           />
           <Route
             path="/admin/tracks/update/:id"
