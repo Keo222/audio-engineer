@@ -110,8 +110,8 @@ const Home = () => {
         <HomeHeader id="home-header">Audio Engineer</HomeHeader>
         <DescriptorDiv>
           <DescriptorLink to="/about">Audio Engineer</DescriptorLink>
-          <DescriptorLink to="/pricing">Production</DescriptorLink>
-          <DescriptorLink to="/pricing">
+          <DescriptorLink to="/services">Production</DescriptorLink>
+          <DescriptorLink to="/listen">
             Mixing &amp; Mastering
           </DescriptorLink>
         </DescriptorDiv>
