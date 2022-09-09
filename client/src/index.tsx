@@ -12,7 +12,7 @@ root.render(
     <Auth0Provider
       domain="dev-ff-cjr35.us.auth0.com"
       clientId="oHDEh6IS8fMrYCcYfhD8ipecwEx4DarK"
-      redirectUri="http://localhost:3000/admin"
+      redirectUri="https://audio-engineer.herokuapp.com/admin"
     >
       <App />
     </Auth0Provider>
