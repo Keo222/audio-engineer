@@ -34,19 +34,17 @@ const Logo = styled.img`
   height: 100%;
 `;
 
-const AdminLogin = () => {
-  const { loginWithRedirect } = useAuth0();
+const AdminLogout = () => {
+  const { logout } = useAuth0();
   return (
     <FullPageFlex>
       <ImageContainer>
         <Logo src={logoImg} />
       </ImageContainer>
       <PageHeading>Admin Login</PageHeading>
-      <SubmitButton onClick={() => loginWithRedirect()}>
-        Login
-      </SubmitButton>
+      <SubmitButton onClick={() => logout()}>Log Out</SubmitButton>
     </FullPageFlex>
   );
 };
 
-export default AdminLogin;
+export default AdminLogout;

@@ -6,6 +6,9 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "styled/themes";
 import GlobalStyle from "styled/GlobalStyle";
 
+// Auth Wrapper
+import ProtectedRoute from "components/ProtectedRoute";
+
 // PAGES
 import Home from "pages/Home";
 import About from "pages/About";
@@ -16,6 +19,7 @@ import Hire from "pages/Hire";
 // ADMIN PAGES
 import AdminHome from "pages/PagesAdmin/AdminHome";
 import AdminLogin from "pages/PagesAdmin/AdminLogin";
+import AdminLogout from "pages/PagesAdmin/AdminLogout";
 import AdminTracks from "pages/PagesAdmin/AdminTracks";
 import AdminNewTrack from "pages/PagesAdmin/AdminNewTrack";
 import FormikTSAdminNewTrack from "pages/PagesAdmin/FormikTSAdminNewTrack";
@@ -35,20 +39,40 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
           <Route path="/hire" element={<Hire />} />
-          <Route path="/admin" element={<AdminHome />} />
+
+          <Route
+            path="/admin"
+            element={<ProtectedRoute component={AdminHome} />}
+          />
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/tracks" element={<AdminTracks />} />
-          <Route path="/admin/tracks/new" element={<AdminNewTrack />} />
+          <Route
+            path="/admin/logout"
+            element={<ProtectedRoute component={AdminLogout} />}
+          />
+          <Route
+            path="/admin/tracks"
+            element={<ProtectedRoute component={AdminTracks} />}
+          />
+          <Route
+            path="/admin/tracks/new"
+            element={<ProtectedRoute component={AdminNewTrack} />}
+          />
           <Route
             path="/admin/tracks/new-formik"
             element={<FormikTSAdminNewTrack />}
           />
           <Route
             path="/admin/tracks/update/:id"
-            element={<AdminUpdateTrack />}
+            element={<ProtectedRoute component={AdminUpdateTrack} />}
           />
-          <Route path="/admin/genres" element={<AdminGenres />} />
-          <Route path="/admin/text" element={<AdminText />} />
+          <Route
+            path="/admin/genres"
+            element={<ProtectedRoute component={AdminGenres} />}
+          />
+          <Route
+            path="/admin/text"
+            element={<ProtectedRoute component={AdminText} />}
+          />
         </Routes>
       </Router>
     </ThemeProvider>
