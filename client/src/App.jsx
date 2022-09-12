@@ -41,6 +41,7 @@ const App = () => {
           <Route path="/services" element={<Services />} />
           <Route path="/hire" element={<Hire />} />
 
+          {/* PROTECTED ADMIN PAGES */}
           <Route
             path="/admin"
             element={<ProtectedRoute component={AdminHome} />}
@@ -70,6 +71,20 @@ const App = () => {
             path="/admin/text"
             element={<ProtectedRoute component={AdminText} />}
           />
+
+          {/* ADMIN PAGES DEV */}
+          {/* <Route path="/admin" element={<AdminHome />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/logout" element={<AdminLogout />} />
+          <Route path="/admin/tracks" element={<AdminTracks />} />
+          <Route path="/admin/tracks/new" element={<AdminNewTrack />} />
+          <Route
+            path="/admin/tracks/update/:id"
+            element={<AdminUpdateTrack />}
+          />
+          <Route path="/admin/genres" element={<AdminGenres />} />
+          <Route path="/admin/text" element={<AdminText />} /> */}
+          {/* 404 ROUTE */}
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>

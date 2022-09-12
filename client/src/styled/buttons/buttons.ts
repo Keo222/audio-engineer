@@ -11,7 +11,7 @@ export const NavButton = styled.button<TColorProp>`
   width: fit-content;
   font-family: inherit;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin: 0;
   text-decoration: none;
   padding: 0.8rem 1.6rem;
