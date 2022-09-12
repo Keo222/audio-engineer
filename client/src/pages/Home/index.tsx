@@ -116,10 +116,10 @@ const Home = () => {
           </DescriptorLink>
         </DescriptorDiv>
         <ButtonDiv>
-          <LinkButton to="/listen" color={"1"}>
+          <LinkButton to="/listen" color="1">
             Listen
           </LinkButton>
-          <LinkButton to="/pricing" color={"1"}>
+          <LinkButton to="/pricing" color="1">
             Services
           </LinkButton>
         </ButtonDiv>

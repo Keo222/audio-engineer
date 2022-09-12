@@ -16,6 +16,7 @@ import Listen from "pages/Listen";
 import Contact from "pages/Contact";
 import Services from "pages/Services";
 import Hire from "pages/Hire";
+import Page404 from "pages/Page404";
 
 // ADMIN PAGES
 import AdminHome from "pages/PagesAdmin/AdminHome";
@@ -69,6 +70,7 @@ const App = () => {
             path="/admin/text"
             element={<ProtectedRoute component={AdminText} />}
           />
+          <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>
     </ThemeProvider>
