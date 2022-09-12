@@ -8,17 +8,17 @@ import spotifyColor from "./spotify-green.png";
 import tidalWhite from "./tidal-white.png";
 import tidalColor from "./tidal-color.png";
 // Social Media Logos
-import facebookLogo from "./fb_logo_blue.svg";
+import facebookLogo from "./fb-logo-blue.svg";
 import instagramLogo from "./instagram.svg";
 import soundcloudLogo from "./soundcloud.svg";
 
 // Arrows
-import downArrow from "./down_arrow.svg";
-import downArrowWhite from "./downArrowWhite.svg";
-import leftArrow from "./left_arrow.svg";
-import rightArrow from "./right_arrow.svg";
-import upArrow from "./up_arrow.svg";
-import upArrowWhite from "./upArrowWhite.svg";
+import downArrow from "./down-arrow.svg";
+import downArrowWhite from "./down-arrow-white.svg";
+import leftArrow from "./left-arrow.svg";
+import rightArrow from "./right-arrow.svg";
+import upArrow from "./up-arrow.svg";
+import upArrowWhite from "./up-arrow-white.svg";
 
 // Etc.
 import checkmark from "./checkmark.svg";
