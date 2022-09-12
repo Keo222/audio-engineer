@@ -227,7 +227,7 @@ const AdminGenres = () => {
 
   const fetchGenres = useCallback(async () => {
     const allGenres = await getGenres();
-    if (allGenres !== undefined && allGenres !== []) {
+    if (allGenres !== undefined && allGenres.length !== 0) {
       setGenres(allGenres);
     }
   }, []);
