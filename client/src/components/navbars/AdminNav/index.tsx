@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 // Components
@@ -12,7 +13,7 @@ import { hamburgerIcon, closeIcon } from "images/icons";
 
 // Styled Components
 import { NavbarLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-import { LinkButtonNav } from "styled/buttons/linkButtons";
+import { NavButton } from "styled/buttons";
 
 const AdminNav = styled.nav`
   width: 90%;
@@ -50,13 +51,8 @@ const AdminNavLinks = styled.div`
   } ;
 `;
 
-// const AdminLinkButton = styled(LinkButton)`
-//   padding: 0.6rem 1.1rem;
-//   font-weight: inherit;
-//   font-size: 1.4rem;
-// `;
-
 const AdminNavbar = () => {
+  const { logout } = useAuth0();
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   return (
     <>
@@ -71,7 +67,7 @@ const AdminNavbar = () => {
           <NavbarLink to="/admin/tracks">Tracks</NavbarLink>
           <NavbarLink to="/admin/genres">Genres</NavbarLink>
           <NavbarLink to="/admin/text">Text</NavbarLink>
-          <LinkButtonNav to="/">Main Site</LinkButtonNav>
+          <NavButton onClick={() => logout()}>Logout</NavButton>
         </AdminNavLinks>
         <HamburgerOpenIcon
           onClick={() => setHamburgerOpen(!hamburgerOpen)}

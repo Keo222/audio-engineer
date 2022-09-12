@@ -1,3 +1,4 @@
 import { LinkButton, LinkButtonNav } from "./linkButtons";
+import { NavButton } from "./buttons";
 
-export { LinkButton, LinkButtonNav };
+export { LinkButton, LinkButtonNav, NavButton };

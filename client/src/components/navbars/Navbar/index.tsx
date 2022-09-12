@@ -12,7 +12,7 @@ import DropdownNav from "./DropdownNav";
 
 // Styled Components
 import { NavbarLink, NavLogo, HamburgerOpenIcon } from "styled/navbar";
-import { LinkButtonNav } from "styled/buttons/linkButtons";
+import { LinkButtonNav } from "styled/buttons";
 
 const StyledNav = styled.nav`
   width: 90%;

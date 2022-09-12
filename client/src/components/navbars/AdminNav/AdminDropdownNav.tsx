@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 // Styled Elements
+import { NavButton } from "styled/buttons";
 const Nav = styled.nav`
   background: ${(props) => props.theme.color.background};
   width: 100%;
@@ -44,6 +46,7 @@ type Props = {
 };
 
 const AdminDropdownNav = ({ setHamburgerOpen }: Props) => {
+  const { logout } = useAuth0();
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -76,9 +79,7 @@ const AdminDropdownNav = ({ setHamburgerOpen }: Props) => {
         >
           Text
         </StyledLink>
-        <StyledLink onClick={() => setHamburgerOpen(false)} to="/">
-          Logout
-        </StyledLink>
+        <NavButton onClick={() => logout()}>Logout</NavButton>
       </Links>
     </Nav>
   );
