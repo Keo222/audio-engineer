@@ -13,7 +13,7 @@ import styled from "styled-components";
 import type { TTextTitle } from "types";
 
 // Icons
-import { upArrow, downArrow } from "images/icons";
+import { upArrowWhite, downArrowWhite } from "images/icons";
 
 // Imported Styled Components
 import { SectionTitle } from "styled/typography";
@@ -152,7 +152,7 @@ const TextSection = ({
     <UpdateSection>
       <SectionBar onClick={() => setShowInner((showInner) => !showInner)}>
         <SectionTitle color={color}>{sectionTitle}</SectionTitle>
-        <Arrow src={showInner ? upArrow : downArrow} />
+        <Arrow src={showInner ? upArrowWhite : downArrowWhite} />
       </SectionBar>
       <animated.div style={expand}>
         <UpdateInner ref={heightRef}>
