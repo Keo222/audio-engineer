@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Icons
-import checkmark from "icons/checkmark.svg";
+import { checkmark } from "images/icons";
 
 // Styled Components
 const UpdateDiv = styled.div`
