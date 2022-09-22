@@ -58,7 +58,7 @@ const AdminTracks = () => {
   }, []);
 
   useEffect(() => {
-    if (genreList !== []) {
+    if (genreList.length !== 0) {
       setGenre(genreList[0]);
       console.log(genreList);
     }
