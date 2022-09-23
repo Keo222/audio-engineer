@@ -17,8 +17,6 @@ jobs:
         with:
           node-version: 16
           cache: "yarn"
-      - name: Install All Dependencies
       - run: yarn install
       - run: cd client && yarn install
-      - name: Test Client
       - run: cd client && yarn test
