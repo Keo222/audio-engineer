@@ -10,10 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [16, 18]
-
     steps:
       - uses: actions/checkout@v3
       - name: Test with Node.js 16
@@ -21,7 +17,8 @@ jobs:
         with:
           node-version: 16
           cache: "yarn"
+      - name: Install All Dependencies
       - run: yarn install
-      - run: cd client
-      - run: yarn install
-      - run: yarn test
+      - run: cd client && yarn install
+      - name: Test Client
+      - run: cd client && yarn test
