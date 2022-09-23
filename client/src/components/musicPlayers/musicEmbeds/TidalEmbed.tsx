@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
 import { tidalRegex } from "utils/regex/trackEmbedRegex";

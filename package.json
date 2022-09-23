@@ -6,7 +6,7 @@
   "scripts": {
     "dev-start": "nodemon server/index.js",
     "start": "node server/index.js",
-    "build": "cd client && npm install && npm run build"
+    "build": "cd client && yarn install && yarn run build"
   },
   "author": "Kyle Olsen",
   "license": "ISC",
@@ -20,7 +20,7 @@
     "pg": "^8.7.3"
   },
   "engines": {
-    "node": "16.13.2",
-    "npm": "8.4.0"
+    "node": "^16.13.2",
+    "npm": "^8.4.0"
   }
 }

@@ -40,9 +40,7 @@ const SolidFlipCard = ({ color, numTracks, work }: Props) => {
   return (
     <Card>
       <SolidCardFront color={color}>
-        <SolidHeadingFront color={color}>
-          {numTracks} Tracks
-        </SolidHeadingFront>
+        <SolidHeadingFront color={color}>{numTracks} Tracks</SolidHeadingFront>
       </SolidCardFront>
       <SolidCardBack color={color}>
         <CardHeadingBack>

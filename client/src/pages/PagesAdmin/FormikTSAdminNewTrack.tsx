@@ -62,7 +62,7 @@ const FormikTSAdminNewTrack = () => {
   }, []);
 
   useEffect(() => {
-    if (genresList !== []) {
+    if (genresList.length !== 0) {
       setGenre(genresList[0]);
       console.log(genresList);
     }
@@ -104,7 +104,7 @@ const FormikTSAdminNewTrack = () => {
         <title>JG Admin | New Track</title>
       </Helmet>
       <PageHeading>Add Track</PageHeading>
-      {genresList !== [] ? (
+      {genresList.length !== 0 ? (
         <TrackForm
           initValues={{
             name: "",

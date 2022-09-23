@@ -18,7 +18,7 @@ import {
   RadioDiv,
   SubmitButton,
   ErrorMessage,
-} from "../../styled/forms";
+} from "styled/forms";
 
 const AdminTracks = () => {
   // Error states
@@ -58,7 +58,7 @@ const AdminTracks = () => {
   }, []);
 
   useEffect(() => {
-    if (genreList !== []) {
+    if (genreList.length !== 0) {
       setGenre(genreList[0]);
       console.log(genreList);
     }
@@ -173,9 +173,7 @@ const AdminTracks = () => {
             onChange={(e) => setArtist(e.target.value)}
             required
           />
-          {artistError && (
-            <ErrorMessage>Artist name too long.</ErrorMessage>
-          )}
+          {artistError && <ErrorMessage>Artist name too long.</ErrorMessage>}
         </InputGroup>
         <InputGroup>
           <InputLabel htmlFor="year">Year:</InputLabel>
@@ -255,9 +253,7 @@ const AdminTracks = () => {
             placeholder='ex: "https://open.spotify.com/track/5eIDxmWYxRA0HJBYM9bIIS?si=668accca5b864e0b"'
             onChange={(e) => setSpotify(e.target.value)}
           />
-          {spotifyError && (
-            <ErrorMessage>Invalid Spotify source.</ErrorMessage>
-          )}
+          {spotifyError && <ErrorMessage>Invalid Spotify source.</ErrorMessage>}
         </InputGroup>
 
         <InputGroup>
@@ -269,9 +265,7 @@ const AdminTracks = () => {
             placeholder='ex: "https://tidal.com/browse/track/77814875"'
             onChange={(e) => setTidal(e.target.value)}
           />
-          {tidalError && (
-            <ErrorMessage>Invalid Tidal source.</ErrorMessage>
-          )}
+          {tidalError && <ErrorMessage>Invalid Tidal source.</ErrorMessage>}
         </InputGroup>
 
         <InputGroup>

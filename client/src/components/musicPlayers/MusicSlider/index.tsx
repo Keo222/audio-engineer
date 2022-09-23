@@ -105,8 +105,7 @@ const TrackDiv = styled(animated.div)<{ player: TPlayer }>`
   margin: 0 auto;
   width: 100%;
   background: #eee;
-  border-radius: ${(props) =>
-    props.player === "Spotify" ? "13px" : "5px"};
+  border-radius: ${(props) => (props.player === "Spotify" ? "13px" : "5px")};
   overflow: hidden;
 `;
 
@@ -175,31 +174,19 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
     switch (player) {
       case "Spotify":
         return (
-          <SpotifyEmbed
-            title={track.track_name}
-            source={track.track_spotify}
-          />
+          <SpotifyEmbed title={track.track_name} source={track.track_spotify} />
         );
       case "Apple":
         return (
-          <AppleEmbed
-            title={track.track_name}
-            source={track.track_apple}
-          />
+          <AppleEmbed title={track.track_name} source={track.track_apple} />
         );
       case "Tidal":
         return (
-          <TidalEmbed
-            title={track.track_name}
-            source={track.track_tidal}
-          />
+          <TidalEmbed title={track.track_name} source={track.track_tidal} />
         );
       default:
         return (
-          <SpotifyEmbed
-            title={track.track_name}
-            source={track.track_spotify}
-          />
+          <SpotifyEmbed title={track.track_name} source={track.track_spotify} />
         );
     }
   };
@@ -284,9 +271,7 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
         {transitions((styles, i) => (
           <TrackContainer>
             <TrackDiv style={styles} player={player}>
-              <EmbedDiv player={player}>
-                {playerSwitch(tracks[i])}
-              </EmbedDiv>
+              <EmbedDiv player={player}>{playerSwitch(tracks[i])}</EmbedDiv>
 
               <animated.div style={expand}>
                 <TrackInfoDiv ref={heightRef}>

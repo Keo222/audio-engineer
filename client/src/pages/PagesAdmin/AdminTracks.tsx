@@ -179,13 +179,8 @@ const AdminTracks = () => {
   // STATE HANDLERS
   const [tracks, setTracks] = useState([]);
   const [deleteId, setDeleteId] = useState<number | null>(null);
-  const [deleteTrackInfo, setDeleteTrackInfo] = useState<TTrack | null>(
-    null
-  );
-  const [popupOpen, togglePopup] = useReducer(
-    (popupOpen) => !popupOpen,
-    false
-  );
+  const [deleteTrackInfo, setDeleteTrackInfo] = useState<TTrack | null>(null);
+  const [popupOpen, togglePopup] = useReducer((popupOpen) => !popupOpen, false);
   const [sortBy, setSortBy] = useState<SortByType>("num");
   const [reverse, setReverse] = useState(false);
 

@@ -19,14 +19,14 @@ app.use(cors());
 app.get("/api/tracks", async (req, res) => {
   try {
     const allTracks = await pool.query("SELECT * FROM tracks");
-    res.json(allTracks.rows);
+    res.status(200).json(allTracks.rows);
   } catch (err) {
     console.error(err.message);
-    res.status("Error getting single track", err);
+    res.status(500).send("500 Error getting single track: ", err);
   }
 });
 
-// GET SINGLE TRACK -- TESTED
+// GET SINGLE TRACK
 app.get("/api/tracks/single", async (req, res) => {
   try {
     const { id } = req.query;
@@ -34,14 +34,14 @@ app.get("/api/tracks/single", async (req, res) => {
       "SELECT * FROM tracks WHERE track_id = $1",
       [id]
     );
-    res.json(singleTrack.rows[0]);
+    res.status(200).json(singleTrack.rows[0]);
   } catch (err) {
     console.error(err.message);
-    res.send("Error getting single track", err);
+    res.status(500).send("500 Error getting single track: ", err);
   }
 });
 
-// UPDATE TRACK --UNTESTED
+// UPDATE TRACK
 app.put("/api/tracks/", async (req, res) => {
   try {
     const {
@@ -73,10 +73,10 @@ app.put("/api/tracks/", async (req, res) => {
         id,
       ]
     );
-    res.send("Track Updated");
+    res.status(200).send("200 Track Updated");
   } catch (err) {
     console.error(err.message);
-    res.send("Error updating", err);
+    res.status(500).send("500 Error updating: ", err);
   }
 });
 
@@ -112,10 +112,10 @@ app.post("/api/tracks", async (req, res) => {
         album,
       ]
     );
-    res.send("New Track Added");
+    res.status(200).send("200 New Track Added");
   } catch (err) {
     console.error(err.message);
-    res.status(500).send(`Error adding new track: ${err}`);
+    res.status(500).send(`500 Error adding new track: ${err}`);
   }
 });
 
@@ -126,10 +126,10 @@ app.delete("/api/tracks/", async (req, res) => {
     const { id } = req.body;
     console.log(id);
     await pool.query("DELETE FROM tracks WHERE track_id = $1", [id]);
-    res.send("Track Deleted");
+    res.status(200).send("200 Track Deleted");
   } catch (err) {
     console.error(err.message);
-    res.send("Error adding new track", err);
+    res.status(500).send("500 Error adding new track", err);
   }
 });
 
@@ -139,10 +139,10 @@ app.delete("/api/tracks/", async (req, res) => {
 app.get("/api/genres", async (req, res) => {
   try {
     const allGenres = await pool.query("SELECT * FROM genres");
-    res.json(allGenres.rows);
+    res.status(200).json(allGenres.rows);
   } catch (err) {
     console.error(err.message);
-    res.send("Error getting genres");
+    res.status(500).send("500 Error getting genres: ", err);
   }
 });
 
@@ -150,12 +150,11 @@ app.get("/api/genres", async (req, res) => {
 app.post("/api/genres", async (req, res) => {
   try {
     const { newGenre } = req.body;
-    await pool.query("INSERT INTO genres (genre_name) VALUES ($1)", [
-      newGenre,
-    ]);
+    await pool.query("INSERT INTO genres (genre_name) VALUES ($1)", [newGenre]);
+    res.status(200).send("200 Genre Added");
   } catch (err) {
     console.error(err.message);
-    res.send("Error adding new genre", err);
+    res.status(500).send("500 Error adding new genre: ", err);
   }
 });
 
@@ -164,9 +163,9 @@ app.delete("/api/genres", async (req, res) => {
   try {
     const { name } = req.body;
     await pool.query("DELETE FROM genres WHERE genre_name = $1", [name]);
-    res.json("Genre Deleted");
+    res.status(200).send("200 Genre Deleted");
   } catch (err) {
-    res.send("Error getting genres", err);
+    res.status(500).send("500 Error getting genres: ", err);
   }
 });
 
@@ -186,11 +185,11 @@ app.get("/api/text", async (req, res) => {
       const text = await pool.query("SELECT * FROM text WHERE name = $1", [
         name,
       ]);
-      res.json(text.rows[0]);
+      res.status(200).json(text.rows[0]);
     }
   } catch (err) {
     console.error(err.message);
-    res.send("Error getting text", err);
+    res.status(500).send("500 Error getting text: ", err);
   }
 });
 
@@ -202,10 +201,10 @@ app.put("/api/text/", async (req, res) => {
       name,
       text,
     ]);
-    res.send("Text Updated");
+    res.status(200).send("200 Text Updated");
   } catch (err) {
     console.error(err.message);
-    res.send("Error updating text -- server", err);
+    res.status(500).send("500 Error updating text: ", err);
   }
 });
 
