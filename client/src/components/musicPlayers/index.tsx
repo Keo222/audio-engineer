@@ -1,8 +1,5 @@
-import AppleEmbed from "./AppleEmbed";
-import SpotifyEmbed from "./SpotifyEmbed";
-import TidalEmbed from "./TidalEmbed";
+import { AppleEmbed, SpotifyEmbed, TidalEmbed } from "./musicEmbeds";
 
 import MusicSlider from "./MusicSlider";
-import SinglePlayer from "./SinglePlayer";
 
-export { AppleEmbed, SpotifyEmbed, TidalEmbed, MusicSlider, SinglePlayer };
+export { AppleEmbed, SpotifyEmbed, TidalEmbed, MusicSlider };

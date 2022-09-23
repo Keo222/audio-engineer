@@ -3,11 +3,6 @@ import { useWindowSize } from "react-use";
 import styled from "styled-components";
 
 import { spotifyRegex } from "utils/regex/trackEmbedRegex";
-<<<<<<< HEAD:client/src/components/musicPlayers/SpotifyEmbed.tsx
-import { spotifyRegex } from "regex/trackEmbedRegex";
-=======
-import { spotifyRegex } from "utils/regex/trackEmbedRegex";
->>>>>>> 03eb389aaefa97149239d4c1f89722e0fbf204df:client/src/components/musicPlayers/musicEmbeds/SpotifyEmbed.tsx
 
 const SpotifyFrame = styled.iframe`
   width: 100%;

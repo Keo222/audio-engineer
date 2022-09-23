@@ -9,7 +9,7 @@ import PageLayout from "layouts/PageLayout";
 import ContactLogos from "components/ContactLogos";
 
 // Images
-import studioImg from "images/studio1.jpg";
+import studioImg from "images/temp_home.jpg";
 
 // Styled Components
 import { PageHeading } from "styled/typography";
@@ -111,9 +111,7 @@ const Home = () => {
         <DescriptorDiv>
           <DescriptorLink to="/about">Audio Engineer</DescriptorLink>
           <DescriptorLink to="/services">Production</DescriptorLink>
-          <DescriptorLink to="/listen">
-            Mixing &amp; Mastering
-          </DescriptorLink>
+          <DescriptorLink to="/listen">Mixing &amp; Mastering</DescriptorLink>
         </DescriptorDiv>
         <ButtonDiv>
           <LinkButton to="/listen" color="1">

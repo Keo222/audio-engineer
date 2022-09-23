@@ -10,27 +10,16 @@ import {
 import styled from "styled-components";
 
 // Types
-<<<<<<< HEAD:client/src/components/Admin/TextSection/TextSection.tsx
-import type { TextTitle } from "types/types";
-
-// Icons
-import upArrow from "icons/upArrowWhite.svg";
-import downArrow from "icons/downArrowWhite.svg";
-=======
 import type { TTextTitle } from "types";
 
 // Icons
 import { upArrowWhite, downArrowWhite } from "images/icons";
->>>>>>> 03eb389aaefa97149239d4c1f89722e0fbf204df:client/src/pages/PagesAdmin/AdminText/pageComponents/TextSection.tsx
 
 // Imported Styled Components
 import { SectionTitle } from "styled/typography";
 import { handleColorType } from "styled/styleHelperFuncs";
-<<<<<<< HEAD:client/src/components/Admin/TextSection/TextSection.tsx
-import { TColor, TColorStyle } from "types/StyledTypes";
-=======
+
 import { TColor, TColorProp } from "styled/types";
->>>>>>> 03eb389aaefa97149239d4c1f89722e0fbf204df:client/src/pages/PagesAdmin/AdminText/pageComponents/TextSection.tsx
 
 // Styled Components
 const UpdateSection = styled.div`

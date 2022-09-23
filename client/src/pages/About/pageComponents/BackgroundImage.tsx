@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Images
-import aboutImgSrc from "images/about_filler.jpg";
+import aboutImgSrc from "images/temp_about.jpg";
 
 // Styled Components
 const AboutImg = styled.img`

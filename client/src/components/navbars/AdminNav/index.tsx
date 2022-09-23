@@ -7,7 +7,7 @@ import styled from "styled-components";
 import AdminDropdownNav from "./AdminDropdownNav";
 
 // Image
-import lightbulbWhite from "images/lightbulb-white.png";
+import lightbulbWhite from "images/temp_logo_lightbulb.png";
 // Icon
 import { hamburgerIcon, closeIcon } from "images/icons";
 

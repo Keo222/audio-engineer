@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 // Image
-import lightbulbWhite from "images/lightbulb-white.png";
+import lightbulbWhite from "images/temp_logo_lightbulb.png";
 // Icon
 import { hamburgerIcon, closeIcon } from "images/icons";
 
@@ -101,9 +101,7 @@ const Navbar = () => {
           src={hamburgerOpen ? closeIcon : hamburgerIcon}
         />
       </StyledNav>
-      {hamburgerOpen && (
-        <DropdownNav setHamburgerOpen={setHamburgerOpen} />
-      )}
+      {hamburgerOpen && <DropdownNav setHamburgerOpen={setHamburgerOpen} />}
     </>
   );
 };

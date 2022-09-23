@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 // Images
-import logoImg from "images/lightbulb-white.png";
+import logoImg from "images/temp_logo_lightbulb.png";
 
 // Imported Styled Components
 import { PageHeading } from "styled/typography";

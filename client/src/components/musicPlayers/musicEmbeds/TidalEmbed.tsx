@@ -2,11 +2,6 @@ import { useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import styled from "styled-components";
 import { tidalRegex } from "utils/regex/trackEmbedRegex";
-<<<<<<< HEAD:client/src/components/musicPlayers/TidalEmbed.tsx
-import { tidalRegex } from "regex/trackEmbedRegex";
-=======
-import { tidalRegex } from "utils/regex/trackEmbedRegex";
->>>>>>> 03eb389aaefa97149239d4c1f89722e0fbf204df:client/src/components/musicPlayers/musicEmbeds/TidalEmbed.tsx
 
 const TidalFrame = styled.iframe<{ big: boolean }>`
   top: 0;
