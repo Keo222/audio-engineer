@@ -73,7 +73,9 @@ const AddGenre = ({ genres, setGenres, displayList }: Props) => {
       if (
         genres &&
         !(newGenre === "") &&
-        !genres.some((g) => g.genre_name === newGenre) &&
+        !genres.some(
+          (g) => g.genre_name.toLowerCase() === newGenre.toLowerCase()
+        ) &&
         newGenre.length <= 255
       ) {
         const res = await fetch("/api/genres/", {
@@ -89,8 +91,11 @@ const AddGenre = ({ genres, setGenres, displayList }: Props) => {
       } else {
         e.preventDefault();
         if (newGenre === "") {
-          setErrorMsg("Genre name can not be blank.");
-        } else if (genres.some((g) => g.genre_name === newGenre)) {
+        } else if (
+          genres.some(
+            (g) => g.genre_name.toLowerCase() === newGenre.toLowerCase()
+          )
+        ) {
           setErrorMsg("Genre name must be unique.");
         } else if (newGenre.length > 255) {
           setErrorMsg("Genre name too long.");
