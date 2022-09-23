@@ -22,4 +22,6 @@ jobs:
           node-version: 16
           cache: "yarn"
       - run: yarn install
-      - run: cd client && yarn install && yarn test
+      - run: cd client
+      - run: yarn install
+      - run: yarn test
