@@ -80,16 +80,6 @@ const StyledTextArea = styled.textarea<TGrid & TColorProp>`
   grid-column-end: ${(props) => props.colEnd};
   height: 15rem;
 
-  &:focus,
-  &:focus-visible {
-    outline: ${(props) =>
-      props.color ? "none" : "-webkit-focus-ring-color auto 1px"};
-    box-shadow: ${(props) =>
-      props.color
-        ? `inset 0 0 5px 8px ${handleColorType(props.color)}`
-        : "initial"};
-  }
-
   @media screen and (${(props) => props.theme.responsive.sm}) {
     grid-row: unset;
     grid-column: unset;
