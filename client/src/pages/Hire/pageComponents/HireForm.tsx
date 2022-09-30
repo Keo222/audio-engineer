@@ -46,16 +46,6 @@ const Input = styled.input<TGrid & TColorProp>`
   grid-column-start: ${(props) => props.colStart};
   grid-column-end: ${(props) => props.colEnd};
 
-  &:focus,
-  &:focus-visible {
-    outline: ${(props) =>
-      props.color ? "none" : "-webkit-focus-ring-color auto 1px"};
-    box-shadow: ${(props) =>
-      props.color
-        ? `inset 0 0 3px 4px ${handleColorType(props.color)}`
-        : "initial"};
-  }
-
   @media screen and (${(props) => props.theme.responsive.sm}) {
     grid-row: unset;
     grid-column: unset;
@@ -72,12 +62,10 @@ const StyledSelect = styled.select<TGrid & TColorProp>`
 
   &:focus,
   &:focus-visible {
-    outline: ${(props) =>
-      props.color ? "none" : "-webkit-focus-ring-color auto 1px"};
-    box-shadow: ${(props) =>
+    outline-color: ${(props) =>
       props.color
-        ? `inset 0 0 3px 4px ${handleColorType(props.color)}`
-        : "initial"};
+        ? handleColorType(props.color)
+        : "-webkit-focus-ring-color auto 1px"};
   }
 
   @media screen and (${(props) => props.theme.responsive.sm}) {

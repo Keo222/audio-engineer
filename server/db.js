@@ -9,6 +9,8 @@ const devConfig = {
   port: process.env.PG_PORT,
 };
 
+console.log(devConfig);
+
 const prodConfig = {
   connectionString: process.env.DATABASE_URL,
   ssl: {

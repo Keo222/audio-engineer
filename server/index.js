@@ -16,7 +16,7 @@ app.use(cors());
 // app.use("/api", apiRoutes);
 
 // GET ALL TRACKS --TESTED
-app.get("/api/tracks", async (req, res) => {
+app.get("/api/tracks", async (_, res) => {
   try {
     const allTracks = await pool.query("SELECT * FROM tracks");
     res.status(200).json(allTracks.rows);
