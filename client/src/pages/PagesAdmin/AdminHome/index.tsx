@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Types
 import type { TText } from "types";
@@ -110,7 +111,10 @@ const Admin = () => {
 
   return (
     <AdminLayout>
-      <title>JG Admin</title>
+      <Helmet>
+        <title>JG Admin</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <AdminHomeDiv>
         <EditAdminDiv>
           <AdminHomeHeading>Admin Home</AdminHomeHeading>

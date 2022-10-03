@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Helper Functions
 import { getGenres } from "utils/functions";
@@ -45,7 +46,10 @@ const AdminGenres = () => {
   return (
     <AdminLayout>
       <GenrePageDiv>
-        <title>JG Admin | Genres</title>
+        <Helmet>
+          <title>JG Admin | Genres</title>
+          <meta name="robots" content="noindex" />
+        </Helmet>
         <PageHeading>Genres</PageHeading>
         <GenreToggle
           displayList={displayList}

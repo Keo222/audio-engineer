@@ -102,6 +102,7 @@ const FormikTSAdminNewTrack = () => {
     <AdminLayout>
       <Helmet>
         <title>JG Admin | New Track</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <PageHeading>Add Track</PageHeading>
       {genresList.length !== 0 ? (

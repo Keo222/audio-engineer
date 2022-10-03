@@ -108,6 +108,7 @@ const AdminUpdateTrack = () => {
     <AdminLayout>
       <Helmet>
         <title>JG Admin | Update Track</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <UpdateHeading>Update Track</UpdateHeading>
 

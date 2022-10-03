@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Types
 import type { TGenre } from "types";
@@ -136,7 +137,10 @@ const AdminTracks = () => {
   };
   return (
     <AdminLayout>
-      <title>JG Admin | New Track</title>
+      <Helmet>
+        <title>JG Admin | New Track</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <PageHeading>Add Track</PageHeading>
       <StyledForm onSubmit={(e) => addTrack(e)}>
         <InputGroup>

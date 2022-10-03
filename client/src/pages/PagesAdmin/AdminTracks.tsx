@@ -1,6 +1,7 @@
 import { useState, useEffect, useReducer } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Helper Functions
 import { deleteTrack, getTracks } from "utils/functions";
@@ -267,7 +268,10 @@ const AdminTracks = () => {
   }, [deleteId, tracks]);
   return (
     <AdminLayout>
-      <title>JG Admin | Tracks</title>
+      <Helmet>
+        <title>JG Admin | Tracks</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       {popupOpen && deleteTrackInfo && (
         <DeleteTrackPopup
           togglePopup={togglePopup}

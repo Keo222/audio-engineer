@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
+import { Helmet } from "react-helmet";
 
 // Images
 import logoImg from "images/temp_logo_lightbulb.png";
@@ -38,6 +39,10 @@ const AdminLogout = () => {
   const { logout } = useAuth0();
   return (
     <FullPageFlex>
+      <Helmet>
+        <title>JG Admin | Logout</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <ImageContainer>
         <Logo src={logoImg} />
       </ImageContainer>

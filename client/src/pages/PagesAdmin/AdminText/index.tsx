@@ -102,6 +102,7 @@ const AdminText = () => {
     <AdminLayout>
       <Helmet>
         <title>JG Admin | Site Text</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <PageHeading>Site Text</PageHeading>
       <TextUpdateContainer>
