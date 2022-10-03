@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import type { TPlayer, TTrack, TWork } from "types";
 
+// Components
+import NoTracksFound from "./NoTracksFound";
 import MusicSlider from "components/musicPlayers/MusicSlider";
 
 type Props = {
@@ -11,13 +13,7 @@ type Props = {
   player: TPlayer;
 };
 
-const TrackList = ({
-  genres,
-  tracks,
-  currentGenre,
-  work,
-  player,
-}: Props) => {
+const TrackList = ({ genres, tracks, currentGenre, work, player }: Props) => {
   const filteredTracks = useMemo(() => {
     const trackWorkSwitch = (trackArray: TTrack[], work: TWork) => {
       switch (work) {
@@ -49,9 +45,7 @@ const TrackList = ({
       if (currentGenre === "All" && work === "All") {
         return tracks;
       } else if (work === "All") {
-        return tracks.filter(
-          (t: TTrack) => t.track_genre === currentGenre
-        );
+        return tracks.filter((t: TTrack) => t.track_genre === currentGenre);
       } else if (currentGenre === "All") {
         return trackWorkSwitch(tracks, work);
       } else {
@@ -65,46 +59,40 @@ const TrackList = ({
 
   return (
     <>
-      {genres &&
-        filteredTracks &&
-        currentGenre === "All" &&
-        work === "All" && (
-          <section aria-label="Track">
-            {typeof filteredTracks !== "undefined" &&
-              filteredTracks.filter((t: TTrack) => t.track_featured)
-                .length > 0 && (
+      {filteredTracks && filteredTracks.length === 0 && <NoTracksFound />}
+      {genres && filteredTracks && currentGenre === "All" && work === "All" && (
+        <section aria-label="Track">
+          {typeof filteredTracks !== "undefined" &&
+            filteredTracks.filter((t: TTrack) => t.track_featured).length >
+              0 && (
+              <MusicSlider
+                key={`${work} - Featured`}
+                tracks={filteredTracks.filter((t: TTrack) => t.track_featured)}
+                player={player}
+                genre="Featured"
+                rounded={player === "Spotify"}
+              />
+            )}
+          {genres &&
+            genres
+              .sort((a, b) => (a.toLowerCase() > b.toLowerCase() ? 1 : -1))
+              .map((g) => (
                 <MusicSlider
-                  key={`${work} - Featured`}
-                  tracks={filteredTracks.filter(
-                    (t: TTrack) => t.track_featured
-                  )}
+                  key={g}
+                  tracks={
+                    filteredTracks
+                      ? filteredTracks.filter(
+                          (t: TTrack) => t.track_genre === g
+                        )
+                      : []
+                  }
                   player={player}
-                  genre="Featured"
+                  genre={g}
                   rounded={player === "Spotify"}
                 />
-              )}
-            {genres &&
-              genres
-                .sort((a, b) =>
-                  a.toLowerCase() > b.toLowerCase() ? 1 : -1
-                )
-                .map((g) => (
-                  <MusicSlider
-                    key={g}
-                    tracks={
-                      filteredTracks
-                        ? filteredTracks.filter(
-                            (t: TTrack) => t.track_genre === g
-                          )
-                        : []
-                    }
-                    player={player}
-                    genre={g}
-                    rounded={player === "Spotify"}
-                  />
-                ))}
-          </section>
-        )}
+              ))}
+        </section>
+      )}
       {filteredTracks && !(currentGenre === "All" && work === "All") && (
         <section aria-label="Tracks">
           {typeof filteredTracks !== "undefined" &&
