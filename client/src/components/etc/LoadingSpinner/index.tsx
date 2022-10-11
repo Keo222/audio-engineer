@@ -9,7 +9,7 @@ const spin = keyframes`
 const Spinner = styled.div`
   width: 80px;
   aspect-ratio: 1;
-  margin: 30vh auto 0;
+  margin: calc((100vh - 120px) / 2) auto 0;
   /* border-radius: 50%;
   border-width: 5px;
   border-style: solid;
