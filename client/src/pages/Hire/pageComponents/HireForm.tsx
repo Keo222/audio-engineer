@@ -17,6 +17,9 @@ type TGrid = {
 const HireGridForm = styled(GridForm)`
   margin-top: 6rem;
   transform: translateX(-4ch);
+  @media screen and (${(props) => props.theme.responsive.sm}) {
+    transform: translateX(0);
+  }
 `;
 
 const StyledHireButton = styled(GridSubmitButton)`
