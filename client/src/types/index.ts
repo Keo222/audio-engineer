@@ -9,9 +9,7 @@ type TText = {
 
 type TTextTitle = "about" | "contact" | "pricing" | "hire";
 
-type TInfoTextTitle =
-  | Exclude<TTextTitle, "about" | "pricing">
-  | "services";
+type TInfoTextTitle = Exclude<TTextTitle, "about" | "pricing"> | "services";
 
 type TTrack = {
   track_id: number;
