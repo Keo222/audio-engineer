@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-
-// Components
-import FormikErrorMsg from "components/Admin/FormikErrorMsg";
+import styled from "styled-components";
 
 // Types
 import { TTrack } from "types";
@@ -29,6 +27,11 @@ import {
   RadioGroup,
   SubmitButton,
 } from "styled/forms";
+const ErrorMessage = styled.p`
+  margin: 0;
+  font-size: 14px;
+  color: ${(props) => props.theme.color.highlight3};
+`;
 
 type Props = {
   id: TTrack["track_id"];
@@ -90,6 +93,7 @@ const UpdateForm = ({
       console.error(err.message);
     }
   };
+
   return (
     <Formik
       enableReinitialize={true}
@@ -122,18 +126,56 @@ const UpdateForm = ({
           .max(3000, "Year too high"),
         spotify: Yup.string()
           .required("Spotify URL required")
-          .matches(spotifyRegex, "Invalid URL"),
+          .matches(spotifyRegex, "Invalid Spotify URL"),
         tidal: Yup.string()
           .required("Tidal URL required")
-          .matches(tidalRegex, "Invalid URL"),
+          .matches(tidalRegex, "Invalid Tidal URL"),
         apple: Yup.string()
           .required("Apple Music URL required")
-          .matches(appleRegex, "Invalid URL"),
+          .matches(appleRegex, "Invalid Apple Music URL"),
       })}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={async ({
+        name,
+        artist,
+        work,
+        year,
+        genre,
+        featured,
+        spotify,
+        tidal,
+        apple,
+        album,
+      }) => {
+        let data = {
+          id: id,
+          name: name,
+          artist: artist,
+          work: work,
+          year: year,
+          genre: genre,
+          featured: featured,
+          spotify: spotify,
+          tidal: tidal,
+          apple: apple,
+          album: album,
+        };
+        try {
+          const res = await fetch("/api/tracks", {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "PUT",
+            body: JSON.stringify(data),
+          });
+          console.log(res.status);
+          navigate("/admin/tracks");
+        } catch (err: any) {
+          console.error(err.message);
+        }
+      }}
     >
       {(formik) => (
-        <StyledForm>
+        <StyledForm onSubmit={formik.handleSubmit}>
           <InputGroup>
             <InputLabel htmlFor="track-name">Track Name:</InputLabel>
             <TextInput
@@ -144,12 +186,10 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.name}
             />
+            {formik.touched.name && formik.errors.name ? (
+              <ErrorMessage>{formik.errors.name}</ErrorMessage>
+            ) : null}
           </InputGroup>
-          {formik.touched.name && formik.errors.name ? (
-            <FormikErrorMsg>
-              <p>{formik.errors.name}</p>
-            </FormikErrorMsg>
-          ) : null}
 
           <InputGroup>
             <InputLabel htmlFor="album">Album:</InputLabel>
@@ -161,6 +201,9 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.album}
             />
+            {formik.touched.album && formik.errors.album ? (
+              <ErrorMessage>{formik.errors.album}</ErrorMessage>
+            ) : null}
           </InputGroup>
 
           <InputGroup>
@@ -173,6 +216,9 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.artist}
             />
+            {formik.touched.artist && formik.errors.artist ? (
+              <ErrorMessage>{formik.errors.artist}</ErrorMessage>
+            ) : null}
           </InputGroup>
 
           <InputGroup>
@@ -188,7 +234,11 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.year}
             />
+            {formik.touched.year && formik.errors.year ? (
+              <ErrorMessage>{formik.errors.year}</ErrorMessage>
+            ) : null}
           </InputGroup>
+
           <SelectDiv>
             <InputGroup>
               <InputLabel htmlFor="genre">Genre:</InputLabel>
@@ -206,6 +256,7 @@ const UpdateForm = ({
                 ))}
               </select>
             </InputGroup>
+
             <InputGroup>
               <InputLabel htmlFor="work">Type of Work:</InputLabel>
               <select
@@ -251,6 +302,9 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.spotify}
             />
+            {formik.touched.spotify && formik.errors.spotify ? (
+              <ErrorMessage>{formik.errors.spotify}</ErrorMessage>
+            ) : null}
           </InputGroup>
 
           <InputGroup>
@@ -263,6 +317,9 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.tidal}
             />
+            {formik.touched.tidal && formik.errors.tidal ? (
+              <ErrorMessage>{formik.errors.tidal}</ErrorMessage>
+            ) : null}
           </InputGroup>
 
           <InputGroup>
@@ -275,6 +332,9 @@ const UpdateForm = ({
               onBlur={formik.handleBlur}
               value={formik.values.apple}
             />
+            {formik.touched.apple && formik.errors.apple ? (
+              <ErrorMessage>{formik.errors.apple}</ErrorMessage>
+            ) : null}
           </InputGroup>
 
           <SubmitButton type="submit" disabled={formik.isSubmitting}>

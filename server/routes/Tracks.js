@@ -44,12 +44,14 @@ router.put("/", async (req, res) => {
       spotify,
       apple,
       tidal,
+      album,
     } = req.body;
     await pool.query(
-      "UPDATE tracks SET track_name=$1, track_artist=$2, track_work=$3, track_about=$4, track_year=$5, track_genre=$6, track_featured=$7, track_spotify=$8, track_apple=$9, track_tidal=$10 WHERE track_id=$11",
+      "UPDATE tracks SET track_name=$1, track_artist=$2, track_album=$3, track_work=$4, track_about=$5, track_year=$6, track_genre=$7, track_featured=$8, track_spotify=$9, track_apple=$10, track_tidal=$11 WHERE track_id=$12",
       [
         name,
         artist,
+        album,
         work,
         about,
         year,
