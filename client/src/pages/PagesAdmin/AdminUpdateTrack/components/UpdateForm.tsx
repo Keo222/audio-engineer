@@ -102,7 +102,6 @@ const UpdateForm = ({
             method: "PUT",
             body: JSON.stringify(data),
           });
-          console.log(res.status);
           navigate("/admin/tracks");
         } catch (err: any) {
           console.error(err.message);

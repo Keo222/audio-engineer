@@ -165,9 +165,6 @@ type Props = {
 const MusicSlider = ({ player, genre, tracks }: Props) => {
   const [current, setCurrent] = useState(0);
   const length = tracks.length;
-  useEffect(() => {
-    console.log(tracks);
-  }, [tracks]);
 
   // Choose which media player is embedded
   const playerSwitch = (track: TTrack) => {
