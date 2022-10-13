@@ -87,7 +87,7 @@ export const GridSubmitButton = styled(SubmitButton)`
 `;
 
 export const ErrorMessage = styled.p`
-  color: ${(props) => props.theme.color.errorRed};
-  font-size: 1.2rem;
-  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: ${(props) => props.theme.color.highlight3};
 `;

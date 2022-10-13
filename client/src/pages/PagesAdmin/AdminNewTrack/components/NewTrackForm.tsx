@@ -1,13 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
-
-// Types
-import { TTrack } from "types";
+import { useNavigate } from "react-router-dom";
 
 // Form Validation
 import { TrackFormValidation } from "utils/validationSchemas";
 
-// Form Options
+// Work Dropdown Options
 import { workOptions } from "utils/formOptions";
 
 // Styled Components
@@ -24,49 +21,25 @@ import {
 } from "styled/forms";
 
 type Props = {
-  id: TTrack["track_id"];
-  trackName: TTrack["track_name"];
-  artist: TTrack["track_artist"];
-  work: TTrack["track_work"];
-  year: TTrack["track_year"];
-  genre: TTrack["track_genre"];
-  featured: TTrack["track_featured"];
-  spotify: TTrack["track_spotify"];
-  tidal: TTrack["track_tidal"];
-  apple: TTrack["track_apple"];
-  album: TTrack["track_album"];
-  genreList: string[];
+  genreList: string[] | undefined;
 };
 
-const UpdateForm = ({
-  id,
-  trackName,
-  artist,
-  work,
-  year,
-  genre,
-  featured,
-  spotify,
-  tidal,
-  apple,
-  album,
-  genreList,
-}: Props) => {
+const NewTrackForm = ({ genreList }: Props) => {
   const navigate = useNavigate();
   return (
     <Formik
       enableReinitialize={true}
       initialValues={{
-        name: trackName,
-        album: album,
-        artist: artist,
-        work: !workOptions.includes(work) ? workOptions[0] : work,
-        year: year,
-        genre: !genreList.includes(genre) ? genreList[0] : genre,
-        featured: featured === true ? "yes" : "no",
-        spotify: spotify,
-        tidal: tidal,
-        apple: apple,
+        name: "",
+        album: "",
+        artist: "",
+        work: workOptions[0],
+        year: new Date().getFullYear(),
+        genre: genreList ? genreList[0] : "",
+        featured: "no",
+        spotify: "",
+        tidal: "",
+        apple: "",
       }}
       validationSchema={TrackFormValidation}
       onSubmit={async ({
@@ -82,7 +55,6 @@ const UpdateForm = ({
         album,
       }) => {
         let data = {
-          id: id,
           name: name,
           artist: artist,
           work: work,
@@ -99,7 +71,7 @@ const UpdateForm = ({
             headers: {
               "Content-Type": "application/json",
             },
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(data),
           });
           console.log(res.status);
@@ -112,11 +84,12 @@ const UpdateForm = ({
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
           <InputGroup>
-            <InputLabel htmlFor="track-name">Track Name:</InputLabel>
+            <InputLabel htmlFor="name">Track Name:</InputLabel>
             <TextInput
-              id="name"
-              name="name"
               type="text"
+              name="name"
+              id="name"
+              placeholder='ex: "Bohemian Rhapsody"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.name}
@@ -129,9 +102,10 @@ const UpdateForm = ({
           <InputGroup>
             <InputLabel htmlFor="album">Album:</InputLabel>
             <TextInput
-              id="album"
-              name="album"
               type="text"
+              name="album"
+              id="album"
+              placeholder='ex: "A Night at the Opera"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.album}
@@ -144,9 +118,10 @@ const UpdateForm = ({
           <InputGroup>
             <InputLabel htmlFor="artist">Artist:</InputLabel>
             <TextInput
-              id="artist"
               type="text"
               name="artist"
+              id="artist"
+              placeholder='ex: "Queen"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.artist}
@@ -159,17 +134,14 @@ const UpdateForm = ({
           <InputGroup>
             <InputLabel htmlFor="year">Year:</InputLabel>
             <TextInput
-              id="year"
               type="number"
               step="1"
               name="year"
+              id="year"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.year}
             />
-            {formik.touched.year && formik.errors.year ? (
-              <ErrorMessage>{formik.errors.year}</ErrorMessage>
-            ) : null}
           </InputGroup>
 
           <SelectDiv>
@@ -182,19 +154,20 @@ const UpdateForm = ({
                 onBlur={formik.handleBlur}
                 value={formik.values.genre}
               >
-                {genreList.map((g) => (
-                  <option key={g} value={g}>
-                    {g}
-                  </option>
-                ))}
+                {genreList &&
+                  genreList.map((g) => (
+                    <option key={g} value={g}>
+                      {g}
+                    </option>
+                  ))}
               </select>
             </InputGroup>
 
             <InputGroup>
               <InputLabel htmlFor="work">Type of Work:</InputLabel>
               <select
-                id="work"
                 name="work"
+                id="work"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.work}
@@ -211,7 +184,13 @@ const UpdateForm = ({
           <RadioDiv>
             <p>Featured:</p>
             <RadioGroup>
-              <Field id="featured" name="featured" type="radio" value="yes" />
+              <Field
+                id="featured"
+                name="featured"
+                type="radio"
+                value="yes"
+                checked={formik.values.featured === "yes"}
+              />
               <label htmlFor="featured">Yes</label>
             </RadioGroup>
             <RadioGroup>
@@ -220,6 +199,7 @@ const UpdateForm = ({
                 name="featured"
                 type="radio"
                 value="no"
+                checked={formik.values.featured === "no"}
               />
               <label htmlFor="not-featured">No</label>
             </RadioGroup>
@@ -231,6 +211,7 @@ const UpdateForm = ({
               type="text"
               name="spotify"
               id="spotify"
+              placeholder='ex: "https://open.spotify.com/track/5eIDxmWYxRA0HJBYM9bIIS?si=668accca5b864e0b"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.spotify}
@@ -246,6 +227,7 @@ const UpdateForm = ({
               type="text"
               name="tidal"
               id="tidal"
+              placeholder='ex: "https://tidal.com/browse/track/77814875"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.tidal}
@@ -261,6 +243,7 @@ const UpdateForm = ({
               type="text"
               name="apple"
               id="apple"
+              placeholder='ex: "https://music.apple.com/us/album/bohemian-rhapsody/1440806041?i=1440806768"'
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.apple}
@@ -270,13 +253,11 @@ const UpdateForm = ({
             ) : null}
           </InputGroup>
 
-          <SubmitButton type="submit" disabled={formik.isSubmitting}>
-            Update Track
-          </SubmitButton>
+          <SubmitButton type="submit">Add Track</SubmitButton>
         </StyledForm>
       )}
     </Formik>
   );
 };
 
-export default UpdateForm;
+export default NewTrackForm;
