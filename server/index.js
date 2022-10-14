@@ -6,6 +6,7 @@ const path = require("path");
 const tracksRoute = require("./routes/Tracks");
 const genresRoute = require("./routes/Genres");
 const textRoute = require("./routes/Text");
+const emailRoute = require("./routes/Email");
 
 const PORT = process.env.PORT || 3001;
 
@@ -18,11 +19,12 @@ app.use(cors());
 app.use("/api/tracks", tracksRoute);
 app.use("/api/genres", genresRoute);
 app.use("/api/text", textRoute);
+app.use("/api/email", emailRoute);
 
 // Request pages from client
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
-app.get("*", (req, res) => {
+app.get("*", (_, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
