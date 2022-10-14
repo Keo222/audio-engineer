@@ -1,106 +1,22 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { Formik } from "formik";
+import * as Yup from "yup";
+
+import { workOptions } from "utils/formOptions";
 
 // Styled Components
 import { BoldSpan } from "styled/typography";
-import { GridForm, GridSubmitButton } from "styled/forms";
-import { handleColorType } from "styled/styleHelperFuncs";
-import { TColorProp } from "styled/types";
-
-type TGrid = {
-  rowStart?: number;
-  rowEnd?: number;
-  colStart?: number;
-  colEnd?: number;
-};
-
-const HireGridForm = styled(GridForm)`
-  margin-top: 6rem;
-  transform: translateX(-4ch);
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    transform: translateX(0);
-  }
-`;
-
-const StyledHireButton = styled(GridSubmitButton)`
-  transform: translateX(4ch);
-`;
-
-const Label = styled.label<TGrid>`
-  text-align: right;
-  margin-right: 1rem;
-  grid-row-start: ${(props) => props.rowStart};
-  grid-row-end: ${(props) => props.rowEnd};
-  grid-column-start: ${(props) => props.colStart};
-  grid-column-end: ${(props) => props.colEnd};
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    grid-row: unset;
-    grid-column: unset;
-  }
-  @media screen and (${(props) => props.theme.responsive.xs}) {
-    text-align: left;
-  }
-`;
-const Input = styled.input<TGrid & TColorProp>`
-  height: 2rem;
-  margin-bottom: 2rem;
-  grid-row-start: ${(props) => props.rowStart};
-  grid-row-end: ${(props) => props.rowEnd};
-  grid-column-start: ${(props) => props.colStart};
-  grid-column-end: ${(props) => props.colEnd};
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    grid-row: unset;
-    grid-column: unset;
-  }
-`;
-
-const StyledSelect = styled.select<TGrid & TColorProp>`
-  height: 2.5rem;
-  margin-bottom: 2rem;
-  grid-row-start: ${(props) => props.rowStart};
-  grid-row-end: ${(props) => props.rowEnd};
-  grid-column-start: ${(props) => props.colStart};
-  grid-column-end: ${(props) => props.colEnd};
-
-  &:focus,
-  &:focus-visible {
-    outline-color: ${(props) =>
-      props.color
-        ? handleColorType(props.color)
-        : "-webkit-focus-ring-color auto 1px"};
-  }
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    grid-row: unset;
-    grid-column: unset;
-  }
-`;
-const StyledTextArea = styled.textarea<TGrid & TColorProp>`
-  grid-row-start: ${(props) => props.rowStart};
-  grid-row-end: ${(props) => props.rowEnd};
-  grid-column-start: ${(props) => props.colStart};
-  grid-column-end: ${(props) => props.colEnd};
-  height: 15rem;
-
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    grid-row: unset;
-    grid-column: unset;
-  }
-`;
-
-const EstimatedCost = styled.p`
-  color: ${(props) => props.theme.color.textLight};
-  text-align: right;
-  font-size: 2.2rem;
-  font-weight: 300;
-  display: block;
-  grid-column-start: 3;
-  grid-column-end: -1;
-  @media screen and (${(props) => props.theme.responsive.sm}) {
-    grid-column: 1 / -1;
-  }
-`;
+import {
+  HireGridForm,
+  StyledHireButton,
+  Label,
+  Input,
+  StyledSelect,
+  StyledTextArea,
+  EstimatedCost,
+  FormGroup,
+} from "../styled/StyledHireForm";
+import { ErrorMessage } from "styled/forms";
 
 type THireFormWork =
   | "Mix"
@@ -110,10 +26,18 @@ type THireFormWork =
   | "Produce";
 
 const HireForm = () => {
-  const [numTracks, setNumTracks] = useState(1);
-  const [work, setWork] = useState<THireFormWork>("Mix");
-
-  const getTotalCost = (numTracks: number, work: THireFormWork) => {
+  const getTotalCost = (numTracks: number, work: string) => {
+    if (
+      !(
+        work === "Mix" ||
+        work === "Mix + Edit" ||
+        work === "Master" ||
+        work === "Mix & Master" ||
+        work === "Produce"
+      )
+    ) {
+      return 0;
+    }
     const pricePerTrack = {
       Mix: 250,
       "Mix + Edit": 325,
@@ -125,109 +49,171 @@ const HireForm = () => {
     return numTracks * pricePerTrack[work];
   };
 
-  useEffect(() => {
-    const queries = window.location.search;
-    const params = new URLSearchParams(queries);
+  const queries = window.location.search;
+  const params = new URLSearchParams(queries);
 
-    const tracksParam = params.get("tracks");
-    const workParam = params.get("work");
+  const tracksParam = params.get("tracks");
+  const workParam = params.get("work");
 
-    if (tracksParam) {
-      setNumTracks(parseInt(tracksParam));
-    }
-    if (workParam) {
-      setWork(handleWorkType(workParam));
-    }
-  }, []);
-
-  const handleWorkType = (work: string) => {
-    switch (work) {
-      case "Mix":
-        return "Mix";
-      case "MixEdit":
-        return "Mix + Edit";
-      case "Master":
-        return "Master";
-      case "MixMaster":
-        return "Mix & Master";
-      case "Produce":
-        return "Produce";
-      default:
-        return "Mix";
-    }
+  // Takes URL Search Params for work and translates them to proper type
+  const workTypeParamConversionMap = {
+    Mix: "Mix",
+    MixEdit: "Mix + Edit",
+    Master: "Master",
+    MixMaster: "Mix & Master",
+    Produce: "Produce",
   };
 
-  const handleWorkChange = (newWork: string) => {
-    if (
-      newWork === "Mix" ||
-      newWork === "Mix + Edit" ||
-      newWork === "Master" ||
-      newWork === "Mix & Master" ||
-      newWork === "Produce"
-    ) {
-      setWork(newWork);
-    }
-  };
+  const isValidKey =
+    workParam === "Mix" ||
+    workParam === "MixEdit" ||
+    workParam === "Master" ||
+    workParam === "MixMaster" ||
+    workParam === "Produce";
+
+  const workInit =
+    workParam && isValidKey
+      ? workTypeParamConversionMap[workParam]
+      : workOptions[0];
+  const numTracksInit = tracksParam ?? "1";
+
   return (
-    <HireGridForm aria-label="Hire Form">
-      <Label htmlFor="name">Name:</Label>
-      <Input type="text" name="name" id="name" color={"2"} />
-      <Label rowStart={1} rowEnd={2} colStart={3} htmlFor="work">
-        Work:
-      </Label>
-      <StyledSelect
-        name="work"
-        id="work"
-        rowStart={1}
-        rowEnd={2}
-        colStart={4}
-        color={"2"}
-        value={work}
-        onChange={(e) => handleWorkChange(e.target.value)}
-      >
-        <option value="Mix">Mix</option>
-        <option value="Mix + Edit">Mix + Edit</option>
-        <option value="Master">Master</option>
-        <option value="Mix & Master">Mix &amp; Master</option>
-        <option value="Produce">Produce</option>
-      </StyledSelect>
-      <Label rowStart={2} rowEnd={3} colStart={3} htmlFor="numSongs">
-        Tracks:
-      </Label>
-      <StyledSelect
-        name="numSongs"
-        id="numSongs"
-        rowStart={2}
-        rowEnd={3}
-        colStart={4}
-        color={"2"}
-        value={numTracks}
-        onChange={(e) => setNumTracks(parseInt(e.target.value))}
-      >
-        {Array.from(Array(12).keys()).map((n) => (
-          <option value={n + 1}>{n + 1}</option>
-        ))}
-      </StyledSelect>
-      <Label htmlFor="email">Email:</Label>
-      <Input type="email" name="email" id="email" color={"2"} />
-      <Label htmlFor="subject" rowStart={3}>
-        Subject:
-      </Label>
-      <Input
-        colStart={2}
-        colEnd={-1}
-        type="text"
-        name="subject"
-        id="subject"
-        color={"2"}
-      />
-      <Label htmlFor="message">Message:</Label>
-      <StyledTextArea colStart={2} colEnd={-1} color={"2"} />
-      <EstimatedCost>
-        <BoldSpan>Estimate:</BoldSpan> ${getTotalCost(numTracks, work)}.00
-      </EstimatedCost>
-      <StyledHireButton>Submit</StyledHireButton>
-    </HireGridForm>
+    <Formik
+      enableReinitialize={true}
+      initialValues={{
+        name: "",
+        work: workInit,
+        numTracks: numTracksInit,
+        email: "",
+        subject: "",
+        message: "",
+      }}
+      validationSchema={Yup.object({
+        name: Yup.string().required("Name required"),
+        email: Yup.string().email("Invalid Email").required("Email required"),
+        subject: Yup.string().required("Subject required"),
+        message: Yup.string().required("Must include a message"),
+      })}
+      onSubmit={async (
+        { name, work, numTracks, email, subject, message },
+        { resetForm }
+      ) => {
+        const data = {
+          name: name,
+          work: work,
+          numTracks: numTracks,
+          email: email,
+          subject: subject,
+          message: message,
+        };
+
+        const res = await fetch("/api/email/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (res.ok) {
+          resetForm();
+        } else {
+          console.log(res.status, ": ERROR");
+        }
+      }}
+    >
+      {(formik) => (
+        <HireGridForm aria-label="Hire Form" onSubmit={formik.handleSubmit}>
+          <Label htmlFor="name">Name:</Label>
+          <div>
+            <Input
+              type="text"
+              id="name"
+              color={"2"}
+              {...formik.getFieldProps("name")}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <ErrorMessage>{formik.errors.name}</ErrorMessage>
+            )}
+          </div>
+          <Label rowStart={1} rowEnd={2} colStart={3} htmlFor="work">
+            Work:
+          </Label>
+          <StyledSelect
+            id="work"
+            rowStart={1}
+            rowEnd={2}
+            colStart={4}
+            color={"2"}
+            {...formik.getFieldProps("work")}
+          >
+            <option value="Mix">Mix</option>
+            <option value="Mix + Edit">Mix + Edit</option>
+            <option value="Master">Master</option>
+            <option value="Mix & Master">Mix &amp; Master</option>
+            <option value="Produce">Produce</option>
+          </StyledSelect>
+          <Label rowStart={2} rowEnd={3} colStart={3} htmlFor="numTracks">
+            Tracks:
+          </Label>
+          <StyledSelect
+            id="numTracks"
+            rowStart={2}
+            rowEnd={3}
+            colStart={4}
+            color={"2"}
+            {...formik.getFieldProps("numTracks")}
+          >
+            {Array.from(Array(12).keys()).map((n) => (
+              <option value={n + 1}>{n + 1}</option>
+            ))}
+          </StyledSelect>
+
+          <Label htmlFor="email">Email:</Label>
+          <FormGroup>
+            <Input
+              type="email"
+              id="email"
+              color={"2"}
+              {...formik.getFieldProps("email")}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <ErrorMessage>{formik.errors.email}</ErrorMessage>
+            )}
+          </FormGroup>
+
+          <Label htmlFor="subject" rowStart={3}>
+            Subject:
+          </Label>
+          <FormGroup colStart={2} colEnd={-1}>
+            <Input
+              type="text"
+              id="subject"
+              color={"2"}
+              {...formik.getFieldProps("subject")}
+            />
+            {formik.touched.subject && formik.errors.subject && (
+              <ErrorMessage>{formik.errors.subject}</ErrorMessage>
+            )}
+          </FormGroup>
+
+          <Label htmlFor="message">Message:</Label>
+          <FormGroup colStart={2} colEnd={-1}>
+            <StyledTextArea id="message" {...formik.getFieldProps("message")} />
+            {formik.touched.message && formik.errors.message && (
+              <ErrorMessage>{formik.errors.message}</ErrorMessage>
+            )}
+          </FormGroup>
+
+          <EstimatedCost>
+            <BoldSpan>Estimate:</BoldSpan> $
+            {getTotalCost(Number(formik.values.numTracks), formik.values.work)}
+            .00
+          </EstimatedCost>
+          <StyledHireButton type="submit">Submit</StyledHireButton>
+        </HireGridForm>
+      )}
+    </Formik>
   );
 };
 

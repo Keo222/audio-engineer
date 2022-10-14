@@ -27,7 +27,7 @@ export const GridForm = styled.form`
   line-height: 2.5rem;
   @media screen and (${(props) => props.theme.responsive.sm}) {
     grid-template-columns: 10ch 1fr;
-    min-width: 95%;
+    min-width: 90vw;
   }
   @media screen and (${(props) => props.theme.responsive.xs}) {
     display: flex;
