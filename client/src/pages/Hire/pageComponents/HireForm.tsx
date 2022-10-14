@@ -107,7 +107,7 @@ const HireForm = () => {
           message: message,
         };
 
-        const res = await fetch("/api/email/contact", {
+        const res = await fetch("/api/email/hire", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

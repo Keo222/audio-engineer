@@ -50,7 +50,7 @@ router.post("/contact", async (req, res) => {
     const mailOptions = {
       from: CLIENT_EMAIL,
       to: CLIENT_EMAIL,
-      subject: subject,
+      subject: `Audio Engineer Contact - ${subject}`,
       text: `From: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`,
     };
 
@@ -64,7 +64,7 @@ router.post("/contact", async (req, res) => {
 });
 
 router.post("/hire", async (req, res) => {
-  const { name, email, subject, message } = req.body;
+  const { name, work, numTracks, email, subject, message } = req.body;
 
   const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
   const CLIENT_ID = process.env.CLIENT_ID;
@@ -99,8 +99,8 @@ router.post("/hire", async (req, res) => {
     const mailOptions = {
       from: CLIENT_EMAIL,
       to: CLIENT_EMAIL,
-      subject: subject,
-      text: `From: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`,
+      subject: `Audio Engineer Hire - ${subject}`,
+      text: `From: ${name}\n\nEmail: ${email}\n\n# Tracks: ${numTracks}\n\nWork Wanted: ${work}\n\nMessage:\n${message}`,
     };
 
     // Send email
