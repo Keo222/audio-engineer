@@ -18,7 +18,7 @@ const InfoTextSection = styled.section`
   margin: 0 auto;
 
   @media screen and (max-width: 475px) {
-    width: 95%;
+    width: 90vw;
   } ;
 `;
 
