@@ -17,6 +17,7 @@ import {
   InputLabel,
   TextInput,
   SelectDiv,
+  StyledSelect,
   RadioDiv,
   RadioGroup,
   SubmitButton,
@@ -174,7 +175,7 @@ const UpdateForm = ({
           <SelectDiv>
             <InputGroup>
               <InputLabel htmlFor="genre">Genre:</InputLabel>
-              <select
+              <StyledSelect
                 name="genre"
                 id="genre"
                 onChange={formik.handleChange}
@@ -186,12 +187,12 @@ const UpdateForm = ({
                     {g}
                   </option>
                 ))}
-              </select>
+              </StyledSelect>
             </InputGroup>
 
             <InputGroup>
               <InputLabel htmlFor="work">Type of Work:</InputLabel>
-              <select
+              <StyledSelect
                 id="work"
                 name="work"
                 onChange={formik.handleChange}
@@ -203,7 +204,7 @@ const UpdateForm = ({
                     {opt}
                   </option>
                 ))}
-              </select>
+              </StyledSelect>
             </InputGroup>
           </SelectDiv>
 
