@@ -9,6 +9,7 @@ const SpotifyFrame = styled.iframe`
   background: transparent;
   border: 0;
   overflow: hidden;
+  image-rendering: crisp-edges;
 `;
 
 type Props = {
@@ -21,7 +22,6 @@ const SpotifyEmbed = ({ title, source }: Props) => {
   const size = useWindowSize();
   const big = size.width >= 450;
 
-  // const regex = /\/[\d\w]+[?]/gm;
   useEffect(() => {
     const found = source.match(spotifyRegex);
     if (found) {

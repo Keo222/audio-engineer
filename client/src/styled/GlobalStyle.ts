@@ -22,6 +22,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+iframe {
+  /* margin: 0;
+  padding: 0; */
+}
 `;
 
 export default GlobalStyle;

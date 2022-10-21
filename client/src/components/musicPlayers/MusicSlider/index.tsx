@@ -93,27 +93,24 @@ const GenreTitle = styled.h3`
 `;
 
 // TRACK PLAYER ELEMENT
-const TrackContainer = styled.div`
+const TrackContainer = styled.div<{ player: TPlayer }>`
   margin: 0 auto;
-  width: 81rem;
+  width: 75rem;
+  border-radius: ${(props) => (props.player === "Spotify" ? "14px" : "5px")};
+  overflow: hidden;
 `;
 
 // Spotify needs more rounded corners.
 // When MusicSlider is rendered on the Listen page,
 // rounded is true if spotify is the selected player.
-const TrackDiv = styled(animated.div)<{ player: TPlayer }>`
+const TrackDiv = styled(animated.div)`
   margin: 0 auto;
   width: 100%;
   background: #eee;
-  border-radius: ${(props) => (props.player === "Spotify" ? "13px" : "5px")};
-  overflow: hidden;
 `;
 
 const EmbedDiv = styled.div<{ player: TPlayer }>`
   width: 100%;
-  @media screen and (max-width: 450px) {
-    height: ${(props) => (props.player === "Spotify" ? "232px" : "auto")};
-  }
 `;
 
 // Track info elements
@@ -128,6 +125,7 @@ const BasicsDiv = styled.div`
   width: 70%;
   display: flex;
   text-align: center;
+  border-radius: 15px;
 `;
 
 const InfoPoint = styled.p`
@@ -266,8 +264,8 @@ const MusicSlider = ({ player, genre, tracks }: Props) => {
           <NoArrowDiv>&nbsp;</NoArrowDiv>
         )}
         {transitions((styles, i) => (
-          <TrackContainer>
-            <TrackDiv style={styles} player={player}>
+          <TrackContainer player={player}>
+            <TrackDiv style={styles}>
               <EmbedDiv player={player}>{playerSwitch(tracks[i])}</EmbedDiv>
 
               <animated.div style={expand}>
