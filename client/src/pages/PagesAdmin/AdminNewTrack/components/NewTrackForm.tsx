@@ -14,6 +14,7 @@ import {
   InputLabel,
   TextInput,
   SelectDiv,
+  StyledSelect,
   RadioDiv,
   RadioGroup,
   SubmitButton,
@@ -146,7 +147,7 @@ const NewTrackForm = ({ genreList }: Props) => {
           <SelectDiv>
             <InputGroup>
               <InputLabel htmlFor="genre">Genre:</InputLabel>
-              <select
+              <StyledSelect
                 name="genre"
                 id="genre"
                 onChange={formik.handleChange}
@@ -159,12 +160,12 @@ const NewTrackForm = ({ genreList }: Props) => {
                       {g}
                     </option>
                   ))}
-              </select>
+              </StyledSelect>
             </InputGroup>
 
             <InputGroup>
               <InputLabel htmlFor="work">Type of Work:</InputLabel>
-              <select
+              <StyledSelect
                 name="work"
                 id="work"
                 onChange={formik.handleChange}
@@ -176,7 +177,7 @@ const NewTrackForm = ({ genreList }: Props) => {
                     {opt}
                   </option>
                 ))}
-              </select>
+              </StyledSelect>
             </InputGroup>
           </SelectDiv>
 
