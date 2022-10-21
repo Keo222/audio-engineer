@@ -42,7 +42,7 @@ const App = () => {
           <Route path="/hire" element={<Hire />} />
 
           {/* PROTECTED ADMIN PAGES */}
-          {/* <Route
+          <Route
             path="/admin"
             element={<ProtectedRoute component={AdminHome} />}
           />
@@ -70,10 +70,10 @@ const App = () => {
           <Route
             path="/admin/text"
             element={<ProtectedRoute component={AdminText} />}
-          /> */}
+          />
 
           {/* ADMIN PAGES DEV */}
-          <Route path="/admin" element={<AdminHome />} />
+          {/* <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/logout" element={<AdminLogout />} />
           <Route path="/admin/tracks" element={<AdminTracks />} />
@@ -83,7 +83,7 @@ const App = () => {
             element={<AdminUpdateTrack />}
           />
           <Route path="/admin/genres" element={<AdminGenres />} />
-          <Route path="/admin/text" element={<AdminText />} />
+          <Route path="/admin/text" element={<AdminText />} /> */}
 
           {/* 404 ROUTE */}
           <Route path="*" element={<Page404 />} />
