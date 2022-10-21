@@ -4,7 +4,7 @@ const router = express.Router();
 require("dotenv").config({ path: __dirname + "/../.env" });
 
 const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
-const CLIENT_PASS = process.env.EMAIL_PASS;
+const CLIENT_PASS = process.env.APP_PASS;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.OAUTH_REFRESH_TOKEN;
