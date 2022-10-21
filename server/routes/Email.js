@@ -1,7 +1,7 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const router = express.Router();
-require("dotenv").config({ path: __dirname + "/../.env" });
+require("dotenv").config({ path: "/server/.env" });
 const { google } = require("googleapis");
 
 const CLIENT_EMAIL = process.env.EMAIL_USERNAME;
