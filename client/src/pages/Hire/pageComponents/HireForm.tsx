@@ -165,7 +165,9 @@ const HireForm = () => {
             {...formik.getFieldProps("numTracks")}
           >
             {Array.from(Array(12).keys()).map((n) => (
-              <option value={n + 1}>{n + 1}</option>
+              <option key={`${n + 1}-tracks`} value={n + 1}>
+                {n + 1}
+              </option>
             ))}
           </StyledSelect>
 
