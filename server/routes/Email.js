@@ -33,7 +33,6 @@ router.post("/contact", async (req, res) => {
       auth: {
         type: "OAuth2",
         user: CLIENT_EMAIL,
-        pass: CLIENT_PASS,
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
@@ -69,7 +68,6 @@ router.post("/hire", async (req, res) => {
       auth: {
         type: "OAuth2",
         user: CLIENT_EMAIL,
-        pass: CLIENT_PASS,
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
