@@ -23,15 +23,16 @@ const GenresLabel = styled.label`
 const SelectGenre = styled.select`
   height: fit-content;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 14px;
+  border: none;
   padding: 0.6rem;
   border-radius: 5px;
   /* Needed to make Safari <select> element to look the same */
-  appearance: none;
+  /* appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position-x: 100%;
-  background-position-y: 4px;
+  background-position-y: 4px; */
 
   &:focus {
     outline: 3px solid ${(props) => props.theme.color.highlight1};
